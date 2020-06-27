@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 public class AirplaneModel
 {
-    long id;
-    int numberOfSeats;
-    public static ArrayList<AirplaneModel> airplanes = new ArrayList<AirplaneModel>();
+    private long id;
+    private int numberOfSeats;
+    private ArrayList <FlightModel> listOfFlights = new ArrayList<FlightModel>();
+    public static ArrayList <AirplaneModel> airplanes = new ArrayList<AirplaneModel>();
 
     public AirplaneModel(long id,int numberOfSeats)
     {
@@ -32,5 +33,15 @@ public class AirplaneModel
     public void setNumberOfSeats(int numberOfSeats)
     {
         this.numberOfSeats = numberOfSeats;
+    }
+
+    public ArrayList<FlightModel> getListOfFlights()
+    {
+        return listOfFlights;
+    }
+
+    public void setListOfFlights(ArrayList<FlightModel> listOfFlights)
+    {
+        this.listOfFlights = listOfFlights;
     }
 }
