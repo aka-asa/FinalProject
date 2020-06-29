@@ -25,9 +25,9 @@ public class AirplaneView extends BorderPane
         TableColumn tableColumn2 = new TableColumn("Number Of Seats");
         tableColumn2.setCellValueFactory(new PropertyValueFactory<AirplaneModel,Integer>("numberOfSeats"));
 
-        for (int i=0; i<AirplaneModel.airplanes.size() ; i++)
+        for (int i=0; i<AirplaneModel.getAirplanes().size() ; i++)
         {
-            tableView.getItems().add(AirplaneModel.airplanes.get(i));
+            tableView.getItems().add(AirplaneModel.getAirplanes().get(i));
         }
 
         tableView.getColumns().addAll(tableColumn,tableColumn2);

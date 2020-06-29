@@ -31,9 +31,9 @@ public class TicketView extends BorderPane
         tableColumn3.setCellValueFactory(new PropertyValueFactory<TicketModel,Long>("penaltyOfCancellation"));
 
 
-        for (int i=0 ; i<TicketModel.tickets.size() ; i++)
+        for (int i=0 ; i<TicketModel.getTickets().size() ; i++)
         {
-            tableView.getItems().add(TicketModel.tickets.get(i));
+            tableView.getItems().add(TicketModel.getTickets().get(i));
         }
 
         tableView.getColumns().addAll(tableColumn,tableColumn2,tableColumn3);

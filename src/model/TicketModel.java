@@ -7,13 +7,23 @@ public class TicketModel
     private long id;
     private long price;
     private long penaltyOfCancellation;
-    public static ArrayList <TicketModel> tickets = new ArrayList<TicketModel>();
+    private static ArrayList <TicketModel> tickets = new ArrayList<TicketModel>();
 
     public TicketModel(long id, long price, long penaltyOfCancellation)
     {
         this.id = id;
         this.price = price;
         this.penaltyOfCancellation = penaltyOfCancellation;
+    }
+
+    public static ArrayList<TicketModel> getTickets()
+    {
+        return tickets;
+    }
+
+    public static void setTickets(ArrayList<TicketModel> tickets)
+    {
+        TicketModel.tickets = tickets;
     }
 
     public long getId()

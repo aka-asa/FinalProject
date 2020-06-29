@@ -7,9 +7,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import model.AirplaneModel;
 import model.FlightModel;
-import model.TicketModel;
 
 import java.time.LocalDateTime;
 
@@ -44,12 +42,15 @@ public class FlightView extends BorderPane
         TableColumn tableColumn7 = new TableColumn("Flight Time");
         tableColumn7.setCellValueFactory(new PropertyValueFactory<FlightModel,Double>("flightTime"));
 
-        for (int i=0 ; i<FlightModel.flights.size() ; i++)
+        TableColumn tableColumn8 = new TableColumn("Flight Condition");
+        tableColumn8.setCellValueFactory(new PropertyValueFactory<FlightModel, FlightModel.FlightCondition>("flightCondition"));
+
+        for (int i=0 ; i<FlightModel.getFlights().size() ; i++)
         {
-            tableView.getItems().add(FlightModel.flights.get(i));
+            tableView.getItems().add(FlightModel.getFlights().get(i));
         }
 
-        tableView.getColumns().addAll(tableColumn,tableColumn2,tableColumn3,tableColumn4,tableColumn5,tableColumn6,tableColumn7);
+        tableView.getColumns().addAll(tableColumn,tableColumn2,tableColumn3,tableColumn4,tableColumn5,tableColumn6,tableColumn7,tableColumn8);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         this.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));

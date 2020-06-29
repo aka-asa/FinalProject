@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca7373bb-7bcd-4618-9eaf-486f90d4c52f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinalProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FinalProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/AirplaneModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AirplaneModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FlightModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlightModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TicketModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/TicketModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/AirplaneView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AirplaneView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/FlightView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FlightView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TicketView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TicketView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/AirplaneModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/AirplaneModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/FlightModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/FlightModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/TicketModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/TicketModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/AirplaneView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/AirplaneView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/FlightView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/FlightView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/TicketView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/TicketView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +47,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tamrin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -76,7 +85,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1593282780701</updated>
-      <workItem from="1593282783209" duration="7489000" />
+      <workItem from="1593282783209" duration="7667000" />
+      <workItem from="1593411737643" duration="5440000" />
     </task>
     <servers />
   </component>
@@ -84,30 +94,30 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser" timestamp="1593295267771">
+    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser" timestamp="1593416373822">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1593295267771" />
+    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1593416373822" />
     <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1593287273496">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593287273496" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1593295420030">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1593416073155">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593295420030" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1593295420030">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593416073155" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1593416073155">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593295420030" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1593295420030">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593416073155" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1593416073155">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593295420030" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1593295420030">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593416073155" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1593416073155">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593295420030" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593416073155" />
     <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593295182222">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

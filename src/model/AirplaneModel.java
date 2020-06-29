@@ -7,13 +7,24 @@ public class AirplaneModel
     private long id;
     private int numberOfSeats;
     private ArrayList <FlightModel> listOfFlights = new ArrayList<FlightModel>();
-    public static ArrayList <AirplaneModel> airplanes = new ArrayList<AirplaneModel>();
+    private static ArrayList <AirplaneModel> airplanes = new ArrayList<AirplaneModel>();
 
     public AirplaneModel(long id,int numberOfSeats)
     {
         this.id = id;
         this.numberOfSeats = numberOfSeats;
     }
+
+    public static ArrayList<AirplaneModel> getAirplanes()
+    {
+        return airplanes;
+    }
+
+    public static void setAirplanes(ArrayList<AirplaneModel> airplanes)
+    {
+        AirplaneModel.airplanes = airplanes;
+    }
+
 
     public long getId()
     {

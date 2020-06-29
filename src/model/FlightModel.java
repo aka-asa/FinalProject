@@ -14,7 +14,9 @@ public class FlightModel
     private String time;
     private int numberOfSoldTickets;
     private double flightTime;
-    public static ArrayList<FlightModel> flights = new ArrayList<FlightModel>();
+    public enum FlightCondition {SCHEDULED,ARRIVED,INAIR};
+    private static FlightCondition flightCondition;
+    private static ArrayList<FlightModel> flights = new ArrayList<FlightModel>();
 
     public FlightModel(long id, AirplaneModel airplane, TicketModel ticket, String origin, String destination, LocalDate date, String time, int numberOfSoldTickets, double flightTime)
     {
@@ -27,6 +29,17 @@ public class FlightModel
         this.time = time;
         this.numberOfSoldTickets = numberOfSoldTickets;
         this.flightTime = flightTime;
+        this.flightCondition = FlightCondition.SCHEDULED;
+    }
+
+    public static ArrayList<FlightModel> getFlights()
+    {
+        return flights;
+    }
+
+    public static void setFlights(ArrayList<FlightModel> flights)
+    {
+        FlightModel.flights = flights;
     }
 
     public long getId()
@@ -117,5 +130,15 @@ public class FlightModel
     public void setFlightTime(double flightTime)
     {
         this.flightTime = flightTime;
+    }
+
+    public static FlightCondition getFlightCondition()
+    {
+        return flightCondition;
+    }
+
+    public static void setFlightCondition(FlightCondition flightCondition)
+    {
+        FlightModel.flightCondition = flightCondition;
     }
 }
