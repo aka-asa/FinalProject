@@ -5,14 +5,26 @@ import java.util.ArrayList;
 public class AirplaneModel
 {
     private long id;
+    private static long idGenerator = 500000;
     private int numberOfSeats;
     private ArrayList <FlightModel> listOfFlights = new ArrayList<FlightModel>();
     private static ArrayList <AirplaneModel> airplanes = new ArrayList<AirplaneModel>();
 
-    public AirplaneModel(long id,int numberOfSeats)
+    public AirplaneModel(int numberOfSeats)
     {
-        this.id = id;
+        idGenerator++;
+        id = idGenerator;
         this.numberOfSeats = numberOfSeats;
+    }
+
+    public static long getIdGenerator()
+    {
+        return idGenerator;
+    }
+
+    public static void setIdGenerator(long idGenerator)
+    {
+        AirplaneModel.idGenerator = idGenerator;
     }
 
     public static ArrayList<AirplaneModel> getAirplanes()
@@ -24,7 +36,6 @@ public class AirplaneModel
     {
         AirplaneModel.airplanes = airplanes;
     }
-
 
     public long getId()
     {

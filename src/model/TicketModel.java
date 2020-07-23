@@ -5,15 +5,27 @@ import java.util.ArrayList;
 public class TicketModel
 {
     private long id;
+    private static long idGenerator = 400000;
     private long price;
     private long penaltyOfCancellation;
     private static ArrayList <TicketModel> tickets = new ArrayList<TicketModel>();
 
-    public TicketModel(long id, long price, long penaltyOfCancellation)
+    public TicketModel(long price, long penaltyOfCancellation)
     {
-        this.id = id;
+        idGenerator++;
+        id = idGenerator;
         this.price = price;
         this.penaltyOfCancellation = penaltyOfCancellation;
+    }
+
+    public static long getIdGenerator()
+    {
+        return idGenerator;
+    }
+
+    public static void setIdGenerator(long idGenerator)
+    {
+        TicketModel.idGenerator = idGenerator;
     }
 
     public static ArrayList<TicketModel> getTickets()

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class FlightModel
 {
     private long id;
+    private static long idGenerator = 600000;
     private AirplaneModel airplane;
     private TicketModel ticket;
     private String origin;
@@ -18,9 +19,10 @@ public class FlightModel
     private static FlightCondition flightCondition;
     private static ArrayList<FlightModel> flights = new ArrayList<FlightModel>();
 
-    public FlightModel(long id, AirplaneModel airplane, TicketModel ticket, String origin, String destination, LocalDate date, String time, int numberOfSoldTickets, double flightTime)
+    public FlightModel(AirplaneModel airplane, TicketModel ticket, String origin, String destination, LocalDate date, String time, int numberOfSoldTickets, double flightTime)
     {
-        this.id = id;
+        idGenerator++;
+        id = idGenerator;
         this.airplane = airplane;
         this.ticket = ticket;
         this.origin = origin;
@@ -30,6 +32,16 @@ public class FlightModel
         this.numberOfSoldTickets = numberOfSoldTickets;
         this.flightTime = flightTime;
         this.flightCondition = FlightCondition.SCHEDULED;
+    }
+
+    public static long getIdGenerator()
+    {
+        return idGenerator;
+    }
+
+    public static void setIdGenerator(long idGenerator)
+    {
+        FlightModel.idGenerator = idGenerator;
     }
 
     public static ArrayList<FlightModel> getFlights()

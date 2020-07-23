@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class PersonModel
 {
-    private long id;
+    private long id ;
+    private static long idGenerator = 700000;
     private String name;
     private String lastName;
     private String username;
@@ -12,9 +13,10 @@ public class PersonModel
     private String email;
     private static ArrayList <PersonModel> persons = new ArrayList<PersonModel>();
 
-    public PersonModel(long id, String name, String lastName, String username, String password, String email)
+    public PersonModel(String name, String lastName, String username, String password, String email)
     {
-        this.id = id;
+        idGenerator++;
+        id = idGenerator;
         this.name = name;
         this.lastName = lastName;
         this.username = username;
@@ -40,6 +42,16 @@ public class PersonModel
     public void setId(long id)
     {
         this.id = id;
+    }
+
+    public static long getIdGenerator()
+    {
+        return idGenerator;
+    }
+
+    public static void setIdGenerator(long idGenerator)
+    {
+        PersonModel.idGenerator = idGenerator;
     }
 
     public String getName()

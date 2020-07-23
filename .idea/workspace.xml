@@ -6,17 +6,14 @@
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/AirplaneModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AirplaneModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/FlightModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlightModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PersonModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PersonModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/TicketModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/TicketModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/AirplaneView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AirplaneView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/FlightView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FlightView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/TicketView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TicketView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/AirplaneModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/AirplaneModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/FlightModel$FlightCondition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/FlightModel$FlightCondition.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/FlightModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/FlightModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/PersonModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/PersonModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/TicketModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/TicketModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/AirplaneView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/AirplaneView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/FlightView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/FlightView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/TicketView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/TicketView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../9873118-2" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -86,7 +83,20 @@
       <option name="presentableId" value="Default" />
       <updated>1593282780701</updated>
       <workItem from="1593282783209" duration="7667000" />
-      <workItem from="1593411737643" duration="5440000" />
+      <workItem from="1593411737643" duration="9698000" />
+      <workItem from="1593540317793" duration="25000" />
+      <workItem from="1593690751323" duration="15882000" />
+      <workItem from="1593771184349" duration="105000" />
+      <workItem from="1593776210701" duration="10602000" />
+      <workItem from="1593873812663" duration="16051000" />
+      <workItem from="1593971309613" duration="4640000" />
+      <workItem from="1594055953815" duration="3959000" />
+      <workItem from="1594144454777" duration="10938000" />
+      <workItem from="1594745571249" duration="192000" />
+      <workItem from="1595248857658" duration="976000" />
+      <workItem from="1595360515751" duration="30000" />
+      <workItem from="1595449433225" duration="3930000" />
+      <workItem from="1595522022301" duration="3380000" />
     </task>
     <servers />
   </component>
@@ -94,33 +104,76 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser" timestamp="1593416373822">
+    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser" timestamp="1594155774662">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1593416373822" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1593287273496">
+    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1594155774662" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1595522071265">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593287273496" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1593416073155">
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595522071265" />
+    <state width="1323" height="178" key="GridCell.Tab.0.bottom" timestamp="1595527855084">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593416073155" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1593416073155">
+    <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595527855084" />
+    <state width="1323" height="178" key="GridCell.Tab.0.center" timestamp="1595527855084">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1593416073155" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1593416073155">
+    <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595527855084" />
+    <state width="1323" height="178" key="GridCell.Tab.0.left" timestamp="1595527855084">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1593416073155" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1593416073155">
+    <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595527855084" />
+    <state width="1323" height="178" key="GridCell.Tab.0.right" timestamp="1595527855084">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1593416073155" />
+    <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595527855084" />
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1593710037050">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593710037050" />
+    <state width="1323" height="223" key="GridCell.Tab.1.center" timestamp="1593710037050">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1593710037050" />
+    <state width="1323" height="223" key="GridCell.Tab.1.left" timestamp="1593710037049">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1593710037049" />
+    <state width="1323" height="223" key="GridCell.Tab.1.right" timestamp="1593710037050">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1593710037050" />
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1595522020152">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595522020152" />
     <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593295182222">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1593295182222" />
+    <state x="380" y="0" width="606" height="728" key="find.popup" timestamp="1595526745423">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="380" y="0" width="606" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1595526745423" />
+    <state x="65" y="0" key="new project wizard" timestamp="1595249842772">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="65" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1595249842772" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595526545390">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595526545390" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/PassengerView.java</url>
+          <line>515</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
