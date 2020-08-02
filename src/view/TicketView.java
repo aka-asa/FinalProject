@@ -13,10 +13,11 @@ public class TicketView extends BorderPane
 {
 
     private Stage stage;
+    private TableView <TicketModel> tableView;
 
     public TicketView()
     {
-        TableView <TicketModel> tableView = new TableView<TicketModel>();
+        tableView = new TableView<TicketModel>();
         tableView.setPrefSize(600,400);
 
         TableColumn tableColumn = new TableColumn("ID");
@@ -29,12 +30,6 @@ public class TicketView extends BorderPane
 
         TableColumn tableColumn3 = new TableColumn("PenaltyOfCancellation");
         tableColumn3.setCellValueFactory(new PropertyValueFactory<TicketModel,Long>("penaltyOfCancellation"));
-
-
-        for (int i=0 ; i<TicketModel.getTickets().size() ; i++)
-        {
-            tableView.getItems().add(TicketModel.getTickets().get(i));
-        }
 
         tableView.getColumns().addAll(tableColumn,tableColumn2,tableColumn3);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -55,5 +50,15 @@ public class TicketView extends BorderPane
     public void setStage(Stage stage)
     {
         this.stage = stage;
+    }
+
+    public TableView<TicketModel> getTableView()
+    {
+        return tableView;
+    }
+
+    public void setTableView(TableView<TicketModel> tableView)
+    {
+        this.tableView = tableView;
     }
 }

@@ -5,16 +5,14 @@ import java.util.ArrayList;
 public class PassengerModel extends PersonModel
 {
     private String phoneNumber;
-    private long credit;
+    private long credit = 0;
     private ArrayList <TicketModel> tickets = new ArrayList<TicketModel>();
     private static ArrayList<PassengerModel> passengers = new ArrayList<PassengerModel>();
 
-    public PassengerModel(String name, String lastName, String username, String password, String email, String phoneNumber, long credit)
+    public PassengerModel(String name, String lastName, String username, String password, String email)
     {
         super(name, lastName, username, password, email);
         setId(getId()+7300000);
-        this.phoneNumber = phoneNumber;
-        this.credit = credit;
     }
 
     public ArrayList<TicketModel> getTickets()

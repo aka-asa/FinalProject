@@ -15,10 +15,11 @@ public class FlightView extends BorderPane
 {
 
     private Stage stage;
+    private TableView <FlightModel> tableView;
 
     public FlightView()
     {
-        TableView <FlightModel> tableView = new TableView<FlightModel>();
+        tableView = new TableView<FlightModel>();
         tableView.setPrefSize(600,400);
 
         TableColumn tableColumn = new TableColumn("ID");
@@ -45,11 +46,6 @@ public class FlightView extends BorderPane
         TableColumn tableColumn8 = new TableColumn("Flight Condition");
         tableColumn8.setCellValueFactory(new PropertyValueFactory<FlightModel, FlightModel.FlightCondition>("flightCondition"));
 
-        for (int i=0 ; i<FlightModel.getFlights().size() ; i++)
-        {
-            tableView.getItems().add(FlightModel.getFlights().get(i));
-        }
-
         tableView.getColumns().addAll(tableColumn,tableColumn2,tableColumn3,tableColumn4,tableColumn5,tableColumn6,tableColumn7,tableColumn8);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -69,5 +65,15 @@ public class FlightView extends BorderPane
     public void setStage(Stage stage)
     {
         this.stage = stage;
+    }
+
+    public TableView<FlightModel> getTableView()
+    {
+        return tableView;
+    }
+
+    public void setTableView(TableView<FlightModel> tableView)
+    {
+        this.tableView = tableView;
     }
 }

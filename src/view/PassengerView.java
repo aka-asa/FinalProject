@@ -2,6 +2,7 @@ package view;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,9 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import model.FlightModel;
-import model.PassengerModel;
-import model.PersonModel;
+import model.*;
 
 import java.time.LocalDateTime;
 
@@ -30,8 +29,10 @@ public class PassengerView
     private JFXTextField jfxTextField8;
     private JFXTextField jfxTextField9;
     private JFXTextField jfxTextField10;
-    private JFXTextField jfxTextField11;
     private JFXTextField jfxTextField12;
+    private JFXTextField jfxTextField11;
+    private JFXTextField jfxTextField229;
+    private JFXTextArea jfxTextArea100;
     private JFXPasswordField jfxPasswordField;
     private JFXPasswordField jfxPasswordField2;
     private JFXPasswordField jfxPasswordField3;
@@ -42,29 +43,44 @@ public class PassengerView
     private JFXButton jfxButton2;
     private JFXButton jfxButton3;
     private JFXButton jfxButton4;
+    private JFXButton jfxButton8;
+    private JFXButton jfxButton9;
+    private JFXButton jfxButton12;
+    private JFXButton jfxButton13;
     private JFXButton jfxButton5;
     private JFXButton jfxButton6;
     private JFXButton jfxButton7;
-    private JFXButton jfxButton8;
-    private JFXButton jfxButton9;
     private JFXButton jfxButton10;
     private JFXButton jfxButton11;
-    private JFXButton jfxButton12;
-    private JFXButton jfxButton13;
+    private JFXButton jfxButton100;
+    private JFXButton jfxButton101;
+    private JFXButton jfxButton31;
+    private JFXButton jfxButton32;
+    private JFXButton jfxButton33;
+    private JFXButton jfxButton34;
+    private JFXButton jfxButton35;
     private Label label9;
     private ChoiceBox <String> choiceBox;
+    private TableView <PassengerModel> tableView;
+    private TableView <FlightModel> tableView5;
+    private TableView <AirplaneModel> tableView8;
+    private TableView <TicketModel> tableView9;
     private Scene registrationScene;
     private Scene editAllScene;
-    private Scene loginScene;
     private Scene showPassengersScene;
     private Scene mainMenuScene;
-    private Scene changePasswordScene;
     private Scene chargeScene;
+    private Scene loginScene;
+    private Scene changePasswordScene;
+    private Scene criticsAndSuggestionsScene;
+    private Scene buyTicketScene;
+    private Scene airplaneOfFlightScene;
+    private Scene ticketOfFlightScene;
 
     public PassengerView()
     {
 //show passengers
-        TableView <PassengerModel> tableView = new TableView<PassengerModel>();
+        tableView = new TableView<PassengerModel>();
         tableView.setPrefSize(600,400);
 
         TableColumn tableColumn = new TableColumn("ID");
@@ -87,14 +103,10 @@ public class PassengerView
 
         TableColumn tableColumn7 = new TableColumn("Phone Number");
         tableColumn7.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("phoneNumber"));
+        tableColumn7.setMinWidth(50);
 
         TableColumn tableColumn8 = new TableColumn("Credit");
         tableColumn8.setCellValueFactory(new PropertyValueFactory<PassengerModel,Long>("credit"));
-
-        for (int i=0 ; i<PassengerModel.getPassengers().size() ; i++)
-        {
-            tableView.getItems().add(PassengerModel.getPassengers().get(i));
-        }
 
         tableView.getColumns().addAll(tableColumn,tableColumn2,tableColumn3,tableColumn4,tableColumn5,tableColumn6,tableColumn7,tableColumn8);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -157,6 +169,62 @@ public class PassengerView
         gridPane3.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         loginScene = new Scene(gridPane3);
+
+//change password
+        jfxPasswordField3 = new JFXPasswordField();
+        jfxPasswordField3.setPromptText("Old Password");
+        jfxPasswordField3.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxPasswordField4 = new JFXPasswordField();
+        jfxPasswordField4.setPromptText("New Password");
+        jfxPasswordField4.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxPasswordField6 = new JFXPasswordField();
+        jfxPasswordField6.setPromptText("Confirm New Password");
+        jfxPasswordField6.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+
+        jfxButton10 = new JFXButton();
+        jfxButton10.setText("Enter");
+        jfxButton10.setPrefSize(95,25);
+        jfxButton10.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton10.setTextFill(Color.BLACK);
+        jfxButton11 = new JFXButton();
+        jfxButton11.setText("Back");
+        jfxButton11.setPrefSize(95,25);
+        jfxButton11.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton11.setTextFill(Color.BLACK);
+
+        BorderPane borderPane16 = new BorderPane();
+        borderPane16.setCenter(jfxPasswordField3);
+        borderPane16.setPrefSize(300,60);
+        BorderPane borderPane17 = new BorderPane();
+        borderPane17.setPrefSize(300,60);
+        borderPane17.setCenter(jfxPasswordField4);
+        BorderPane borderPane91 = new BorderPane();
+        borderPane91.setCenter(jfxPasswordField6);
+        borderPane91.setPrefSize(300,60);
+        BorderPane borderPane92 = new BorderPane();
+        borderPane92.setCenter(jfxButton10);
+        borderPane92.setPrefSize(300,30);
+        BorderPane borderPane37 = new BorderPane();
+        borderPane37.setCenter(jfxButton11);
+        borderPane37.setPrefSize(300,30);
+        BorderPane borderPane38 = new BorderPane();
+        borderPane38.setPrefSize(600,60);
+        borderPane38.setLeft(borderPane37);
+        borderPane38.setRight(borderPane92);
+
+        GridPane gridPane5 = new GridPane();;
+        gridPane5.add(borderPane16,0,0);
+        gridPane5.add(borderPane17,0,1);
+        gridPane5.add(borderPane91,0,2);
+        gridPane5.add(borderPane38,0,3);
+
+        gridPane5.setPrefSize(750,580);
+        gridPane5.setAlignment(Pos.CENTER);
+        gridPane5.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
+        gridPane5.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        changePasswordScene = new Scene(gridPane5);
+
 
 //registration menu
         jfxTextField = new JFXTextField();
@@ -256,7 +324,7 @@ public class PassengerView
         choiceBox.getItems().add("Change password");
         choiceBox.getItems().add("Charge account");
         choiceBox.getItems().add("Ticket section");
-        choiceBox.getItems().add("Send reviews");
+        choiceBox.getItems().add("Send critics and suggestions");
 
         Label label8 = new Label();
         label8.setTextFill(Color.BLACK);
@@ -289,60 +357,50 @@ public class PassengerView
 
         mainMenuScene = new Scene(gridPane4);
 
-//change password
-        jfxPasswordField3 = new JFXPasswordField();
-        jfxPasswordField3.setPromptText("Old Password");
-        jfxPasswordField3.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxPasswordField4 = new JFXPasswordField();
-        jfxPasswordField4.setPromptText("New Password");
-        jfxPasswordField4.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxPasswordField6 = new JFXPasswordField();
-        jfxPasswordField6.setPromptText("Confirm New Password");
-        jfxPasswordField6.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+//critics and suggestions menu
+        jfxTextArea100 = new JFXTextArea();
+        jfxTextArea100.setPromptText("Critics And Suggestions");
 
-        jfxButton10 = new JFXButton();
-        jfxButton10.setText("Enter");
-        jfxButton10.setPrefSize(95,25);
-        jfxButton10.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
-        jfxButton10.setTextFill(Color.BLACK);
-        jfxButton11 = new JFXButton();
-        jfxButton11.setText("Back");
-        jfxButton11.setPrefSize(95,25);
-        jfxButton11.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
-        jfxButton11.setTextFill(Color.BLACK);
+        Label label100 = new Label();
+        label100.setTextFill(Color.BLACK);
+        label100.setText("Please Write your Critics And Suggestions!");
 
-        BorderPane borderPane16 = new BorderPane();
-        borderPane16.setCenter(jfxPasswordField3);
-        borderPane16.setPrefSize(300,60);
-        BorderPane borderPane17 = new BorderPane();
-        borderPane17.setPrefSize(300,60);
-        borderPane17.setCenter(jfxPasswordField4);
-        BorderPane borderPane91 = new BorderPane();
-        borderPane91.setCenter(jfxPasswordField6);
-        borderPane91.setPrefSize(300,60);
-        BorderPane borderPane92 = new BorderPane();
-        borderPane92.setCenter(jfxButton10);
-        borderPane92.setPrefSize(300,30);
-        BorderPane borderPane37 = new BorderPane();
-        borderPane37.setCenter(jfxButton11);
-        borderPane37.setPrefSize(300,30);
-        BorderPane borderPane38 = new BorderPane();
-        borderPane38.setPrefSize(600,60);
-        borderPane38.setLeft(borderPane37);
-        borderPane38.setRight(borderPane92);
+        jfxButton100 = new JFXButton();
+        jfxButton100.setText("Send");
+        jfxButton100.setPrefSize(95,25);
+        jfxButton100.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton100.setTextFill(Color.BLACK);
+        jfxButton101 = new JFXButton();
+        jfxButton101.setText("Back");
+        jfxButton101.setPrefSize(95,25);
+        jfxButton101.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton101.setTextFill(Color.BLACK);
 
-        GridPane gridPane5 = new GridPane();;
-        gridPane5.add(borderPane16,0,0);
-        gridPane5.add(borderPane17,0,1);
-        gridPane5.add(borderPane91,0,2);
-        gridPane5.add(borderPane38,0,3);
+        BorderPane borderPane100 = new BorderPane();
+        borderPane100.setCenter(label100);
+        borderPane100.setPrefSize(300,60);
+        BorderPane borderPane101 = new BorderPane();
+        borderPane101.setCenter(jfxTextArea100);
+        borderPane101.setPrefSize(300,200);
+        BorderPane borderPane102 = new BorderPane();
+        borderPane102.setCenter(jfxButton100);
+        BorderPane borderPane103 = new BorderPane();
+        borderPane103.setCenter(jfxButton101);
+        BorderPane borderPane104 = new BorderPane();
+        borderPane104.setPrefSize(300,120);
+        borderPane104.setRight(borderPane102);
+        borderPane104.setLeft(borderPane103);
 
-        gridPane5.setPrefSize(750,580);
-        gridPane5.setAlignment(Pos.CENTER);
-        gridPane5.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
-        gridPane5.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+        GridPane gridPane100 = new GridPane();;
+        gridPane100.add(borderPane100,0,0);
+        gridPane100.add(borderPane101,0,1);
+        gridPane100.add(borderPane104,0,2);
+        gridPane100.setPrefSize(750,580);
+        gridPane100.setAlignment(Pos.CENTER);
+        gridPane100.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
+        gridPane100.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        changePasswordScene = new Scene(gridPane5);
+        criticsAndSuggestionsScene = new Scene(gridPane100);
 
 //edit menu
         jfxTextField6 = new JFXTextField();
@@ -489,17 +547,149 @@ public class PassengerView
 
         chargeScene = new Scene(gridPane6);
 
+//ticket section
+        tableView5 = new TableView<FlightModel>();
+        tableView5.setPrefSize(700,400);
+        TableColumn tableColumn23 = new TableColumn("ID");
+        tableColumn23.setCellValueFactory(new PropertyValueFactory<FlightModel,Long>("id"));
+        TableColumn tableColumn24 = new TableColumn("Origin");
+        tableColumn24.setCellValueFactory(new PropertyValueFactory<FlightModel,String>("origin"));
+        TableColumn tableColumn25 = new TableColumn("Destination");
+        tableColumn25.setCellValueFactory(new PropertyValueFactory<FlightModel,String>("destination"));
+        tableColumn25.setMinWidth(40);
+        TableColumn tableColumn26 = new TableColumn("Date");
+        tableColumn26.setCellValueFactory(new PropertyValueFactory<FlightModel, LocalDateTime>("date"));
+        TableColumn tableColumn27 = new TableColumn("Time");
+        tableColumn27.setCellValueFactory(new PropertyValueFactory<FlightModel,String>("time"));
+        TableColumn tableColumn28 = new TableColumn("Number Of Sold Tickets");
+        tableColumn28.setCellValueFactory(new PropertyValueFactory<FlightModel,Integer>("numberOfSoldTickets"));
+        tableColumn28.setMinWidth(90);
+        TableColumn tableColumn29 = new TableColumn("Flight Time");
+        tableColumn29.setCellValueFactory(new PropertyValueFactory<FlightModel,Double>("flightTime"));
+        tableColumn29.setMinWidth(50);
+        TableColumn tableColumn30 = new TableColumn("Flight Condition");
+        tableColumn30.setCellValueFactory(new PropertyValueFactory<FlightModel, FlightModel.FlightCondition>("flightCondition"));
+        tableColumn30.setMinWidth(50);
+        tableView5.getColumns().addAll(tableColumn23,tableColumn24,tableColumn25,tableColumn26,tableColumn27,tableColumn28,tableColumn29,tableColumn30);
+        tableView5.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        Label label19 = new Label();
+        label19.setTextFill(Color.BLACK);
+        label19.setText("Select a row from table");
+
+        jfxTextField229 = new JFXTextField();
+        jfxTextField229.setPromptText("How Many ?");
+        jfxTextField229.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+
+        jfxButton31 = new JFXButton();
+        jfxButton31.setText("Buy A Ticket");
+        jfxButton31.setPrefSize(95,25);
+        jfxButton31.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton31.setTextFill(Color.BLACK);
+        jfxButton32 = new JFXButton();
+        jfxButton32.setText("Cancel A Ticket");
+        jfxButton32.setPrefSize(105,25);
+        jfxButton32.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton32.setTextFill(Color.BLACK);
+        jfxButton33 = new JFXButton();
+        jfxButton33.setText("Show Ticket");
+        jfxButton33.setPrefSize(95,25);
+        jfxButton33.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton33.setTextFill(Color.BLACK);
+        jfxButton34 = new JFXButton();
+        jfxButton34.setText("Show Airplane");
+        jfxButton34.setPrefSize(95,25);
+        jfxButton34.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton34.setTextFill(Color.BLACK);
+        jfxButton35 = new JFXButton();
+        jfxButton35.setText("Back");
+        jfxButton35.setPrefSize(95,25);
+        jfxButton35.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton35.setTextFill(Color.BLACK);
+
+        BorderPane borderPane128 = new BorderPane();
+        borderPane128.setCenter(label19);
+        borderPane128.setPrefSize(300,60);
+        BorderPane borderPane129 = new BorderPane();
+        borderPane129.setCenter(tableView5);
+        borderPane129.setPrefSize(700,250);
+        BorderPane borderPane229 = new BorderPane();
+        borderPane229.setCenter(jfxTextField229);
+        borderPane229.setPrefSize(600,60);
+        BorderPane borderPane130 = new BorderPane();
+        borderPane130.setCenter(jfxButton31);
+        BorderPane borderPane131 = new BorderPane();
+        borderPane131.setCenter(jfxButton32);
+        BorderPane borderPane132 = new BorderPane();
+        borderPane132.setPrefSize(600,60);
+        BorderPane borderPane133 = new BorderPane();
+        borderPane133.setCenter(jfxButton33);
+        BorderPane borderPane134 = new BorderPane();
+        borderPane134.setCenter(jfxButton34);
+        BorderPane borderPane136 = new BorderPane();
+        borderPane136.setCenter(jfxButton35);
+        BorderPane borderPane135 = new BorderPane();
+        borderPane135.setPrefSize(600,60);
+        borderPane135.setLeft(borderPane133);
+        borderPane135.setRight(borderPane134);
+        borderPane132.setLeft(borderPane136);
+        borderPane132.setRight(borderPane130);
+        borderPane132.setCenter(borderPane131);
+
+        GridPane gridPane13 = new GridPane();
+        gridPane13.add(borderPane128,0,0);
+        gridPane13.add(borderPane129,0,1);
+        gridPane13.add(borderPane229,0,2);
+        gridPane13.add(borderPane135,0,3);
+        gridPane13.add(borderPane132,0,4);
+        gridPane13.setPrefSize(800,600);
+        gridPane13.setAlignment(Pos.CENTER);
+        gridPane13.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
+        gridPane13.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        buyTicketScene = new Scene(gridPane13);
+
+//show airplane of a flight
+        tableView8 = new TableView<AirplaneModel>();
+        tableView8.setPrefSize(600,400);
+        TableColumn tableColumn36 = new TableColumn("ID");
+        tableColumn36.setCellValueFactory(new PropertyValueFactory<AirplaneModel,Long>("id"));
+        TableColumn tableColumn37 = new TableColumn("Number Of Seats");
+        tableColumn37.setCellValueFactory(new PropertyValueFactory<AirplaneModel,Integer>("numberOfSeats"));
+        tableColumn37.setMinWidth(50);
+        tableView8.getColumns().addAll(tableColumn36,tableColumn37);
+        tableView8.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        BorderPane borderPane336 = new BorderPane();
+        borderPane336.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
+        borderPane336.setCenter(tableView8);
+        borderPane336.setPrefSize(600,400);
+
+        airplaneOfFlightScene = new Scene(borderPane336);
+
+
+//show ticket of a flight
+        tableView9 = new TableView<TicketModel>();
+        tableView9.setPrefSize(600,400);
+        TableColumn tableColumn38 = new TableColumn("ID");
+        tableColumn38.setCellValueFactory(new PropertyValueFactory<TicketModel,Long>("id"));
+        TableColumn tableColumn39 = new TableColumn("Price");
+        tableColumn39.setCellValueFactory(new PropertyValueFactory<TicketModel,Long>("price"));
+        TableColumn tableColumn40 = new TableColumn("PenaltyOfCancellation");
+        tableColumn40.setCellValueFactory(new PropertyValueFactory<TicketModel,Long>("penaltyOfCancellation"));
+        tableColumn40.setMinWidth(50);
+        tableView9.getColumns().addAll(tableColumn38,tableColumn39,tableColumn40);
+        tableView9.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        BorderPane borderPane236 = new BorderPane();
+        borderPane236.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
+        borderPane236.setCenter(tableView9);
+        borderPane236.setPrefSize(600,400);
+
+        ticketOfFlightScene = new Scene(borderPane236);
+
+
         stage = new Stage();
-    }
-
-    public Stage getStage()
-    {
-        return stage;
-    }
-
-    public void setStage(Stage stage)
-    {
-        this.stage = stage;
     }
 
     public JFXTextField getJfxTextField()
@@ -602,16 +792,6 @@ public class PassengerView
         this.editAllScene = editScene;
     }
 
-    public Scene getLoginScene()
-    {
-        return loginScene;
-    }
-
-    public void setLoginScene(Scene loginScene)
-    {
-        this.loginScene = loginScene;
-    }
-
     public Scene getShowPassengersScene()
     {
         return showPassengersScene;
@@ -620,56 +800,6 @@ public class PassengerView
     public void setShowPassengersScene(Scene showPassengersScene)
     {
         this.showPassengersScene = showPassengersScene;
-    }
-
-    public JFXTextField getJfxTextField11()
-    {
-        return jfxTextField11;
-    }
-
-    public void setJfxTextField11(JFXTextField jfxTextField11)
-    {
-        this.jfxTextField11 = jfxTextField11;
-    }
-
-    public JFXPasswordField getJfxPasswordField5()
-    {
-        return jfxPasswordField5;
-    }
-
-    public void setJfxPasswordField5(JFXPasswordField jfxPasswordField5)
-    {
-        this.jfxPasswordField5 = jfxPasswordField5;
-    }
-
-    public JFXButton getJfxButton5()
-    {
-        return jfxButton5;
-    }
-
-    public void setJfxButton5(JFXButton jfxButton5)
-    {
-        this.jfxButton5 = jfxButton5;
-    }
-
-    public JFXButton getJfxButton6()
-    {
-        return jfxButton6;
-    }
-
-    public void setJfxButton6(JFXButton jfxButton6)
-    {
-        this.jfxButton6 = jfxButton6;
-    }
-
-    public JFXButton getJfxButton7()
-    {
-        return jfxButton7;
-    }
-
-    public void setJfxButton7(JFXButton jfxButton7)
-    {
-        this.jfxButton7 = jfxButton7;
     }
 
     public JFXTextField getJfxTextField6()
@@ -720,16 +850,6 @@ public class PassengerView
     public void setJfxTextField10(JFXTextField jfxTextField10)
     {
         this.jfxTextField10 = jfxTextField10;
-    }
-
-    public JFXPasswordField getJfxPasswordField3()
-    {
-        return jfxPasswordField3;
-    }
-
-    public void setJfxPasswordField3(JFXPasswordField jfxPasswordField3)
-    {
-        this.jfxPasswordField3 = jfxPasswordField3;
     }
 
     public JFXButton getJfxButton3()
@@ -802,56 +922,6 @@ public class PassengerView
         this.jfxPasswordField2 = jfxPasswordField2;
     }
 
-    public JFXPasswordField getJfxPasswordField4()
-    {
-        return jfxPasswordField4;
-    }
-
-    public void setJfxPasswordField4(JFXPasswordField jfxPasswordField4)
-    {
-        this.jfxPasswordField4 = jfxPasswordField4;
-    }
-
-    public JFXPasswordField getJfxPasswordField6()
-    {
-        return jfxPasswordField6;
-    }
-
-    public void setJfxPasswordField6(JFXPasswordField jfxPasswordField6)
-    {
-        this.jfxPasswordField6 = jfxPasswordField6;
-    }
-
-    public JFXButton getJfxButton10()
-    {
-        return jfxButton10;
-    }
-
-    public void setJfxButton10(JFXButton jfxButton10)
-    {
-        this.jfxButton10 = jfxButton10;
-    }
-
-    public JFXButton getJfxButton11()
-    {
-        return jfxButton11;
-    }
-
-    public void setJfxButton11(JFXButton jfxButton11)
-    {
-        this.jfxButton11 = jfxButton11;
-    }
-
-    public Scene getChangePasswordScene()
-    {
-        return changePasswordScene;
-    }
-
-    public void setChangePasswordScene(Scene changePasswordScene)
-    {
-        this.changePasswordScene = changePasswordScene;
-    }
-
     public JFXTextField getJfxTextField12()
     {
         return jfxTextField12;
@@ -900,5 +970,305 @@ public class PassengerView
     public void setLabel9(Label label9)
     {
         this.label9 = label9;
+    }
+
+    public Stage getStage()
+    {
+        return stage;
+    }
+
+    public void setStage(Stage stage)
+    {
+        this.stage = stage;
+    }
+
+    public JFXTextField getJfxTextField11()
+    {
+        return jfxTextField11;
+    }
+
+    public void setJfxTextField11(JFXTextField jfxTextField11)
+    {
+        this.jfxTextField11 = jfxTextField11;
+    }
+
+    public JFXPasswordField getJfxPasswordField3()
+    {
+        return jfxPasswordField3;
+    }
+
+    public void setJfxPasswordField3(JFXPasswordField jfxPasswordField3)
+    {
+        this.jfxPasswordField3 = jfxPasswordField3;
+    }
+
+    public JFXPasswordField getJfxPasswordField4()
+    {
+        return jfxPasswordField4;
+    }
+
+    public void setJfxPasswordField4(JFXPasswordField jfxPasswordField4)
+    {
+        this.jfxPasswordField4 = jfxPasswordField4;
+    }
+
+    public JFXPasswordField getJfxPasswordField5()
+    {
+        return jfxPasswordField5;
+    }
+
+    public void setJfxPasswordField5(JFXPasswordField jfxPasswordField5)
+    {
+        this.jfxPasswordField5 = jfxPasswordField5;
+    }
+
+    public JFXPasswordField getJfxPasswordField6()
+    {
+        return jfxPasswordField6;
+    }
+
+    public void setJfxPasswordField6(JFXPasswordField jfxPasswordField6)
+    {
+        this.jfxPasswordField6 = jfxPasswordField6;
+    }
+
+    public JFXButton getJfxButton5()
+    {
+        return jfxButton5;
+    }
+
+    public void setJfxButton5(JFXButton jfxButton5)
+    {
+        this.jfxButton5 = jfxButton5;
+    }
+
+    public JFXButton getJfxButton6()
+    {
+        return jfxButton6;
+    }
+
+    public void setJfxButton6(JFXButton jfxButton6)
+    {
+        this.jfxButton6 = jfxButton6;
+    }
+
+    public JFXButton getJfxButton7()
+    {
+        return jfxButton7;
+    }
+
+    public void setJfxButton7(JFXButton jfxButton7)
+    {
+        this.jfxButton7 = jfxButton7;
+    }
+
+    public JFXButton getJfxButton10()
+    {
+        return jfxButton10;
+    }
+
+    public void setJfxButton10(JFXButton jfxButton10)
+    {
+        this.jfxButton10 = jfxButton10;
+    }
+
+    public JFXButton getJfxButton11()
+    {
+        return jfxButton11;
+    }
+
+    public void setJfxButton11(JFXButton jfxButton11)
+    {
+        this.jfxButton11 = jfxButton11;
+    }
+
+    public Scene getLoginScene()
+    {
+        return loginScene;
+    }
+
+    public void setLoginScene(Scene loginScene)
+    {
+        this.loginScene = loginScene;
+    }
+
+    public Scene getChangePasswordScene()
+    {
+        return changePasswordScene;
+    }
+
+    public void setChangePasswordScene(Scene changePasswordScene)
+    {
+        this.changePasswordScene = changePasswordScene;
+    }
+
+    public JFXTextArea getJfxTextArea100()
+    {
+        return jfxTextArea100;
+    }
+
+    public void setJfxTextArea100(JFXTextArea jfxTextArea100)
+    {
+        this.jfxTextArea100 = jfxTextArea100;
+    }
+
+    public JFXButton getJfxButton100()
+    {
+        return jfxButton100;
+    }
+
+    public void setJfxButton100(JFXButton jfxButton100)
+    {
+        this.jfxButton100 = jfxButton100;
+    }
+
+    public JFXButton getJfxButton101()
+    {
+        return jfxButton101;
+    }
+
+    public void setJfxButton101(JFXButton jfxButton101)
+    {
+        this.jfxButton101 = jfxButton101;
+    }
+
+    public Scene getCriticsAndSuggestionsScene()
+    {
+        return criticsAndSuggestionsScene;
+    }
+
+    public void setCriticsAndSuggestionsScene(Scene criticsAndSuggestionsScene)
+    {
+        this.criticsAndSuggestionsScene = criticsAndSuggestionsScene;
+    }
+
+    public TableView<PassengerModel> getTableView()
+    {
+        return tableView;
+    }
+
+    public void setTableView(TableView<PassengerModel> tableView)
+    {
+        this.tableView = tableView;
+    }
+
+    public JFXButton getJfxButton31()
+    {
+        return jfxButton31;
+    }
+
+    public void setJfxButton31(JFXButton jfxButton31)
+    {
+        this.jfxButton31 = jfxButton31;
+    }
+
+    public JFXButton getJfxButton32()
+    {
+        return jfxButton32;
+    }
+
+    public void setJfxButton32(JFXButton jfxButton32)
+    {
+        this.jfxButton32 = jfxButton32;
+    }
+
+    public JFXButton getJfxButton33()
+    {
+        return jfxButton33;
+    }
+
+    public void setJfxButton33(JFXButton jfxButton33)
+    {
+        this.jfxButton33 = jfxButton33;
+    }
+
+    public JFXButton getJfxButton34()
+    {
+        return jfxButton34;
+    }
+
+    public void setJfxButton34(JFXButton jfxButton34)
+    {
+        this.jfxButton34 = jfxButton34;
+    }
+
+    public JFXButton getJfxButton35()
+    {
+        return jfxButton35;
+    }
+
+    public void setJfxButton35(JFXButton jfxButton35)
+    {
+        this.jfxButton35 = jfxButton35;
+    }
+
+    public TableView<FlightModel> getTableView5()
+    {
+        return tableView5;
+    }
+
+    public void setTableView5(TableView<FlightModel> tableView5)
+    {
+        this.tableView5 = tableView5;
+    }
+
+    public Scene getBuyTicketScene()
+    {
+        return buyTicketScene;
+    }
+
+    public void setBuyTicketScene(Scene buyTicketScene)
+    {
+        this.buyTicketScene = buyTicketScene;
+    }
+
+    public TableView<AirplaneModel> getTableView8()
+    {
+        return tableView8;
+    }
+
+    public void setTableView8(TableView<AirplaneModel> tableView8)
+    {
+        this.tableView8 = tableView8;
+    }
+
+    public TableView<TicketModel> getTableView9()
+    {
+        return tableView9;
+    }
+
+    public void setTableView9(TableView<TicketModel> tableView9)
+    {
+        this.tableView9 = tableView9;
+    }
+
+    public Scene getAirplaneOfFlightScene()
+    {
+        return airplaneOfFlightScene;
+    }
+
+    public void setAirplaneOfFlightScene(Scene airplaneOfFlightScene)
+    {
+        this.airplaneOfFlightScene = airplaneOfFlightScene;
+    }
+
+    public Scene getTicketOfFlightScene()
+    {
+        return ticketOfFlightScene;
+    }
+
+    public void setTicketOfFlightScene(Scene ticketOfFlightScene)
+    {
+        this.ticketOfFlightScene = ticketOfFlightScene;
+    }
+
+    public JFXTextField getJfxTextField229()
+    {
+        return jfxTextField229;
+    }
+
+    public void setJfxTextField229(JFXTextField jfxTextField229)
+    {
+        this.jfxTextField229 = jfxTextField229;
     }
 }

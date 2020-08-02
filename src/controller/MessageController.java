@@ -9,6 +9,7 @@ public class MessageController
     public MessageController (String message)
     {
         messageView = new MessageView(message);
+        messageView.getStage().setTitle("Message");
         messageView.getStage().show();
     }
 

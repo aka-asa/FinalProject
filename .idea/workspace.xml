@@ -4,16 +4,45 @@
     <list default="true" id="ca7373bb-7bcd-4618-9eaf-486f90d4c52f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/AirplaneModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/AirplaneModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AirplaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AirplaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/FlightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/FlightController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/PassengerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PassengerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TicketController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/FlightModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlightModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PersonModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PersonModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/TicketModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/TicketModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PassengerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PassengerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/AirplaneView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AirplaneView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/FlightView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FlightView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/PassengerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PassengerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/PersonView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PersonView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TicketView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TicketView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/AirplaneModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/AirplaneModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/FlightModel$FlightCondition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/FlightModel$FlightCondition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/AirplaneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/AirplaneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/FlightController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/FlightController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/MessageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PersonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/TicketController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/TicketController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/FlightModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/FlightModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/PersonModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/PersonModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/TicketModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/TicketModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/PassengerModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/PassengerModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/AirplaneView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/AirplaneView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/FlightView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/FlightView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/PassengerView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/PassengerView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/PersonView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/PersonView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/TicketView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/TicketView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +73,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../9873118-2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -97,6 +127,17 @@
       <workItem from="1595360515751" duration="30000" />
       <workItem from="1595449433225" duration="3930000" />
       <workItem from="1595522022301" duration="3380000" />
+      <workItem from="1595528338268" duration="6695000" />
+      <workItem from="1595594911795" duration="44000" />
+      <workItem from="1595611866215" duration="11048000" />
+      <workItem from="1595690304150" duration="11481000" />
+      <workItem from="1595790521650" duration="12759000" />
+      <workItem from="1595863323692" duration="23483000" />
+      <workItem from="1596033494591" duration="14854000" />
+      <workItem from="1596165182110" duration="25018000" />
+      <workItem from="1596283790244" duration="19551000" />
+      <workItem from="1596310594437" duration="11000" />
+      <workItem from="1596371193880" duration="142000" />
     </task>
     <servers />
   </component>
@@ -104,30 +145,34 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser" timestamp="1594155774662">
+    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser" timestamp="1596299475682">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1594155774662" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1595522071265">
+    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1596299475682" />
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595626403718">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595522071265" />
-    <state width="1323" height="178" key="GridCell.Tab.0.bottom" timestamp="1595527855084">
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1595626403718" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1596284256499">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595527855084" />
-    <state width="1323" height="178" key="GridCell.Tab.0.center" timestamp="1595527855084">
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596284256499" />
+    <state width="1323" height="138" key="GridCell.Tab.0.bottom" timestamp="1596310581298">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="178" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595527855084" />
-    <state width="1323" height="178" key="GridCell.Tab.0.left" timestamp="1595527855084">
+    <state width="1323" height="138" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596310581298" />
+    <state width="1323" height="138" key="GridCell.Tab.0.center" timestamp="1596310581298">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="178" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595527855084" />
-    <state width="1323" height="178" key="GridCell.Tab.0.right" timestamp="1595527855084">
+    <state width="1323" height="138" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596310581298" />
+    <state width="1323" height="138" key="GridCell.Tab.0.left" timestamp="1596310581298">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="178" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595527855084" />
+    <state width="1323" height="138" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596310581298" />
+    <state width="1323" height="138" key="GridCell.Tab.0.right" timestamp="1596310581298">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="138" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596310581298" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1593710037050">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -144,10 +189,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1593710037050" />
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1595522020152">
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1595690333011">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595522020152" />
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595690333011" />
     <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593295182222">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -160,17 +205,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="65" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1595249842772" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595526545390">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1595870997520">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595526545390" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1595870997520" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1596304711534">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1596304711534" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/PassengerView.java</url>
-          <line>515</line>
+          <line>705</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

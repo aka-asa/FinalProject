@@ -8,15 +8,17 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.AirplaneModel;
+import model.ManagerModel;
 
 public class AirplaneView extends BorderPane
 {
 
     private Stage stage;
+    private TableView <AirplaneModel> tableView;
 
     public AirplaneView()
     {
-        TableView<AirplaneModel> tableView = new TableView<AirplaneModel>();
+        tableView = new TableView<AirplaneModel>();
         tableView.setPrefSize(600,400);
 
         TableColumn tableColumn = new TableColumn("ID");
@@ -24,11 +26,6 @@ public class AirplaneView extends BorderPane
 
         TableColumn tableColumn2 = new TableColumn("Number Of Seats");
         tableColumn2.setCellValueFactory(new PropertyValueFactory<AirplaneModel,Integer>("numberOfSeats"));
-
-        for (int i=0; i<AirplaneModel.getAirplanes().size() ; i++)
-        {
-            tableView.getItems().add(AirplaneModel.getAirplanes().get(i));
-        }
 
         tableView.getColumns().addAll(tableColumn,tableColumn2);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -49,5 +46,15 @@ public class AirplaneView extends BorderPane
     public void setStage(Stage stage)
     {
         this.stage = stage;
+    }
+
+    public TableView<AirplaneModel> getTableView()
+    {
+        return tableView;
+    }
+
+    public void setTableView(TableView<AirplaneModel> tableView)
+    {
+        this.tableView = tableView;
     }
 }

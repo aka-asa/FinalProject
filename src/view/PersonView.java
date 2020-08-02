@@ -18,10 +18,11 @@ public class PersonView extends BorderPane
 {
 
     private Stage stage;
+    private TableView <PersonModel> tableView;
 
     public PersonView()
     {
-        TableView <PersonModel> tableView = new TableView<PersonModel>();
+        tableView = new TableView<PersonModel>();
         tableView.setPrefSize(600,400);
 
         TableColumn tableColumn = new TableColumn("ID");
@@ -42,11 +43,6 @@ public class PersonView extends BorderPane
         TableColumn tableColumn6 = new TableColumn("Email");
         tableColumn6.setCellValueFactory(new PropertyValueFactory<PersonModel,String>("email"));
 
-        for (int i=0 ; i<PersonModel.getPersons().size() ; i++)
-        {
-            tableView.getItems().add(PersonModel.getPersons().get(i));
-        }
-
         tableView.getColumns().addAll(tableColumn,tableColumn2,tableColumn3,tableColumn4,tableColumn5,tableColumn6);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -66,5 +62,15 @@ public class PersonView extends BorderPane
     public void setStage(Stage stage)
     {
         this.stage = stage;
+    }
+
+    public TableView<PersonModel> getTableView()
+    {
+        return tableView;
+    }
+
+    public void setTableView(TableView<PersonModel> tableView)
+    {
+        this.tableView = tableView;
     }
 }
