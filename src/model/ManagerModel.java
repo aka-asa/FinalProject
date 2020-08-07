@@ -6,7 +6,7 @@ public class ManagerModel extends PersonModel
 {
     private String phoneNumber;
     private String address;
-    private long salary = 0;
+    private long salary;
     private static ArrayList<ManagerModel> managers = new ArrayList<ManagerModel>();
     private static ArrayList<String> criticsAndSuggestions = new ArrayList<String>();
 
@@ -14,7 +14,6 @@ public class ManagerModel extends PersonModel
     {
         super(name, lastName, username, password, email);
         setId(getId()-500000);
-//        this.phoneNumber = phoneNumber;
         this.address = address;
     }
 

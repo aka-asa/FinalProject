@@ -17,7 +17,6 @@ public class ManagerController implements Showable
     private ManagerView managerView;
     private int index;
     private int selectedRowIndex;
-    private static ArrayList <TicketModel> usedTickets = new ArrayList<TicketModel>();
 
     public ManagerController ()
     {
@@ -26,12 +25,9 @@ public class ManagerController implements Showable
         initJfxButton2();
         initJfxButton3();
         initJfxButton4();
-        initJfxButton5();
-        initJfxButton6();
         initJfxButton7();
         initJfxButton8();
         initJfxButton9();
-        initJfxButton10();
         initJfxButton11();
         initJfxButton12();
         initJfxButton13();
@@ -74,10 +70,17 @@ public class ManagerController implements Showable
         initJfxButton52();
         initJfxButton53();
         initJfxButton70();
-        initJfxButton71();
-//        initMenusJfxButton72();
+        initJfxButton72();
         initJfxButton74();
         initJfxButton75();
+        initJfxButton446();
+        initJfxButton447();
+        initJfxButton448();
+        initJfxButton449();
+        initJfxButton452();
+        initJfxButton453();
+        initJfxButton544();
+        initJfxButton545();
     }
 
     public void showLoginMenu ()
@@ -127,16 +130,6 @@ public class ManagerController implements Showable
     public void setSelectedRowIndex(int selectedRowIndex)
     {
         this.selectedRowIndex = selectedRowIndex;
-    }
-
-    public static ArrayList<TicketModel> getUsedTickets()
-    {
-        return usedTickets;
-    }
-
-    public static void setUsedTickets(ArrayList<TicketModel> usedTickets)
-    {
-        ManagerController.usedTickets = usedTickets;
     }
 
     public int partition(int low, int high)
@@ -192,94 +185,6 @@ public class ManagerController implements Showable
         return -1;
     }
 
-//add a manager
-    public void initJfxButton()
-    {
-        managerView.getJfxButton().setOnAction(new EventHandler<ActionEvent>()
-        {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                if (managerView.getJfxTextField().getText().isEmpty()||managerView.getJfxTextField2().getText().isEmpty()||managerView.getJfxTextField3().getText().isEmpty()||managerView.getJfxTextField4().getText().isEmpty()||managerView.getJfxTextField5().getText().isEmpty()||managerView.getJfxPasswordField().getText().isEmpty()||managerView.getJfxPasswordField2().getText().isEmpty())
-                {
-                    MessageController messageController = new MessageController("Please complete all parts!");
-                }
-                else if (!(managerView.getJfxPasswordField().getText().equals(managerView.getJfxPasswordField2().getText())))
-                {
-                    MessageController messageController = new MessageController("Passwords are not same!");
-                }
-                else if (!(managerView.getJfxTextField().getText().matches("[a-zA-z]+")))
-                {
-                    MessageController messageController = new MessageController("You can only use letters for name section!");
-                }
-                else if (!(managerView.getJfxTextField2().getText().matches("[a-zA-z]+")))
-                {
-                    MessageController messageController = new MessageController("You can only use letters for last name section!");
-                }
-                else if (!(managerView.getJfxTextField3().getText().matches("\\w+")))
-                {
-                    MessageController messageController = new MessageController("You can only use letters,numbers and (_) for username section!");
-                }
-                else if (!(managerView.getJfxPasswordField().getText().matches("\\S+")))
-                {
-                    MessageController messageController = new MessageController("You can not use whitespace for password section!");
-                }
-                else if (!(managerView.getJfxTextField4().getText().matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")))
-                {
-                    MessageController messageController = new MessageController("Wrong email address,please try again!");
-                }
-                else if (!(managerView.getJfxTextField5().getText().matches("[0]\\d{10}||[9][8]\\d{10}")))
-                {
-                    MessageController messageController = new MessageController("You can only use 11 numbers starting with 0 or 12 numbers starting with 98 for phone number section");
-                }
-                else
-                {
-                    ManagerModel managerModel = new ManagerModel(managerView.getJfxTextField().getText(), managerView.getJfxTextField2().getText(), managerView.getJfxTextField3().getText(), managerView.getJfxPasswordField().getText(), managerView.getJfxTextField4().getText(), managerView.getJfxTextField11().getText());
-                    managerModel.setPhoneNumber(managerView.getJfxTextField5().getText());
-                    ManagerModel.getManagers().add(managerModel);
-                    sort(0, ManagerModel.getManagers().size() - 1);
-                    managerView.getStage().close();
-                    managerView.getJfxTextField().clear();
-                    managerView.getJfxTextField2().clear();
-                    managerView.getJfxTextField3().clear();
-                    managerView.getJfxTextField4().clear();
-                    managerView.getJfxTextField5().clear();
-                    managerView.getJfxTextField11().clear();
-                    managerView.getJfxPasswordField().clear();
-                    managerView.getJfxPasswordField2().clear();
-                    managerView.getStage().setScene(managerView.getLoginScene());
-                    managerView.getStage().setTitle("Manager Main Menu");
-                    managerView.getStage().show();
-                    MessageController messageController = new MessageController("Your ID is : ("+managerModel.getId()+") please remember it!");
-                }
-            }
-        });
-    }
-
-//exit registration menu
-    public void initJfxButton2()
-    {
-        managerView.getJfxButton2().setOnAction(new EventHandler<ActionEvent>()
-        {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                managerView.getStage().close();
-                managerView.getJfxTextField().clear();
-                managerView.getJfxTextField2().clear();
-                managerView.getJfxTextField3().clear();
-                managerView.getJfxTextField4().clear();
-                managerView.getJfxTextField5().clear();
-                managerView.getJfxTextField11().clear();
-                managerView.getJfxPasswordField().clear();
-                managerView.getJfxPasswordField2().clear();
-                managerView.getStage().setScene(managerView.getLoginScene());
-                managerView.getStage().setTitle("Manager Login Menu");
-                managerView.getStage().show();
-            }
-        });
-    }
-
 //edit a manager
     public void initJfxButton3()
     {
@@ -314,22 +219,70 @@ public class ManagerController implements Showable
                 }
                 else
                 {
-                    ManagerModel managerModel = new ManagerModel(managerView.getJfxTextField6().getText(), managerView.getJfxTextField7().getText(), managerView.getJfxTextField8().getText(), PassengerModel.getPassengers().get(index).getPassword(), managerView.getJfxTextField9().getText(), managerView.getJfxTextField13().getText());
-                    managerModel.setSalary(ManagerModel.getManagers().get(index).getSalary());
-                    managerModel.setId(ManagerModel.getManagers().get(index).getId());
-                    managerModel.setPhoneNumber(managerView.getJfxTextField10().getText());
-                    ManagerModel.setIdGenerator(ManagerModel.getIdGenerator()-1);
-                    ManagerModel.getManagers().set(index,managerModel);
-                    managerView.getStage().close();
-                    managerView.getJfxTextField6().clear();
-                    managerView.getJfxTextField7().clear();
-                    managerView.getJfxTextField8().clear();
-                    managerView.getJfxTextField9().clear();
-                    managerView.getJfxTextField10().clear();
-                    managerView.getJfxTextField13().clear();
-                    managerView.getStage().setScene(managerView.getMainMenuScene());
-                    managerView.getStage().setTitle("Manager Main Menu");
-                    managerView.getStage().show();
+                    int emailError = 0;
+                    int phoneNumberError = 0;
+                    String phoneNumber;
+                    if (managerView.getJfxTextField10().getText().charAt(0) == '0')
+                        phoneNumber = managerView.getJfxTextField10().getText().replaceFirst("0", "98");
+                    else
+                    {
+                        phoneNumber = managerView.getJfxTextField10().getText();
+                    }
+
+                    for (int i=0 ; i<ManagerModel.getManagers().size() ; i++)
+                    {
+                        if (i == index)
+                        {
+                            continue;
+                        }
+                        else if (managerView.getJfxTextField9().getText().equals(ManagerModel.getManagers().get(i).getEmail()))
+                        {
+                            emailError = 1;
+                            break;
+                        }
+                    }
+                    for (int i=0 ; i<ManagerModel.getManagers().size() ; i++)
+                    {
+                        if (i == index)
+                        {
+                            continue;
+                        }
+                        else if (phoneNumber.equals(ManagerModel.getManagers().get(i).getPhoneNumber()))
+                        {
+                            phoneNumberError = 1;
+                            break;
+                        }
+                    }
+
+                    if (emailError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a manager with this email address!");
+                    }
+                    else if (phoneNumberError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a manager with this phone number!");
+                    }
+
+
+                    else
+                    {
+                        ManagerModel managerModel = new ManagerModel(managerView.getJfxTextField6().getText(), managerView.getJfxTextField7().getText(), managerView.getJfxTextField8().getText(), PassengerModel.getPassengers().get(index).getPassword(), managerView.getJfxTextField9().getText(), managerView.getJfxTextField13().getText());
+                        managerModel.setSalary(ManagerModel.getManagers().get(index).getSalary());
+                        managerModel.setId(ManagerModel.getManagers().get(index).getId());
+                        managerModel.setPhoneNumber(managerView.getJfxTextField10().getText());
+                        ManagerModel.setIdGenerator(ManagerModel.getIdGenerator() - 1);
+                        ManagerModel.getManagers().set(index, managerModel);
+                        managerView.getStage().close();
+                        managerView.getJfxTextField6().clear();
+                        managerView.getJfxTextField7().clear();
+                        managerView.getJfxTextField8().clear();
+                        managerView.getJfxTextField9().clear();
+                        managerView.getJfxTextField10().clear();
+                        managerView.getJfxTextField13().clear();
+                        managerView.getStage().setScene(managerView.getMainMenuScene());
+                        managerView.getStage().setTitle("Manager Main Menu");
+                        managerView.getStage().show();
+                    }
                 }
             }
         });
@@ -401,10 +354,10 @@ public class ManagerController implements Showable
         });
     }
 
-//register
-    public void initJfxButton71()
+//exit login menu
+    public void initJfxButton72()
     {
-        managerView.getJfxButton71().setOnAction(new EventHandler<ActionEvent>()
+        managerView.getJfxButton72().setOnAction(new EventHandler<ActionEvent>()
         {
             @Override
             public void handle(ActionEvent event)
@@ -412,25 +365,10 @@ public class ManagerController implements Showable
                 managerView.getStage().close();
                 managerView.getJfxTextField70().clear();
                 managerView.getJfxPasswordField70().clear();
-                managerView.getStage().setScene(managerView.getRegistrationScene());
-                managerView.getStage().setTitle("Registration Menu");
-                managerView.getStage().show();
+                AirportController airportController = new AirportController();
             }
         });
     }
-
-//exit login menu
-//    public void initJfxButton72()
-//    {
-//        managerView.getJfxButton72().setOnAction(new EventHandler<ActionEvent>()
-//        {
-//            @Override
-//            public void handle(ActionEvent event)
-//            {
-//
-//            }
-//        });
-//    }
 
 //select an ability
     public void initJfxButton8()
@@ -473,9 +411,17 @@ public class ManagerController implements Showable
                         managerView.getStage().show();
                         break;
 
-//                    case "Manage employees":
-//
-//                        break;
+                    case "Manage employees":
+                        managerView.getStage().close();
+                        managerView.getTableView412().getItems().clear();
+                        for (int i=0; i< EmployeeModel.getEmployees().size() ; i++)
+                        {
+                            managerView.getTableView412().getItems().add(EmployeeModel.getEmployees().get(i));
+                        }
+                        managerView.getStage().setScene(managerView.getManageEmployeesScene());
+                        managerView.getStage().setTitle("Manage Employee Menu");
+                        managerView.getStage().show();
+                        break;
 
                     case "Manage passengers":
                         managerView.getStage().close();
@@ -607,7 +553,7 @@ public class ManagerController implements Showable
                 }
                 else
                 {
-                    ManagerModel.getManagers().get(index).setPassword(managerView.getJfxPasswordField71().getText());
+                    ManagerModel.getManagers().get(index).setPassword(managerView.getJfxPasswordField72().getText());
                     managerView.getJfxPasswordField71().clear();
                     managerView.getJfxPasswordField72().clear();
                     managerView.getJfxPasswordField73().clear();
@@ -634,125 +580,6 @@ public class ManagerController implements Showable
                 managerView.getJfxPasswordField73().clear();
                 managerView.getStage().setScene(managerView.getMainMenuScene());
                 managerView.getStage().setTitle("Manager Main Menu");
-                managerView.getStage().show();
-            }
-        });
-    }
-
-//add a passenger menu
-    public void initJfxButton10()
-    {
-     managerView.getJfxButton10().setOnAction(new EventHandler<ActionEvent>()
-       {
-           @Override
-          public void handle(ActionEvent event)
-          {
-             managerView.getStage().close();
-             managerView.getStage().setScene(managerView.getPassengerRegistrationScene());
-              managerView.getStage().setTitle("Passenger Registration Menu");
-             managerView.getStage().show();
-         }
-      });
-    }
-
-//add a passenger
-    public void initJfxButton5()
-    {
-        managerView.getJfxButton5().setOnAction(new EventHandler<ActionEvent>()
-        {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                if (managerView.getJfxTextField12().getText().isEmpty()||managerView.getJfxTextField14().getText().isEmpty()||managerView.getJfxTextField15().getText().isEmpty()||managerView.getJfxTextField16().getText().isEmpty()||managerView.getJfxTextField17().getText().isEmpty()||managerView.getJfxPasswordField3().getText().isEmpty()||managerView.getJfxPasswordField4().getText().isEmpty())
-                {
-                    MessageController messageController = new MessageController("Please complete all parts!");
-                }
-                else if (!(managerView.getJfxPasswordField3().getText().equals(managerView.getJfxPasswordField4().getText())))
-                {
-                    MessageController messageController = new MessageController("Passwords are not same!");
-                }
-                else if (!(managerView.getJfxTextField12().getText().matches("[a-zA-z]+")))
-                {
-                    MessageController messageController = new MessageController("You can only use letters for name section!");
-                }
-                else if (!(managerView.getJfxTextField14().getText().matches("[a-zA-z]+")))
-                {
-                    MessageController messageController = new MessageController("You can only use letters for last name section!");
-                }
-                else if (!(managerView.getJfxTextField15().getText().matches("\\w+")))
-                {
-                    MessageController messageController = new MessageController("You can only use letters,numbers and (_) for username section!");
-                }
-                else if (!(managerView.getJfxPasswordField3().getText().matches("\\S+")))
-                {
-                    MessageController messageController = new MessageController("You can not use whitespace for password section!");
-                }
-                else if (!(managerView.getJfxTextField16().getText().matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")))
-                {
-                    MessageController messageController = new MessageController("Wrong email address,please try again!");
-                }
-                else if (!(managerView.getJfxTextField17().getText().matches("[0]\\d{10}||[9][8]\\d{10}")))
-                {
-                    MessageController messageController = new MessageController("You can only use 11 numbers starting with 0 or 12 numbers starting with 98 for phone number section");
-                }
-                else if (!(managerView.getJfxTextField300().getText().matches("\\d+")))
-                {
-                    MessageController messageController = new MessageController("You can only use natural numbers for credit section!");
-                }
-                else
-                {
-                    PassengerModel passengerModel = new PassengerModel(managerView.getJfxTextField12().getText(), managerView.getJfxTextField14().getText(), managerView.getJfxTextField15().getText(), managerView.getJfxPasswordField3().getText(), managerView.getJfxTextField16().getText());
-                    passengerModel.setCredit(Long.parseLong(managerView.getJfxTextField300().getText()));
-                    passengerModel.setPhoneNumber(managerView.getJfxTextField17().getText());
-                    PassengerModel.getPassengers().add(passengerModel);
-                    PassengerController.sort(0, PassengerModel.getPassengers().size() - 1);
-                    managerView.getStage().close();
-                    managerView.getJfxTextField12().clear();
-                    managerView.getJfxTextField14().clear();
-                    managerView.getJfxTextField15().clear();
-                    managerView.getJfxTextField16().clear();
-                    managerView.getJfxTextField17().clear();
-                    managerView.getJfxTextField300().clear();
-                    managerView.getJfxPasswordField3().clear();
-                    managerView.getJfxPasswordField4().clear();
-                    managerView.getTableView2().getItems().clear();
-                    for ( int i=0; i<PassengerModel.getPassengers().size() ; i++)
-                    {
-                        managerView.getTableView2().getItems().add(PassengerModel.getPassengers().get(i));
-                    }
-                    managerView.getStage().setScene(managerView.getPassengerScene());
-                    managerView.getStage().setTitle("Passenger Menu");
-                    managerView.getStage().show();
-                    MessageController messageController = new MessageController("The ID is : ("+passengerModel.getId()+") please remember it!");
-                }
-            }
-        });
-    }
-
-//exit add a passenger menu
-    public void initJfxButton6()
-    {
-        managerView.getJfxButton6().setOnAction(new EventHandler<ActionEvent>()
-        {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                managerView.getStage().close();
-                managerView.getJfxTextField12().clear();
-                managerView.getJfxTextField14().clear();
-                managerView.getJfxTextField15().clear();
-                managerView.getJfxTextField16().clear();
-                managerView.getJfxTextField17().clear();
-                managerView.getJfxTextField300().clear();
-                managerView.getJfxPasswordField3().clear();
-                managerView.getJfxPasswordField4().clear();
-                managerView.getTableView2().getItems().clear();
-                for (int i=0; i< PassengerModel.getPassengers().size() ; i++)
-                {
-                    managerView.getTableView2().getItems().add(PassengerModel.getPassengers().get(i));
-                }
-                managerView.getStage().setScene(managerView.getPassengerScene());
-                managerView.getStage().setTitle("Passenger Menu");
                 managerView.getStage().show();
             }
         });
@@ -827,27 +654,74 @@ public class ManagerController implements Showable
                 }
                 else
                 {
-                    PassengerModel passengerModel = new PassengerModel(managerView.getJfxTextField18().getText(), managerView.getJfxTextField19().getText(), managerView.getJfxTextField20().getText(), PassengerModel.getPassengers().get(selectedRowIndex).getPassword(), managerView.getJfxTextField21().getText());
-                    passengerModel.setId(PassengerModel.getPassengers().get(selectedRowIndex).getId());
-                    passengerModel.setCredit(Long.parseLong(managerView.getJfxTextField301().getText()));
-                    passengerModel.setPhoneNumber(managerView.getJfxTextField22().getText());
-                    PassengerModel.setIdGenerator(PassengerModel.getIdGenerator()-1);
-                    PassengerModel.getPassengers().set(selectedRowIndex, passengerModel);
-                    managerView.getStage().close();
-                    managerView.getJfxTextField18().clear();
-                    managerView.getJfxTextField19().clear();
-                    managerView.getJfxTextField20().clear();
-                    managerView.getJfxTextField21().clear();
-                    managerView.getJfxTextField22().clear();
-                    managerView.getJfxTextField301().clear();
-                    managerView.getTableView2().getItems().clear();
-                    for (int i = 0; i < PassengerModel.getPassengers().size(); i++)
+                    int emailError = 0;
+                    int phoneNumberError = 0;
+                    String phoneNumber;
+                    if (managerView.getJfxTextField22().getText().charAt(0) == '0')
+                        phoneNumber = managerView.getJfxTextField22().getText().replaceFirst("0", "98");
+                    else
                     {
-                        managerView.getTableView2().getItems().add(PassengerModel.getPassengers().get(i));
+                        phoneNumber = managerView.getJfxTextField22().getText();
                     }
-                    managerView.getStage().setScene(managerView.getPassengerScene());
-                    managerView.getStage().setTitle("passenger Menu");
-                    managerView.getStage().show();
+
+                    for (int i=0 ; i<PassengerModel.getPassengers().size() ; i++)
+                    {
+                        if (i == selectedRowIndex)
+                        {
+                            continue;
+                        }
+                        else if (managerView.getJfxTextField21().getText().equals(PassengerModel.getPassengers().get(i).getEmail()))
+                        {
+                            emailError = 1;
+                            break;
+                        }
+                    }
+                    for (int i=0 ; i<PassengerModel.getPassengers().size() ; i++)
+                    {
+                        if (i == selectedRowIndex)
+                        {
+                            continue;
+                        }
+                        else if (phoneNumber.equals(PassengerModel.getPassengers().get(i).getPhoneNumber()))
+                        {
+                            phoneNumberError = 1;
+                            break;
+                        }
+                    }
+
+                    if (emailError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a passenger with this email address!");
+                    }
+                    else if (phoneNumberError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a passenger with this phone number!");
+                    }
+
+                    else
+                    {
+                        PassengerModel passengerModel = new PassengerModel(managerView.getJfxTextField18().getText(), managerView.getJfxTextField19().getText(), managerView.getJfxTextField20().getText(), PassengerModel.getPassengers().get(selectedRowIndex).getPassword(), managerView.getJfxTextField21().getText());
+                        passengerModel.setId(PassengerModel.getPassengers().get(selectedRowIndex).getId());
+                        passengerModel.setCredit(Long.parseLong(managerView.getJfxTextField301().getText()));
+                        passengerModel.setPhoneNumber(managerView.getJfxTextField22().getText());
+                        PassengerModel.setIdGenerator(PassengerModel.getIdGenerator() - 1);
+                        PassengerModel.getPassengers().set(selectedRowIndex, passengerModel);
+                        managerView.getStage().close();
+                        managerView.getJfxTextField18().clear();
+                        managerView.getJfxTextField19().clear();
+                        managerView.getJfxTextField20().clear();
+                        managerView.getJfxTextField21().clear();
+                        managerView.getJfxTextField22().clear();
+                        managerView.getJfxTextField301().clear();
+                        managerView.getTableView2().getItems().clear();
+                        for (int i = 0; i < PassengerModel.getPassengers().size(); i++)
+                        {
+                            managerView.getTableView2().getItems().add(PassengerModel.getPassengers().get(i));
+                        }
+                        managerView.getStage().setScene(managerView.getPassengerScene());
+                        managerView.getStage().setTitle("passenger Menu");
+                        managerView.getStage().show();
+                    }
                 }
 
             }
@@ -972,8 +846,7 @@ public class ManagerController implements Showable
                     managerView.getJfxTextField23().clear();
                     managerView.getJfxTextField24().clear();
                     managerView.getTableView3().getItems().clear();
-                    int i=0;
-                    for ( ; i<TicketModel.getTickets().size() ; i++)
+                    for (int i=0 ; i<TicketModel.getTickets().size() ; i++)
                     {
                         managerView.getTableView3().getItems().add(TicketModel.getTickets().get(i));
                     }
@@ -1120,6 +993,22 @@ public class ManagerController implements Showable
                 else
                 {
                     TicketModel ticketModel = managerView.getTableView3().getSelectionModel().getSelectedItem();
+                    for (int i=0 ; i<FlightModel.getFlights().size() ; i++)
+                    {
+                        if (FlightModel.getFlights().get(i).getTicket().getId() == ticketModel.getId())
+                        {
+                            FlightModel.getFlights().remove(i);
+                            break;
+                        }
+                    }
+                    for (int i=0 ; i<TicketModel.getUsedTickets().size() ; i++)
+                    {
+                        if (TicketModel.getUsedTickets().get(i).getId() == ticketModel.getId())
+                        {
+                            TicketModel.getUsedTickets().remove(i);
+                            break;
+                        }
+                    }
                     TicketModel.getTickets().remove(TicketController.search((int) ticketModel.getId()));
                     managerView.getStage().close();
                     managerView.getTableView3().getItems().clear();
@@ -1330,6 +1219,11 @@ public class ManagerController implements Showable
                 else
                 {
                     AirplaneModel airplaneModel = managerView.getTableView4().getSelectionModel().getSelectedItem();
+                    for (int i=0 ; i<FlightModel.getFlights().size() ; i++)
+                    {
+                        if (FlightModel.getFlights().get(i).getAirplane().getId() == airplaneModel.getId())
+                            FlightModel.getFlights().remove(i);
+                    }
                     AirplaneModel.getAirplanes().remove(AirplaneController.search((int) airplaneModel.getId()));
                     managerView.getStage().close();
                     managerView.getTableView4().getItems().clear();
@@ -1435,9 +1329,9 @@ public class ManagerController implements Showable
                 {
                     t = 1;
                     int j=0;
-                    for ( ; j<usedTickets.size() ; j++)
+                    for ( ; j<TicketModel.getUsedTickets().size() ; j++)
                     {
-                        if (TicketModel.getTickets().get(i).getId() == usedTickets.get(j).getId())
+                        if (TicketModel.getTickets().get(i).getId() == TicketModel.getUsedTickets().get(j).getId())
                         {
                             t = 0;
                             break;
@@ -1466,27 +1360,27 @@ public class ManagerController implements Showable
             @Override
             public void handle(ActionEvent event)
             {
-                String[] parts = new String[3];
-                String[] parts2 = new String[3];
+//                String[] parts = new String[3];
+//                String[] parts2 = new String[3];
                 String[] parts3 = new String[2];
                 String[] parts4 = new String[2];
-                if (managerView.getJfxTextField31().getText().matches("\\d{4}[-]\\d{2}[-]\\d{2}"))
-                {
-                    LocalDate dateNow = LocalDate.now();
-                    String dateNowString = dateNow.toString();
-                    parts = dateNowString.split("-");
-                    for (int i = 1; i < 3; i++)
-                    {
-                        if (parts[i].charAt(0) == '0')
-                            parts[i] = Character.toString(parts[i].charAt(1));
-                    }
-                    parts2 = managerView.getJfxTextField31().getText().split("-");
-                    for (int i = 1; i < 3; i++)
-                    {
-                        if (parts2[i].charAt(0) == '0')
-                            parts2[i] = Character.toString(parts2[i].charAt(1));
-                    }
-                }
+//                if (managerView.getJfxTextField31().getText().matches("\\d{4}[-]\\d{2}[-]\\d{2}"))
+//                {
+//                    LocalDate dateNow = LocalDate.now();
+//                    String dateNowString = dateNow.toString();
+//                    parts = dateNowString.split("-");
+//                    for (int i = 1; i < 3; i++)
+//                    {
+//                        if (parts[i].charAt(0) == '0')
+//                            parts[i] = Character.toString(parts[i].charAt(1));
+//                    }
+//                    parts2 = managerView.getJfxTextField31().getText().split("-");
+//                    for (int i = 1; i < 3; i++)
+//                    {
+//                        if (parts2[i].charAt(0) == '0')
+//                            parts2[i] = Character.toString(parts2[i].charAt(1));
+//                    }
+//                }
 
                 if (managerView.getJfxTextField32().getText().matches("\\d{2}[:]\\d{2}"))
                 {
@@ -1505,6 +1399,13 @@ public class ManagerController implements Showable
                     if (parts4[i].charAt(0) == '0')
                         parts4[i] = Character.toString(parts4[i].charAt(1));
                 }
+                }
+
+                LocalDate localDate = null;
+                if (managerView.getJfxTextField31().getText().matches("\\d{4}[-]\\d{2}[-]\\d{2}"))
+                {
+                    String[] parts = managerView.getJfxTextField31().getText().split("-");
+                    localDate = LocalDate.of(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
                 }
 
                 if (managerView.getTableView6().getSelectionModel().isEmpty())
@@ -1535,11 +1436,15 @@ public class ManagerController implements Showable
                 {
                     MessageController messageController = new MessageController("Your time format should be HOUR:MINUTE (Two-digit hour)!");
                 }
-                else if ((Integer.parseInt(parts2[0])<Integer.parseInt(parts[0]))||((Integer.parseInt(parts2[0])==Integer.parseInt(parts[0]))&&(Integer.parseInt(parts2[1])<Integer.parseInt(parts[1])))||((Integer.parseInt(parts2[1])==Integer.parseInt(parts[1]))&&(Integer.parseInt(parts2[2])<Integer.parseInt(parts[2])+2)))
+                else if (localDate.isBefore(LocalDate.now()))
                 {
                     MessageController messageController = new MessageController("Wrong date!");
                 }
                 else if ((Integer.parseInt(parts4[0])<0)||(Integer.parseInt(parts4[0])>23)||(Integer.parseInt(parts4[1])>59)||(Integer.parseInt(parts4[1])<0))
+                {
+                    MessageController messageController = new MessageController("Wrong time!");
+                }
+                else if ((LocalDate.now().isEqual(localDate))&&(!(Integer.parseInt(parts3[0])<Integer.parseInt(parts4[0]))))
                 {
                     MessageController messageController = new MessageController("Wrong time!");
                 }
@@ -1551,6 +1456,10 @@ public class ManagerController implements Showable
                 {
                     MessageController messageController = new MessageController("You can only use numbers for Flight Time section (double format number)!");
                 }
+                else if ((Double.parseDouble(managerView.getJfxTextField34().getText())>23.59))
+                {
+                    MessageController messageController = new MessageController("The flights time should be less than 24 hours!");
+                }
                 else
                 {
                     AirplaneModel airplaneModel = managerView.getTableView6().getSelectionModel().getSelectedItem();
@@ -1559,7 +1468,7 @@ public class ManagerController implements Showable
                     LocalDate date = LocalDate.of(Integer.parseInt(parts5[0]),Integer.parseInt(parts5[1]),Integer.parseInt(parts5[2]));
                     FlightModel flightModel = new FlightModel(airplaneModel,ticketModel,managerView.getJfxTextField29().getText(),managerView.getJfxTextField30().getText(),date,managerView.getJfxTextField32().getText(),Integer.parseInt(managerView.getJfxTextField33().getText()),Double.parseDouble(managerView.getJfxTextField34().getText()));
                     FlightModel.getFlights().add(flightModel);
-                    usedTickets.add(ticketModel);
+                    TicketModel.getUsedTickets().add(ticketModel);
                     AirplaneModel.getAirplanes().get(AirplaneController.search((int) airplaneModel.getId())).getListOfFlights().add(flightModel);
                     FlightController.sort(0, FlightModel.getFlights().size() - 1);
                     managerView.getStage().close();
@@ -1630,9 +1539,9 @@ public class ManagerController implements Showable
                     {
                         t = 1;
                         int j=0;
-                        for ( ; j<usedTickets.size() ; j++)
+                        for ( ; j<TicketModel.getUsedTickets().size() ; j++)
                         {
-                            if (TicketModel.getTickets().get(i).getId() == usedTickets.get(j).getId())
+                            if (TicketModel.getTickets().get(i).getId() == TicketModel.getUsedTickets().get(j).getId())
                             {
                                 t = 0;
                                 break;
@@ -1668,27 +1577,27 @@ public class ManagerController implements Showable
             @Override
             public void handle(ActionEvent event)
             {
-                String[] parts = new String[3];
-                String[] parts2 = new String[3];
+//                String[] parts = new String[3];
+//                String[] parts2 = new String[3];
                 String[] parts3 = new String[2];
                 String[] parts4 = new String[2];
-                if (managerView.getJfxTextField37().getText().matches("\\d{4}[-]\\d{2}[-]\\d{2}"))
-                {
-                    LocalDate dateNow = LocalDate.now();
-                    String dateNowString = dateNow.toString();
-                    parts = dateNowString.split("-");
-                    for (int i = 1; i < 3; i++)
-                    {
-                        if (parts[i].charAt(0) == '0')
-                            parts[i] = Character.toString(parts[i].charAt(1));
-                    }
-                    parts2 = managerView.getJfxTextField37().getText().split("-");
-                    for (int i = 1; i < 3; i++)
-                    {
-                        if (parts2[i].charAt(0) == '0')
-                            parts2[i] = Character.toString(parts2[i].charAt(1));
-                    }
-                }
+//                if (managerView.getJfxTextField37().getText().matches("\\d{4}[-]\\d{2}[-]\\d{2}"))
+//                {
+//                    LocalDate dateNow = LocalDate.now();
+//                    String dateNowString = dateNow.toString();
+//                    parts = dateNowString.split("-");
+//                    for (int i = 1; i < 3; i++)
+//                    {
+//                        if (parts[i].charAt(0) == '0')
+//                            parts[i] = Character.toString(parts[i].charAt(1));
+//                    }
+//                    parts2 = managerView.getJfxTextField37().getText().split("-");
+//                    for (int i = 1; i < 3; i++)
+//                    {
+//                        if (parts2[i].charAt(0) == '0')
+//                            parts2[i] = Character.toString(parts2[i].charAt(1));
+//                    }
+//                }
 
                 if (managerView.getJfxTextField38().getText().matches("\\d{2}[:]\\d{2}"))
                 {
@@ -1707,6 +1616,13 @@ public class ManagerController implements Showable
                         if (parts4[i].charAt(0) == '0')
                             parts4[i] = Character.toString(parts4[i].charAt(1));
                     }
+                }
+
+                LocalDate localDate = null;
+                if (managerView.getJfxTextField37().getText().matches("\\d{4}[-]\\d{2}[-]\\d{2}"))
+                {
+                    String[] parts = managerView.getJfxTextField37().getText().split("-");
+                    localDate = LocalDate.of(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
                 }
 
                 if (managerView.getTableView9().getSelectionModel().isEmpty())
@@ -1737,11 +1653,15 @@ public class ManagerController implements Showable
                 {
                     MessageController messageController = new MessageController("Your time format should be HOUR-MINUTE (Two-digit hour)!");
                 }
-                else if ((Integer.parseInt(parts2[0])<Integer.parseInt(parts[0]))||((Integer.parseInt(parts2[0])==Integer.parseInt(parts[0]))&&(Integer.parseInt(parts2[1])<Integer.parseInt(parts[1])))||((Integer.parseInt(parts2[1])==Integer.parseInt(parts[1]))&&(Integer.parseInt(parts2[2])<Integer.parseInt(parts[2])+2)))
+                else if (localDate.isBefore(LocalDate.now()))
                 {
                     MessageController messageController = new MessageController("Wrong date!");
                 }
                 else if ((Integer.parseInt(parts4[0])<0)||(Integer.parseInt(parts4[0])>23)||(Integer.parseInt(parts4[1])>59)||(Integer.parseInt(parts4[1])<0))
+                {
+                    MessageController messageController = new MessageController("Wrong time!");
+                }
+                else if ((LocalDate.now().isEqual(localDate))&&(!(Integer.parseInt(parts3[0])<Integer.parseInt(parts4[0]))))
                 {
                     MessageController messageController = new MessageController("Wrong time!");
                 }
@@ -1752,6 +1672,10 @@ public class ManagerController implements Showable
                 else if (!(managerView.getJfxTextField40().getText().matches("\\d+\\.\\d+")))
                 {
                     MessageController messageController = new MessageController("You can only use numbers for Flight Time section (double format number)!");
+                }
+                else if ((Double.parseDouble(managerView.getJfxTextField40().getText())>23.59))
+                {
+                    MessageController messageController = new MessageController("The flights time should be less than 24 hours!");
                 }
                 else
                 {
@@ -1772,16 +1696,16 @@ public class ManagerController implements Showable
                         }
                     }
 
-                    for ( int l = 0; l <usedTickets.size(); l++)
+                    for ( int l = 0; l <TicketModel.getUsedTickets().size(); l++)
                     {
-                            if (usedTickets.get(l).getId() == FlightModel.getFlights().get(FlightController.search((int) flightModel.getId())).getTicket().getId())
+                            if (TicketModel.getUsedTickets().get(l).getId() == FlightModel.getFlights().get(FlightController.search((int) flightModel.getId())).getTicket().getId())
                             {
-                                usedTickets.remove(l);
+                                TicketModel.getUsedTickets().remove(l);
                                 break;
                             }
                     }
                     FlightModel.getFlights().set(selectedRowIndex, flightModel);
-                    usedTickets.add(ticketModel);
+                    TicketModel.getUsedTickets().add(ticketModel);
                     AirplaneModel.getAirplanes().get(AirplaneController.search((int) airplaneModel.getId())).getListOfFlights().add(flightModel);
                     FlightController.sort(0, FlightModel.getFlights().size() - 1);
                     managerView.getStage().close();
@@ -1855,11 +1779,11 @@ public class ManagerController implements Showable
                             break;
                         }
                     }
-                    for ( int l = 0; l <usedTickets.size(); l++)
+                    for ( int l = 0; l <TicketModel.getUsedTickets().size(); l++)
                     {
-                        if (usedTickets.get(l).getId() == FlightModel.getFlights().get(FlightController.search((int) flightModel.getId())).getTicket().getId())
+                        if (TicketModel.getUsedTickets().get(l).getId() == FlightModel.getFlights().get(FlightController.search((int) flightModel.getId())).getTicket().getId())
                         {
-                            usedTickets.remove(l);
+                            TicketModel.getUsedTickets().remove(l);
                             break;
                         }
                     }
@@ -2026,32 +1950,71 @@ public void initJfxButton43()
                 }
                 else
                 {
-                    ManagerModel managerModel = new ManagerModel(managerView.getJfxTextField41().getText(), managerView.getJfxTextField42().getText(), managerView.getJfxTextField43().getText(), managerView.getJfxPasswordField5().getText(), managerView.getJfxTextField44().getText(),  managerView.getJfxTextField46().getText());
-                    managerModel.setPhoneNumber(managerView.getJfxTextField45().getText());
-                    managerModel.setSalary(Long.parseLong(managerView.getJfxTextField47().getText()));
-                    ManagerModel.getManagers().add(managerModel);
-                    sort(0, ManagerModel.getManagers().size() - 1);
-                    managerView.getStage().close();
-                    managerView.getJfxTextField41().clear();
-                    managerView.getJfxTextField42().clear();
-                    managerView.getJfxTextField43().clear();
-                    managerView.getJfxTextField44().clear();
-                    managerView.getJfxTextField45().clear();
-                    managerView.getJfxTextField46().clear();
-                    managerView.getJfxTextField47().clear();
-                    managerView.getJfxPasswordField5().clear();
-                    managerView.getJfxPasswordField6().clear();
-                    managerView.getTableView12().getItems().clear();
-                    for ( int i=0; i<ManagerModel.getManagers().size() ; i++)
+                    int emailError = 0;
+                    int phoneNumberError = 0;
+                    String phoneNumber;
+                    if (managerView.getJfxTextField45().getText().charAt(0) == '0')
+                        phoneNumber = managerView.getJfxTextField45().getText().replaceFirst("0", "98");
+                    else
                     {
-                        if (ManagerModel.getManagers().get(i).getId() == 1)
-                            continue;
-                        managerView.getTableView12().getItems().add(ManagerModel.getManagers().get(i));
+                        phoneNumber = managerView.getJfxTextField45().getText();
                     }
-                    managerView.getStage().setScene(managerView.getManageManagersScene());
-                    managerView.getStage().setTitle("Manage Manager Menu (Super Admin)");
-                    managerView.getStage().show();
-                    MessageController messageController = new MessageController("The ID is : ("+managerModel.getId()+")");
+
+                    for (int i=0 ; i<ManagerModel.getManagers().size() ; i++)
+                    {
+                        if (managerView.getJfxTextField44().getText().equals(ManagerModel.getManagers().get(i).getEmail()))
+                        {
+                            emailError = 1;
+                            break;
+                        }
+                    }
+                    for (int i=0 ; i<ManagerModel.getManagers().size() ; i++)
+                    {
+                        if (phoneNumber.equals(ManagerModel.getManagers().get(i).getPhoneNumber()))
+                        {
+                            phoneNumberError = 1;
+                            break;
+                        }
+                    }
+
+                    if (emailError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a manager with this email address!");
+                    }
+                    else if (phoneNumberError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a manager with this phone number!");
+                    }
+
+                    else
+                    {
+                        ManagerModel managerModel = new ManagerModel(managerView.getJfxTextField41().getText(), managerView.getJfxTextField42().getText(), managerView.getJfxTextField43().getText(), managerView.getJfxPasswordField5().getText(), managerView.getJfxTextField44().getText(), managerView.getJfxTextField46().getText());
+                        managerModel.setPhoneNumber(managerView.getJfxTextField45().getText());
+                        managerModel.setSalary(Long.parseLong(managerView.getJfxTextField47().getText()));
+                        ManagerModel.getManagers().add(managerModel);
+                        sort(0, ManagerModel.getManagers().size() - 1);
+                        managerView.getStage().close();
+                        managerView.getJfxTextField41().clear();
+                        managerView.getJfxTextField42().clear();
+                        managerView.getJfxTextField43().clear();
+                        managerView.getJfxTextField44().clear();
+                        managerView.getJfxTextField45().clear();
+                        managerView.getJfxTextField46().clear();
+                        managerView.getJfxTextField47().clear();
+                        managerView.getJfxPasswordField5().clear();
+                        managerView.getJfxPasswordField6().clear();
+                        managerView.getTableView12().getItems().clear();
+                        for (int i = 0; i < ManagerModel.getManagers().size(); i++)
+                        {
+                            if (ManagerModel.getManagers().get(i).getId() == 1)
+                                continue;
+                            managerView.getTableView12().getItems().add(ManagerModel.getManagers().get(i));
+                        }
+                        managerView.getStage().setScene(managerView.getManageManagersScene());
+                        managerView.getStage().setTitle("Manage Manager Menu (Super Admin)");
+                        managerView.getStage().show();
+                        MessageController messageController = new MessageController("The ID is : (" + managerModel.getId() + ")");
+                    }
                 }
             }
         });
@@ -2158,32 +2121,78 @@ public void initJfxButton43()
                 }
                 else
                 {
-                    ManagerModel managerModel = new ManagerModel(managerView.getJfxTextField48().getText(), managerView.getJfxTextField49().getText(), managerView.getJfxTextField50().getText(), managerView.getJfxTextField51().getText(), managerView.getJfxTextField52().getText(), managerView.getJfxTextField54().getText());
-                    managerModel.setSalary(Long.parseLong(managerView.getJfxTextField55().getText()));
-                    managerModel.setPhoneNumber(managerView.getJfxTextField53().getText());
-                    managerModel.setId(ManagerModel.getManagers().get(selectedRowIndex).getId());
-                    ManagerModel.getManagers().set(selectedRowIndex, managerModel);
-                    ManagerModel.setIdGenerator(ManagerModel.getIdGenerator()-1);
-                    sort(0, ManagerModel.getManagers().size() - 1);
-                    managerView.getStage().close();
-                    managerView.getJfxTextField48().clear();
-                    managerView.getJfxTextField49().clear();
-                    managerView.getJfxTextField50().clear();
-                    managerView.getJfxTextField51().clear();
-                    managerView.getJfxTextField52().clear();
-                    managerView.getJfxTextField53().clear();
-                    managerView.getJfxTextField54().clear();
-                    managerView.getJfxTextField55().clear();
-                    managerView.getTableView12().getItems().clear();
-                    for (int i = 0; i < ManagerModel.getManagers().size(); i++)
+                    int emailError = 0;
+                    int phoneNumberError = 0;
+                    String phoneNumber;
+                    if (managerView.getJfxTextField53().getText().charAt(0) == '0')
+                        phoneNumber = managerView.getJfxTextField53().getText().replaceFirst("0", "98");
+                    else
                     {
-                        if (ManagerModel.getManagers().get(i).getId() == 1)
-                            continue;
-                        managerView.getTableView12().getItems().add(ManagerModel.getManagers().get(i));
+                        phoneNumber = managerView.getJfxTextField53().getText();
                     }
-                    managerView.getStage().setScene(managerView.getManageManagersScene());
-                    managerView.getStage().setTitle("Manage Manager Menu (Super Admin)");
-                    managerView.getStage().show();
+
+                    for (int i=0 ; i<ManagerModel.getManagers().size() ; i++)
+                    {
+                        if (i == index)
+                        {
+                            continue;
+                        }
+                        else if (managerView.getJfxTextField52().getText().equals(ManagerModel.getManagers().get(i).getEmail()))
+                        {
+                            emailError = 1;
+                            break;
+                        }
+                    }
+                    for (int i=0 ; i<ManagerModel.getManagers().size() ; i++)
+                    {
+                        if (i == index)
+                        {
+                            continue;
+                        }
+                        else if (phoneNumber.equals(ManagerModel.getManagers().get(i).getPhoneNumber()))
+                        {
+                            phoneNumberError = 1;
+                            break;
+                        }
+                    }
+
+                    if (emailError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a manager with this email address!");
+                    }
+                    else if (phoneNumberError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a manager with this phone number!");
+                    }
+
+                    else
+                    {
+                        ManagerModel managerModel = new ManagerModel(managerView.getJfxTextField48().getText(), managerView.getJfxTextField49().getText(), managerView.getJfxTextField50().getText(), managerView.getJfxTextField51().getText(), managerView.getJfxTextField52().getText(), managerView.getJfxTextField54().getText());
+                        managerModel.setSalary(Long.parseLong(managerView.getJfxTextField55().getText()));
+                        managerModel.setPhoneNumber(managerView.getJfxTextField53().getText());
+                        managerModel.setId(ManagerModel.getManagers().get(selectedRowIndex).getId());
+                        ManagerModel.getManagers().set(selectedRowIndex, managerModel);
+                        ManagerModel.setIdGenerator(ManagerModel.getIdGenerator() - 1);
+                        managerView.getStage().close();
+                        managerView.getJfxTextField48().clear();
+                        managerView.getJfxTextField49().clear();
+                        managerView.getJfxTextField50().clear();
+                        managerView.getJfxTextField51().clear();
+                        managerView.getJfxTextField52().clear();
+                        managerView.getJfxTextField53().clear();
+                        managerView.getJfxTextField54().clear();
+                        managerView.getJfxTextField55().clear();
+                        managerView.getTableView12().getItems().clear();
+                        for (int i = 0; i < ManagerModel.getManagers().size(); i++)
+                        {
+                            if (ManagerModel.getManagers().get(i).getId() == 1)
+                                continue;
+                            managerView.getTableView12().getItems().add(ManagerModel.getManagers().get(i));
+                        }
+                        managerView.getStage().setScene(managerView.getManageManagersScene());
+                        managerView.getStage().setTitle("Manage Manager Menu (Super Admin)");
+                        managerView.getStage().show();
+                    }
                 }
             }
         });
@@ -2261,6 +2270,439 @@ public void initJfxButton43()
         });
     }
 
+//add an employee menu
+    public void initJfxButton446()
+    {
+        managerView.getJfxButton446().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                managerView.getStage().close();
+                managerView.getStage().setScene(managerView.getEmployeeRegistrationScene());
+                managerView.getStage().setTitle("Employee Registration Menu");
+                managerView.getStage().show();
+            }
+        });
+    }
+
+//add a employee
+    public void initJfxButton()
+    {
+        managerView.getJfxButton().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                if (managerView.getJfxTextField().getText().isEmpty()||managerView.getJfxTextField2().getText().isEmpty()||managerView.getJfxTextField3().getText().isEmpty()||managerView.getJfxTextField4().getText().isEmpty()||managerView.getJfxTextField5().getText().isEmpty()||managerView.getJfxPasswordField().getText().isEmpty()||managerView.getJfxPasswordField2().getText().isEmpty())
+                {
+                    MessageController messageController = new MessageController("Please complete all parts!");
+                }
+                else if (!(managerView.getJfxPasswordField().getText().equals(managerView.getJfxPasswordField2().getText())))
+                {
+                    MessageController messageController = new MessageController("Passwords are not same!");
+                }
+                else if (!(managerView.getJfxTextField().getText().matches("[a-zA-z]+")))
+                {
+                    MessageController messageController = new MessageController("You can only use letters for name section!");
+                }
+                else if (!(managerView.getJfxTextField2().getText().matches("[a-zA-z]+")))
+                {
+                    MessageController messageController = new MessageController("You can only use letters for last name section!");
+                }
+                else if (!(managerView.getJfxTextField3().getText().matches("\\w+")))
+                {
+                    MessageController messageController = new MessageController("You can only use letters,numbers and (_) for username section!");
+                }
+                else if (!(managerView.getJfxPasswordField().getText().matches("\\S+")))
+                {
+                    MessageController messageController = new MessageController("You can not use whitespace for password section!");
+                }
+                else if (!(managerView.getJfxTextField4().getText().matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")))
+                {
+                    MessageController messageController = new MessageController("Wrong email address,please try again!");
+                }
+                else if (!(managerView.getJfxTextField5().getText().matches("[0]\\d{10}||[9][8]\\d{10}")))
+                {
+                    MessageController messageController = new MessageController("You can only use 11 numbers starting with 0 or 12 numbers starting with 98 for phone number section");
+                }
+                else if (!(managerView.getJfxTextField311().getText().matches("\\d+")))
+                {
+                    MessageController messageController = new MessageController("You can only use whole numbers for salary section");
+                }
+                else
+                {
+                    int emailError = 0;
+                    int phoneNumberError = 0;
+                    String phoneNumber;
+                    if (managerView.getJfxTextField5().getText().charAt(0) == '0')
+                        phoneNumber = managerView.getJfxTextField5().getText().replaceFirst("0", "98");
+                    else
+                    {
+                        phoneNumber = managerView.getJfxTextField5().getText();
+                    }
+
+                    for (int i=0 ; i<EmployeeModel.getEmployees().size() ; i++)
+                    {
+                        if (managerView.getJfxTextField4().getText().equals(EmployeeModel.getEmployees().get(i).getEmail()))
+                        {
+                            emailError = 1;
+                            break;
+                        }
+                    }
+                    for (int i=0 ; i<EmployeeModel.getEmployees().size() ; i++)
+                    {
+                        if (phoneNumber.equals(EmployeeModel.getEmployees().get(i).getPhoneNumber()))
+                        {
+                            phoneNumberError = 1;
+                            break;
+                        }
+                    }
+
+                    if (emailError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a employee with this email address!");
+                    }
+                    else if (phoneNumberError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a employee with this phone number!");
+                    }
+
+
+                    else
+                    {
+                        EmployeeModel employeeModel = new EmployeeModel(managerView.getJfxTextField().getText(), managerView.getJfxTextField2().getText(), managerView.getJfxTextField3().getText(), managerView.getJfxPasswordField().getText(), managerView.getJfxTextField4().getText(), managerView.getJfxTextField11().getText());
+                        employeeModel.setPhoneNumber(managerView.getJfxTextField5().getText());
+                        employeeModel.setSalary(Long.parseLong(managerView.getJfxTextField311().getText()));
+                        EmployeeModel.getEmployees().add(employeeModel);
+                        EmployeeController.sort(0, EmployeeModel.getEmployees().size() - 1);
+                        managerView.getStage().close();
+                        managerView.getJfxTextField().clear();
+                        managerView.getJfxTextField2().clear();
+                        managerView.getJfxTextField3().clear();
+                        managerView.getJfxTextField4().clear();
+                        managerView.getJfxTextField5().clear();
+                        managerView.getJfxTextField11().clear();
+                        managerView.getJfxTextField311().clear();
+                        managerView.getJfxPasswordField().clear();
+                        managerView.getJfxPasswordField2().clear();
+                        managerView.getTableView412().getItems().clear();
+                        for (int i = 0; i < EmployeeModel.getEmployees().size(); i++)
+                        {
+                            managerView.getTableView412().getItems().add(EmployeeModel.getEmployees().get(i));
+                        }
+                        managerView.getStage().setScene(managerView.getManageEmployeesScene());
+                        managerView.getStage().setTitle("Manage Employee Menu");
+                        managerView.getStage().show();
+                        MessageController messageController = new MessageController("Your ID is : (" + employeeModel.getId() + ")");
+                    }
+                }
+            }
+        });
+    }
+
+//exit employee registration menu
+    public void initJfxButton2()
+    {
+        managerView.getJfxButton2().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                managerView.getStage().close();
+                managerView.getJfxTextField().clear();
+                managerView.getJfxTextField2().clear();
+                managerView.getJfxTextField3().clear();
+                managerView.getJfxTextField4().clear();
+                managerView.getJfxTextField5().clear();
+                managerView.getJfxTextField11().clear();
+                managerView.getJfxTextField311().clear();
+                managerView.getJfxPasswordField().clear();
+                managerView.getJfxPasswordField2().clear();
+                managerView.getStage().setScene(managerView.getManageEmployeesScene());
+                managerView.getStage().setTitle("Manage Employee Menu");
+                managerView.getStage().show();
+            }
+        });
+    }
+
+//edit an employee menu
+    public void initJfxButton447()
+    {
+        managerView.getJfxButton447().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                if (managerView.getTableView412().getSelectionModel().isEmpty())
+                {
+                    MessageController messageController = new MessageController("Please select a row!");
+                }
+                else
+                {
+                    EmployeeModel employeeModel = managerView.getTableView412().getSelectionModel().getSelectedItem();
+                    selectedRowIndex = EmployeeController.search((int) employeeModel.getId());
+                    managerView.getStage().close();
+                    managerView.getJfxTextField448().setText(EmployeeModel.getEmployees().get(selectedRowIndex).getName());
+                    managerView.getJfxTextField449().setText(EmployeeModel.getEmployees().get(selectedRowIndex).getLastName());
+                    managerView.getJfxTextField450().setText(EmployeeModel.getEmployees().get(selectedRowIndex).getUsername());
+                    managerView.getJfxTextField451().setText(EmployeeModel.getEmployees().get(selectedRowIndex).getPassword());
+                    managerView.getJfxTextField452().setText(EmployeeModel.getEmployees().get(selectedRowIndex).getEmail());
+                    managerView.getJfxTextField453().setText(EmployeeModel.getEmployees().get(selectedRowIndex).getPhoneNumber());
+                    managerView.getJfxTextField454().setText(EmployeeModel.getEmployees().get(selectedRowIndex).getAddress());
+                    managerView.getJfxTextField455().setText(Long.toString(EmployeeModel.getEmployees().get(selectedRowIndex).getSalary()));
+                    managerView.getStage().setScene(managerView.getEmployeeEditScene());
+                    managerView.getStage().setTitle("Employee Edit Menu");
+                    managerView.getStage().show();
+                }
+            }
+        });
+    }
+
+//edit an employee
+    public void initJfxButton452()
+    {
+        managerView.getJfxButton452().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                if (managerView.getJfxTextField448().getText().isEmpty()||managerView.getJfxTextField449().getText().isEmpty()||managerView.getJfxTextField450().getText().isEmpty()||managerView.getJfxTextField451().getText().isEmpty()||managerView.getJfxTextField452().getText().isEmpty()||managerView.getJfxTextField453().getText().isEmpty()||managerView.getJfxTextField454().getText().isEmpty()||managerView.getJfxTextField455().getText().isEmpty())
+                {
+                    MessageController messageController = new MessageController("Please complete all parts!");
+                }
+                else if (!(managerView.getJfxTextField448().getText().matches("[a-zA-z]+")))
+                {
+                    MessageController messageController = new MessageController("You can only use letters for name section!");
+                }
+                else if (!(managerView.getJfxTextField449().getText().matches("[a-zA-z]+")))
+                {
+                    MessageController messageController = new MessageController("You can only use letters for last name section!");
+                }
+                else if (!(managerView.getJfxTextField450().getText().matches("\\w+")))
+                {
+                    MessageController messageController = new MessageController("You can only use letters,numbers and (_) for username section!");
+                }
+                else if (!(managerView.getJfxTextField451().getText().matches("\\S+")))
+                {
+                    MessageController messageController = new MessageController("You can not use whitespace for password section!");
+                }
+                else if (!(managerView.getJfxTextField452().getText().matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")))
+                {
+                    MessageController messageController = new MessageController("Wrong email address,please try again!");
+                }
+                else if (!(managerView.getJfxTextField453().getText().matches("[0]\\d{10}||[9][8]\\d{10}")))
+                {
+                    MessageController messageController = new MessageController("You can only use 11 numbers starting with 0 or 12 numbers starting with 98 for phone number section");
+                }
+                else if (!(managerView.getJfxTextField455().getText().matches("\\d+")))
+                {
+                    MessageController messageController = new MessageController("You can only use whole numbers for salary section!");
+                }
+                else
+                {
+                    int emailError = 0;
+                    int phoneNumberError = 0;
+                    String phoneNumber;
+                    if (managerView.getJfxTextField453().getText().charAt(0) == '0')
+                        phoneNumber = managerView.getJfxTextField453().getText().replaceFirst("0", "98");
+                    else
+                    {
+                        phoneNumber = managerView.getJfxTextField453().getText();
+                    }
+
+                    for (int i=0 ; i<EmployeeModel.getEmployees().size() ; i++)
+                    {
+                        if (i == selectedRowIndex)
+                        {
+                            continue;
+                        }
+                        else if (managerView.getJfxTextField452().getText().equals(EmployeeModel.getEmployees().get(i).getEmail()))
+                        {
+                            emailError = 1;
+                            break;
+                        }
+                    }
+                    for (int i=0 ; i<EmployeeModel.getEmployees().size() ; i++)
+                    {
+                        if (i == selectedRowIndex)
+                        {
+                            continue;
+                        }
+                        else if (phoneNumber.equals(EmployeeModel.getEmployees().get(i).getPhoneNumber()))
+                        {
+                            phoneNumberError = 1;
+                            break;
+                        }
+                    }
+
+                    if (emailError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a employee with this email address!");
+                    }
+                    else if (phoneNumberError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a employee with this phone number!");
+                    }
+
+                    else
+                    {
+                        EmployeeModel employeeModel = new EmployeeModel(managerView.getJfxTextField448().getText(), managerView.getJfxTextField449().getText(), managerView.getJfxTextField450().getText(), managerView.getJfxTextField451().getText(), managerView.getJfxTextField452().getText(), managerView.getJfxTextField454().getText());
+                        employeeModel.setSalary(Long.parseLong(managerView.getJfxTextField455().getText()));
+                        employeeModel.setPhoneNumber(managerView.getJfxTextField453().getText());
+                        employeeModel.setId(EmployeeModel.getEmployees().get(selectedRowIndex).getId());
+                        EmployeeModel.getEmployees().set(selectedRowIndex, employeeModel);
+                        EmployeeModel.setIdGenerator(EmployeeModel.getIdGenerator() - 1);
+                        managerView.getStage().close();
+                        managerView.getJfxTextField448().clear();
+                        managerView.getJfxTextField449().clear();
+                        managerView.getJfxTextField450().clear();
+                        managerView.getJfxTextField451().clear();
+                        managerView.getJfxTextField452().clear();
+                        managerView.getJfxTextField453().clear();
+                        managerView.getJfxTextField454().clear();
+                        managerView.getJfxTextField455().clear();
+                        managerView.getTableView412().getItems().clear();
+                        for (int i = 0; i < EmployeeModel.getEmployees().size(); i++)
+                        {
+                            managerView.getTableView412().getItems().add(EmployeeModel.getEmployees().get(i));
+                        }
+                        managerView.getStage().setScene(managerView.getManageEmployeesScene());
+                        managerView.getStage().setTitle("Manage Employee Menu");
+                        managerView.getStage().show();
+                    }
+                }
+            }
+        });
+    }
+
+//exit edit an employee menu
+    public void initJfxButton453()
+    {
+        managerView.getJfxButton453().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                managerView.getStage().close();
+                managerView.getJfxTextField448().clear();
+                managerView.getJfxTextField449().clear();
+                managerView.getJfxTextField450().clear();
+                managerView.getJfxTextField451().clear();
+                managerView.getJfxTextField452().clear();
+                managerView.getJfxTextField453().clear();
+                managerView.getJfxTextField454().clear();
+                managerView.getJfxTextField455().clear();
+                managerView.getStage().setScene(managerView.getManageEmployeesScene());
+                managerView.getStage().setTitle("Manage employee Menu");
+                managerView.getStage().show();
+            }
+        });
+    }
+
+//delete an employee
+    public void initJfxButton448()
+    {
+        managerView.getJfxButton448().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                if (managerView.getTableView412().getSelectionModel().isEmpty())
+                {
+                    MessageController messageController = new MessageController("Please select a row!");
+                }
+                else
+                {
+                    EmployeeModel employeeModel = managerView.getTableView412().getSelectionModel().getSelectedItem();
+                    EmployeeModel.getEmployees().remove(EmployeeController.search((int) employeeModel.getId()));
+                    managerView.getStage().close();
+                    managerView.getTableView412().getItems().clear();
+                    for (int i=0 ; i < EmployeeModel.getEmployees().size(); i++)
+                    {
+                        managerView.getTableView412().getItems().add(EmployeeModel.getEmployees().get(i));
+                    }
+                    managerView.getStage().setScene(managerView.getManageEmployeesScene());
+                    managerView.getStage().setTitle("Manage Employee Menu");
+                    managerView.getStage().show();
+                }
+            }
+        });
+    }
+
+//exit employee menu
+    public void initJfxButton449()
+    {
+        managerView.getJfxButton449().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                managerView.getStage().close();
+                managerView.getStage().setScene(managerView.getMainMenuScene());
+                managerView.getStage().setTitle("Manager Main Menu");
+                managerView.getStage().show();
+            }
+        });
+    }
+
+//show flights of an airplane for manage menu
+    public void initJfxButton544()
+    {
+        managerView.getJfxButton544().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                if (managerView.getTableView5().getSelectionModel().isEmpty())
+                {
+                    MessageController messageController = new MessageController("Please select a row from table!");
+                } else
+                {
+                    FlightModel flightModel = managerView.getTableView5().getSelectionModel().getSelectedItem();
+                    AirplaneModel airplaneModel = flightModel.getAirplane();
+                    selectedRowIndex = AirplaneController.search((int) airplaneModel.getId());
+                    managerView.getTableView8().getItems().clear();
+                    for (int i = 0; i < AirplaneModel.getAirplanes().get(selectedRowIndex).getListOfFlights().size(); i++)
+                    {
+                        managerView.getTableView8().getItems().add(AirplaneModel.getAirplanes().get(selectedRowIndex).getListOfFlights().get(i));
+                    }
+                    Stage stage2 = new Stage();
+                    stage2.setScene(managerView.getFlightsOfAirplaneScene());
+                    managerView.getStage().setTitle("Flights Of Airplane");
+                    stage2.show();
+                }
+            }
+        });
+    }
+
+//show passengers of a flight for manage menu
+    public void initJfxButton545()
+    {
+        managerView.getJfxButton545().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                if (managerView.getTableView5().getSelectionModel().isEmpty())
+                {
+                    MessageController messageController = new MessageController("Please select a row from airplanes table!");
+                } else
+                {
+                    FlightModel flightModel = managerView.getTableView5().getSelectionModel().getSelectedItem();
+                    managerView.getTableView400().getItems().clear();
+                    for (int i = 0; i < flightModel.getListOfPassengers().size() ; i++)
+                    {
+                        managerView.getTableView400().getItems().add(flightModel.getListOfPassengers().get(i));
+                    }
+                    Stage stage2 = new Stage();
+                    stage2.setScene(managerView.getFlightsPassengersScene());
+                    managerView.getStage().setTitle("Flights passengers");
+                    stage2.show();
+                }
+            }
+        });
+    }
 
 
 }

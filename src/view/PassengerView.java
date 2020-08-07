@@ -549,27 +549,30 @@ public class PassengerView
 
 //ticket section
         tableView5 = new TableView<FlightModel>();
-        tableView5.setPrefSize(700,400);
         TableColumn tableColumn23 = new TableColumn("ID");
         tableColumn23.setCellValueFactory(new PropertyValueFactory<FlightModel,Long>("id"));
+        tableColumn23.setMinWidth(50);
         TableColumn tableColumn24 = new TableColumn("Origin");
         tableColumn24.setCellValueFactory(new PropertyValueFactory<FlightModel,String>("origin"));
+        tableColumn24.setMinWidth(50);
         TableColumn tableColumn25 = new TableColumn("Destination");
         tableColumn25.setCellValueFactory(new PropertyValueFactory<FlightModel,String>("destination"));
-        tableColumn25.setMinWidth(40);
+        tableColumn25.setMinWidth(50);
         TableColumn tableColumn26 = new TableColumn("Date");
         tableColumn26.setCellValueFactory(new PropertyValueFactory<FlightModel, LocalDateTime>("date"));
+        tableColumn26.setMinWidth(50);
         TableColumn tableColumn27 = new TableColumn("Time");
         tableColumn27.setCellValueFactory(new PropertyValueFactory<FlightModel,String>("time"));
+        tableColumn27.setMinWidth(50);
         TableColumn tableColumn28 = new TableColumn("Number Of Sold Tickets");
         tableColumn28.setCellValueFactory(new PropertyValueFactory<FlightModel,Integer>("numberOfSoldTickets"));
-        tableColumn28.setMinWidth(90);
+        tableColumn28.setMinWidth(100);
         TableColumn tableColumn29 = new TableColumn("Flight Time");
         tableColumn29.setCellValueFactory(new PropertyValueFactory<FlightModel,Double>("flightTime"));
         tableColumn29.setMinWidth(50);
         TableColumn tableColumn30 = new TableColumn("Flight Condition");
         tableColumn30.setCellValueFactory(new PropertyValueFactory<FlightModel, FlightModel.FlightCondition>("flightCondition"));
-        tableColumn30.setMinWidth(50);
+        tableColumn30.setMinWidth(100);
         tableView5.getColumns().addAll(tableColumn23,tableColumn24,tableColumn25,tableColumn26,tableColumn27,tableColumn28,tableColumn29,tableColumn30);
         tableView5.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -612,16 +615,16 @@ public class PassengerView
         borderPane128.setPrefSize(300,60);
         BorderPane borderPane129 = new BorderPane();
         borderPane129.setCenter(tableView5);
-        borderPane129.setPrefSize(700,250);
+        borderPane129.setPrefSize(900,250);
         BorderPane borderPane229 = new BorderPane();
         borderPane229.setCenter(jfxTextField229);
-        borderPane229.setPrefSize(600,60);
+        borderPane229.setPrefSize(900,60);
         BorderPane borderPane130 = new BorderPane();
         borderPane130.setCenter(jfxButton31);
         BorderPane borderPane131 = new BorderPane();
         borderPane131.setCenter(jfxButton32);
         BorderPane borderPane132 = new BorderPane();
-        borderPane132.setPrefSize(600,60);
+        borderPane132.setPrefSize(900,60);
         BorderPane borderPane133 = new BorderPane();
         borderPane133.setCenter(jfxButton33);
         BorderPane borderPane134 = new BorderPane();
@@ -629,7 +632,7 @@ public class PassengerView
         BorderPane borderPane136 = new BorderPane();
         borderPane136.setCenter(jfxButton35);
         BorderPane borderPane135 = new BorderPane();
-        borderPane135.setPrefSize(600,60);
+        borderPane135.setPrefSize(900,60);
         borderPane135.setLeft(borderPane133);
         borderPane135.setRight(borderPane134);
         borderPane132.setLeft(borderPane136);
@@ -642,7 +645,7 @@ public class PassengerView
         gridPane13.add(borderPane229,0,2);
         gridPane13.add(borderPane135,0,3);
         gridPane13.add(borderPane132,0,4);
-        gridPane13.setPrefSize(800,600);
+        gridPane13.setPrefSize(1000,600);
         gridPane13.setAlignment(Pos.CENTER);
         gridPane13.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
         gridPane13.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));

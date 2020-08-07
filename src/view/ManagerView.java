@@ -77,6 +77,15 @@ public class ManagerView
     private JFXTextField jfxTextField70;
     private JFXTextField jfxTextField300;
     private JFXTextField jfxTextField301;
+    private JFXTextField jfxTextField311;
+    private JFXTextField jfxTextField448;
+    private JFXTextField jfxTextField449;
+    private JFXTextField jfxTextField450;
+    private JFXTextField jfxTextField451;
+    private JFXTextField jfxTextField452;
+    private JFXTextField jfxTextField453;
+    private JFXTextField jfxTextField454;
+    private JFXTextField jfxTextField455;
     private JFXPasswordField jfxPasswordField;
     private JFXPasswordField jfxPasswordField2;
     private JFXPasswordField jfxPasswordField3;
@@ -91,12 +100,9 @@ public class ManagerView
     private JFXButton jfxButton2;
     private JFXButton jfxButton3;
     private JFXButton jfxButton4;
-    private JFXButton jfxButton5;
-    private JFXButton jfxButton6;
     private JFXButton jfxButton7;
     private JFXButton jfxButton8;
     private JFXButton jfxButton9;
-    private JFXButton jfxButton10;
     private JFXButton jfxButton11;
     private JFXButton jfxButton12;
     private JFXButton jfxButton13;
@@ -143,6 +149,14 @@ public class ManagerView
     private JFXButton jfxButton72;
     private JFXButton jfxButton74;
     private JFXButton jfxButton75;
+    private JFXButton jfxButton446;
+    private JFXButton jfxButton447;
+    private JFXButton jfxButton448;
+    private JFXButton jfxButton449;
+    private JFXButton jfxButton452;
+    private JFXButton jfxButton453;
+    private JFXButton jfxButton544;
+    private JFXButton jfxButton545;
     private ChoiceBox <String> choiceBox;
     private TableView <ManagerModel> tableView;
     private TableView <PassengerModel> tableView2;
@@ -156,6 +170,8 @@ public class ManagerView
     private TableView <TicketModel> tableView10;
     private TableView <String> tableView11;
     private TableView <ManagerModel> tableView12;
+    private TableView <EmployeeModel> tableView412;
+    private TableView <PassengerModel> tableView400;
     private Scene registrationScene;
     private Scene editAllScene;
     private Scene showManagersScene;
@@ -163,7 +179,6 @@ public class ManagerView
     private Scene passengerScene;
     private Scene loginScene;
     private Scene changePasswordScene;
-    private Scene passengerRegistrationScene;
     private Scene passengerEditScene;
     private Scene ticketScene;
     private Scene ticketRegistrationScene;
@@ -179,6 +194,10 @@ public class ManagerView
     private Scene manageManagersScene;
     private Scene managerRegistrationScene;
     private Scene managerEditScene;
+    private Scene manageEmployeesScene;
+    private Scene employeeRegistrationScene;
+    private Scene employeeEditScene;
+    private Scene flightsPassengersScene;
 
     public ManagerView()
     {
@@ -228,11 +247,6 @@ public class ManagerView
         jfxButton70.setPrefSize(95,25);
         jfxButton70.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
         jfxButton70.setTextFill(Color.BLACK);
-        jfxButton71 = new JFXButton();
-        jfxButton71.setText("Register");
-        jfxButton71.setPrefSize(95,25);
-        jfxButton71.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
-        jfxButton71.setTextFill(Color.BLACK);
         jfxButton72 = new JFXButton();
         jfxButton72.setText("Back");
         jfxButton72.setPrefSize(95,25);
@@ -249,12 +263,9 @@ public class ManagerView
         borderPane77.setPrefSize(600,60);
         BorderPane borderPane78 = new BorderPane();
         borderPane78.setCenter(jfxButton70);
-        BorderPane borderPane79 = new BorderPane();
-        borderPane79.setCenter(jfxButton71);
         BorderPane borderPane80 = new BorderPane();
         borderPane80.setCenter(jfxButton72);
         borderPane77.setRight(borderPane78);
-        borderPane77.setCenter(borderPane79);
         borderPane77.setLeft(borderPane80);
 
         GridPane gridPane70 = new GridPane();
@@ -323,8 +334,104 @@ public class ManagerView
 
         changePasswordScene = new Scene(gridPane71);
 
+//manage employees
+        tableView412 = new TableView<EmployeeModel>();
+        TableColumn tableColumn450 = new TableColumn("ID");
+        tableColumn450.setCellValueFactory(new PropertyValueFactory<PassengerModel,Long>("id"));
+        tableColumn450.setMinWidth(50);
+        TableColumn tableColumn451 = new TableColumn("Name");
+        tableColumn451.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("name"));
+        tableColumn451.setMinWidth(50);
+        TableColumn tableColumn452 = new TableColumn("Last Name");
+        tableColumn452.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("lastName"));
+        tableColumn452.setMinWidth(50);
+        tableColumn452.setMinWidth(50);
+        TableColumn tableColumn453 = new TableColumn("Username");
+        tableColumn453.setCellValueFactory(new PropertyValueFactory<PassengerModel, String>("username"));
+        tableColumn453.setMinWidth(50);
+        TableColumn tableColumn454 = new TableColumn("Password");
+        tableColumn454.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("password"));
+        tableColumn454.setMinWidth(50);
+        TableColumn tableColumn455 = new TableColumn("Email");
+        tableColumn455.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("email"));
+        tableColumn455.setMinWidth(100);
+        TableColumn tableColumn456 = new TableColumn("Address");
+        tableColumn456.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("address"));
+        tableColumn456.setMinWidth(50);
+        TableColumn tableColumn457 = new TableColumn("Phone Number");
+        tableColumn457.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("phoneNumber"));
+        tableColumn457.setMinWidth(100);
+        TableColumn tableColumn458 = new TableColumn("Salary");
+        tableColumn458.setCellValueFactory(new PropertyValueFactory<PassengerModel,Long>("salary"));
+        tableColumn458.setMinWidth(50);
+        tableView412.getColumns().addAll(tableColumn450,tableColumn451,tableColumn452,tableColumn453,tableColumn454,tableColumn455,tableColumn456,tableColumn457,tableColumn458);
+        tableView412.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-//registration menu
+        Label label431 = new Label();
+        label431.setTextFill(Color.BLACK);
+        label431.setText("Select a row from table.");
+
+        jfxButton446 = new JFXButton();
+        jfxButton446.setText("Add");
+        jfxButton446.setPrefSize(95,25);
+        jfxButton446.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton446.setTextFill(Color.BLACK);
+        jfxButton447 = new JFXButton();
+        jfxButton447.setText("Edit");
+        jfxButton447.setPrefSize(95,25);
+        jfxButton447.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton447.setTextFill(Color.BLACK);
+        jfxButton448 = new JFXButton();
+        jfxButton448.setText("Delete");
+        jfxButton448.setPrefSize(95,25);
+        jfxButton448.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton448.setTextFill(Color.BLACK);
+        jfxButton449 = new JFXButton();
+        jfxButton449.setText("Back");
+        jfxButton449.setPrefSize(95,25);
+        jfxButton449.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton449.setTextFill(Color.BLACK);
+
+        BorderPane borderPane475 = new BorderPane();
+        borderPane475.setCenter(label431);
+        borderPane475.setPrefSize(300,60);
+        BorderPane borderPane476 = new BorderPane();
+        borderPane476.setCenter(tableView412);
+        borderPane476.setPrefSize(300,250);
+        BorderPane borderPane477 = new BorderPane();
+        borderPane477.setCenter(jfxButton446);
+        borderPane477.setPrefSize(300,30);
+        BorderPane borderPane478 = new BorderPane();
+        borderPane478.setCenter(jfxButton448);
+        borderPane478.setPrefSize(300,30);
+        BorderPane borderPane479 = new BorderPane();
+        borderPane479.setPrefSize(800,60);
+        BorderPane borderPane480 = new BorderPane();
+        borderPane480.setCenter(jfxButton447);
+        borderPane480.setPrefSize(300,30);
+        BorderPane borderPane481 = new BorderPane();
+        borderPane481.setCenter(jfxButton449);
+        borderPane481.setPrefSize(300,30);
+        BorderPane borderPane482 = new BorderPane();
+        borderPane482.setPrefSize(800,60);
+        borderPane479.setLeft(borderPane478);
+        borderPane479.setRight(borderPane477);
+        borderPane482.setLeft(borderPane481);
+        borderPane482.setRight(borderPane480);
+
+        GridPane gridPane417 = new GridPane();
+        gridPane417.add(borderPane475,0,0);
+        gridPane417.add(borderPane476,0,1);
+        gridPane417.add(borderPane479,0,2);
+        gridPane417.add(borderPane482,0,3);
+        gridPane417.setPrefSize(900,580);
+        gridPane417.setAlignment(Pos.CENTER);
+        gridPane417.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
+        gridPane417.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        manageEmployeesScene = new Scene(gridPane417);
+
+//add employee
         jfxTextField = new JFXTextField();
         jfxTextField.setPromptText("Name");
         jfxTextField.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
@@ -343,6 +450,9 @@ public class ManagerView
         jfxTextField11 = new JFXTextField();
         jfxTextField11.setPromptText("Address");
         jfxTextField11.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxTextField311 = new JFXTextField();
+        jfxTextField311.setPromptText("Salary");
+        jfxTextField311.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
         jfxPasswordField = new JFXPasswordField();
         jfxPasswordField.setPromptText("Password");
         jfxPasswordField.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
@@ -382,6 +492,9 @@ public class ManagerView
         BorderPane borderPane25 = new BorderPane();
         borderPane25.setCenter(jfxTextField11);
         borderPane25.setPrefSize(600,60);
+        BorderPane borderPane325 = new BorderPane();
+        borderPane325.setCenter(jfxTextField311);
+        borderPane325.setPrefSize(600,60);
         BorderPane borderPane90 = new BorderPane();
         borderPane90.setCenter(jfxPasswordField2);
         borderPane90.setPrefSize(600,60);
@@ -403,13 +516,151 @@ public class ManagerView
         gridPane.add(borderPane5,0,5);
         gridPane.add(borderPane6,0,6);
         gridPane.add(borderPane25,0,7);
-        gridPane.add(borderPane7,0,8);
+        gridPane.add(borderPane325,0,8);
+        gridPane.add(borderPane7,0,9);
         gridPane.setPrefSize(750,580);
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
         gridPane.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        registrationScene = new Scene(gridPane);
+        employeeRegistrationScene = new Scene(gridPane);
+
+//edit an employee
+        jfxTextField448 = new JFXTextField();
+        jfxTextField448.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxTextField449 = new JFXTextField();
+        jfxTextField449.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxTextField450 = new JFXTextField();
+        jfxTextField450.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxTextField451= new JFXTextField();
+        jfxTextField451.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxTextField452 = new JFXTextField();
+        jfxTextField452.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxTextField453 = new JFXTextField();
+        jfxTextField453.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxTextField454 = new JFXTextField();
+        jfxTextField454.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxTextField455 = new JFXTextField();
+        jfxTextField455.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+
+        Label label432 = new Label();
+        Label label433 = new Label();
+        Label label434 = new Label();
+        Label label435 = new Label();
+        Label label436 = new Label();
+        Label label437 = new Label();
+        Label label438 = new Label();
+        Label label439 = new Label();
+        label432.setTextFill(Color.BLACK);
+        label433.setTextFill(Color.BLACK);
+        label434.setTextFill(Color.BLACK);
+        label435.setTextFill(Color.BLACK);
+        label436.setTextFill(Color.BLACK);
+        label437.setTextFill(Color.BLACK);
+        label438.setTextFill(Color.BLACK);
+        label439.setTextFill(Color.BLACK);
+        label432.setText("Name");
+        label433.setText("Last Name");
+        label434.setText("Username");
+        label435.setText("Password");
+        label436.setText("Email");
+        label437.setText("Phone Number");
+        label438.setText("Address");
+        label439.setText("Salary");
+
+        jfxButton452 = new JFXButton();
+        jfxButton452.setText("Enter");
+        jfxButton452.setPrefSize(95,25);
+        jfxButton452.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton452.setTextFill(Color.BLACK);
+        jfxButton453 = new JFXButton();
+        jfxButton453.setText("Back");
+        jfxButton453.setPrefSize(95,25);
+        jfxButton453.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton453.setTextFill(Color.BLACK);
+
+        BorderPane borderPane495 = new BorderPane();
+        borderPane495.setLeft(label432);
+        borderPane495.setPrefSize(300,30);
+        BorderPane borderPane496 = new BorderPane();
+        borderPane496.setCenter(jfxTextField448);
+        borderPane496.setPrefSize(300,30);
+        BorderPane borderPane497 = new BorderPane();
+        borderPane497.setLeft(label433);
+        borderPane497.setPrefSize(300,30);
+        BorderPane borderPane498 = new BorderPane();
+        borderPane498.setCenter(jfxTextField449);
+        borderPane498.setPrefSize(300,30);
+        BorderPane borderPane499 = new BorderPane();
+        borderPane499.setLeft(label434);
+        borderPane499.setPrefSize(300,30);
+        BorderPane borderPane500 = new BorderPane();
+        borderPane500.setCenter(jfxTextField450);
+        borderPane500.setPrefSize(300,30);
+        BorderPane borderPane501 = new BorderPane();
+        borderPane501.setLeft(label435);
+        borderPane501.setPrefSize(300,30);
+        BorderPane borderPane502 = new BorderPane();
+        borderPane502.setCenter(jfxTextField451);
+        borderPane502.setPrefSize(300,30);
+        BorderPane borderPane503 = new BorderPane();
+        borderPane503.setLeft(label436);
+        borderPane503.setPrefSize(300,30);
+        BorderPane borderPane504 = new BorderPane();
+        borderPane504.setCenter(jfxTextField452);
+        borderPane504.setPrefSize(300,30);
+        BorderPane borderPane505 = new BorderPane();
+        borderPane505.setLeft(label437);
+        borderPane505.setPrefSize(300,30);
+        BorderPane borderPane506 = new BorderPane();
+        borderPane506.setCenter(jfxTextField453);
+        borderPane506.setPrefSize(300,30);
+        BorderPane borderPane507 = new BorderPane();
+        borderPane507.setLeft(label438);
+        borderPane507.setPrefSize(300,30);
+        BorderPane borderPane508 = new BorderPane();
+        borderPane508.setCenter(jfxTextField454);
+        borderPane508.setPrefSize(300,30);
+        BorderPane borderPane509 = new BorderPane();
+        borderPane509.setLeft(label439);
+        borderPane509.setPrefSize(300,30);
+        BorderPane borderPane510 = new BorderPane();
+        borderPane510.setCenter(jfxTextField455);
+        borderPane510.setPrefSize(300,30);
+
+        BorderPane borderPane511 = new BorderPane();
+        borderPane511.setPrefSize(600,60);
+        BorderPane borderPane512 = new BorderPane();
+        borderPane512.setCenter(jfxButton452);
+        BorderPane borderPane513 = new BorderPane();
+        borderPane513.setCenter(jfxButton453);
+        borderPane511.setRight(borderPane512);
+        borderPane511.setLeft(borderPane513);
+
+        GridPane gridPane419 = new GridPane();
+        gridPane419.add(borderPane496,0,0);
+        gridPane419.add(borderPane495,0,1);
+        gridPane419.add(borderPane498,0,2);
+        gridPane419.add(borderPane497,0,3);
+        gridPane419.add(borderPane500,0,4);
+        gridPane419.add(borderPane499,0,5);
+        gridPane419.add(borderPane502,0,6);
+        gridPane419.add(borderPane501,0,7);
+        gridPane419.add(borderPane504,0,8);
+        gridPane419.add(borderPane503,0,9);
+        gridPane419.add(borderPane506,0,10);
+        gridPane419.add(borderPane505,0,11);
+        gridPane419.add(borderPane508,0,12);
+        gridPane419.add(borderPane507,0,13);
+        gridPane419.add(borderPane510,0,14);
+        gridPane419.add(borderPane509,0,15);
+        gridPane419.add(borderPane511,0,16);
+        gridPane419.setPrefSize(750,750);
+        gridPane419.setAlignment(Pos.CENTER);
+        gridPane419.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
+        gridPane419.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        employeeEditScene = new Scene(gridPane419);
 
 //manager main menu
         jfxButton8 = new JFXButton();
@@ -579,33 +830,30 @@ public class ManagerView
 
 //manage passengers
         tableView2 = new TableView<PassengerModel>();
-        tableView2.setPrefSize(600,400);
-
         TableColumn tableColumn10 = new TableColumn("ID");
         tableColumn10.setCellValueFactory(new PropertyValueFactory<PassengerModel,Long>("id"));
-
+        tableColumn10.setMinWidth(50);
         TableColumn tableColumn11 = new TableColumn("Name");
         tableColumn11.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("name"));
-
+        tableColumn11.setMinWidth(50);
         TableColumn tableColumn12 = new TableColumn("Last Name");
         tableColumn12.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("lastName"));
-
+        tableColumn12.setMinWidth(50);
         TableColumn tableColumn13 = new TableColumn("Username");
         tableColumn13.setCellValueFactory(new PropertyValueFactory<PassengerModel, String>("username"));
-
+        tableColumn13.setMinWidth(50);
         TableColumn tableColumn14 = new TableColumn("Password");
         tableColumn14.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("password"));
-
+        tableColumn14.setMinWidth(50);
         TableColumn tableColumn15 = new TableColumn("Email");
         tableColumn15.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("email"));
-
+        tableColumn15.setMinWidth(100);
         TableColumn tableColumn16 = new TableColumn("Phone Number");
         tableColumn16.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("phoneNumber"));
-        tableColumn16.setMinWidth(50);
-
+        tableColumn16.setMinWidth(100);
         TableColumn tableColumn17 = new TableColumn("Credit");
         tableColumn17.setCellValueFactory(new PropertyValueFactory<PassengerModel,Long>("credit"));
-
+        tableColumn17.setMinWidth(50);
         tableView2.getColumns().addAll(tableColumn10,tableColumn11,tableColumn12,tableColumn13,tableColumn14,tableColumn15,tableColumn16,tableColumn17);
         tableView2.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -613,11 +861,11 @@ public class ManagerView
         label9.setTextFill(Color.BLACK);
         label9.setText("Select a row from table.");
 
-        jfxButton10 = new JFXButton();
-        jfxButton10.setText("Add");
-        jfxButton10.setPrefSize(95,25);
-        jfxButton10.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
-        jfxButton10.setTextFill(Color.BLACK);
+//        jfxButton10 = new JFXButton();
+//        jfxButton10.setText("Add");
+//        jfxButton10.setPrefSize(95,25);
+//        jfxButton10.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+//        jfxButton10.setTextFill(Color.BLACK);
         jfxButton11 = new JFXButton();
         jfxButton11.setText("Edit");
         jfxButton11.setPrefSize(95,25);
@@ -640,14 +888,14 @@ public class ManagerView
         BorderPane borderPane40 = new BorderPane();
         borderPane40.setCenter(tableView2);
         borderPane40.setPrefSize(300,250);
-        BorderPane borderPane41 = new BorderPane();
-        borderPane41.setCenter(jfxButton10);
-        borderPane41.setPrefSize(300,30);
+//        BorderPane borderPane41 = new BorderPane();
+//        borderPane41.setCenter(jfxButton10);
+//        borderPane41.setPrefSize(300,30);
         BorderPane borderPane42 = new BorderPane();
         borderPane42.setCenter(jfxButton11);
         borderPane42.setPrefSize(300,30);
         BorderPane borderPane43 = new BorderPane();
-        borderPane43.setPrefSize(600,60);
+        borderPane43.setPrefSize(800,60);
         BorderPane borderPane28 = new BorderPane();
         borderPane28.setCenter(jfxButton12);
         borderPane28.setPrefSize(300,30);
@@ -655,9 +903,9 @@ public class ManagerView
         borderPane29.setCenter(jfxButton13);
         borderPane29.setPrefSize(300,30);
         BorderPane borderPane30 = new BorderPane();
-        borderPane30.setPrefSize(600,60);
+        borderPane30.setPrefSize(800,60);
         borderPane30.setLeft(borderPane28);
-        borderPane30.setRight(borderPane41);
+//        borderPane30.setRight(borderPane41);
         borderPane43.setLeft(borderPane29);
         borderPane43.setRight(borderPane42);
 
@@ -667,99 +915,12 @@ public class ManagerView
         gridPane6.add(borderPane30,0,2);
         gridPane6.add(borderPane43,0,3);
 
-        gridPane6.setPrefSize(750,580);
+        gridPane6.setPrefSize(900,580);
         gridPane6.setAlignment(Pos.CENTER);
         gridPane6.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
         gridPane6.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         passengerScene = new Scene(gridPane6);
-
-//add passenger
-        jfxTextField12 = new JFXTextField();
-        jfxTextField12.setPromptText("Name");
-        jfxTextField12.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxTextField14 = new JFXTextField();
-        jfxTextField14.setPromptText("Last Name");
-        jfxTextField14.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxTextField15 = new JFXTextField();
-        jfxTextField15.setPromptText("Username");
-        jfxTextField15.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxTextField16= new JFXTextField();
-        jfxTextField16.setPromptText("Email");
-        jfxTextField16.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxTextField17 = new JFXTextField();
-        jfxTextField17.setPromptText("Phone Number");
-        jfxTextField17.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxTextField300 = new JFXTextField();
-        jfxTextField300.setPromptText("Credit");
-        jfxTextField300.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxPasswordField3 = new JFXPasswordField();
-        jfxPasswordField3.setPromptText("Password");
-        jfxPasswordField3.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxPasswordField4 = new JFXPasswordField();
-        jfxPasswordField4.setPromptText("Confirm Password");
-        jfxPasswordField4.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-
-        jfxButton5 = new JFXButton();
-        jfxButton5.setText("Enter");
-        jfxButton5.setPrefSize(95,25);
-        jfxButton5.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
-        jfxButton5.setTextFill(Color.BLACK);
-        jfxButton6 = new JFXButton();
-        jfxButton6.setText("Back");
-        jfxButton6.setPrefSize(95,25);
-        jfxButton6.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
-        jfxButton6.setTextFill(Color.BLACK);
-
-        BorderPane borderPane16 = new BorderPane();
-        borderPane16.setCenter(jfxTextField12);
-        borderPane16.setPrefSize(600,60);
-        BorderPane borderPane17 = new BorderPane();
-        borderPane17.setCenter(jfxTextField14);
-        borderPane17.setPrefSize(600,60);
-        BorderPane borderPane91 = new BorderPane();
-        borderPane91.setCenter(jfxTextField15);
-        borderPane91.setPrefSize(600,60);
-        BorderPane borderPane92 = new BorderPane();
-        borderPane92.setCenter(jfxPasswordField3);
-        borderPane92.setPrefSize(600,60);
-        BorderPane borderPane37 = new BorderPane();
-        borderPane37.setCenter(jfxPasswordField4);
-        borderPane37.setPrefSize(600,60);
-        BorderPane borderPane38 = new BorderPane();
-        borderPane38.setCenter(jfxTextField16);
-        borderPane38.setPrefSize(600,60);
-        BorderPane borderPane44 = new BorderPane();
-        borderPane44.setCenter(jfxTextField17);
-        borderPane44.setPrefSize(600,60);
-        BorderPane borderPane300 = new BorderPane();
-        borderPane300.setCenter(jfxTextField300);
-        borderPane300.setPrefSize(600,60);
-        BorderPane borderPane45 = new BorderPane();
-        borderPane45.setPrefSize(600,60);
-        BorderPane borderPane46 = new BorderPane();
-        borderPane46.setCenter(jfxButton5);
-        BorderPane borderPane47 = new BorderPane();
-        borderPane47.setCenter(jfxButton6);
-        borderPane45.setRight(borderPane46);
-        borderPane45.setLeft(borderPane47);
-
-        GridPane gridPane3 = new GridPane();
-        gridPane3.add(borderPane16,0,0);
-        gridPane3.add(borderPane17,0,1);
-        gridPane3.add(borderPane91,0,2);
-        gridPane3.add(borderPane92,0,3);
-        gridPane3.add(borderPane37,0,4);
-        gridPane3.add(borderPane38,0,5);
-        gridPane3.add(borderPane44,0,6);
-        gridPane3.add(borderPane300,0,7);
-        gridPane3.add(borderPane45,0,8);
-        gridPane3.setPrefSize(750,580);
-        gridPane3.setAlignment(Pos.CENTER);
-        gridPane3.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
-        gridPane3.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
-
-        passengerRegistrationScene = new Scene(gridPane3);
 
 //edit a passenger menu
         jfxTextField18 = new JFXTextField();
@@ -836,7 +997,7 @@ public class ManagerView
         borderPane57.setCenter(jfxTextField22);
         borderPane57.setPrefSize(300,30);
         BorderPane borderPane301 = new BorderPane();
-        borderPane301.setCenter(label300);
+        borderPane301.setLeft(label300);
         borderPane301.setPrefSize(300,30);
         BorderPane borderPane302 = new BorderPane();
         borderPane302.setCenter(jfxTextField301);
@@ -1245,23 +1406,30 @@ public class ManagerView
 
 //manage flights
         tableView5 = new TableView<FlightModel>();
-        tableView5.setPrefSize(600,400);
         TableColumn tableColumn23 = new TableColumn("ID");
         tableColumn23.setCellValueFactory(new PropertyValueFactory<FlightModel,Long>("id"));
+        tableColumn23.setMinWidth(50);
         TableColumn tableColumn24 = new TableColumn("Origin");
         tableColumn24.setCellValueFactory(new PropertyValueFactory<FlightModel,String>("origin"));
+        tableColumn24.setMinWidth(50);
         TableColumn tableColumn25 = new TableColumn("Destination");
         tableColumn25.setCellValueFactory(new PropertyValueFactory<FlightModel,String>("destination"));
+        tableColumn25.setMinWidth(50);
         TableColumn tableColumn26 = new TableColumn("Date");
         tableColumn26.setCellValueFactory(new PropertyValueFactory<FlightModel, LocalDateTime>("date"));
+        tableColumn26.setMinWidth(50);
         TableColumn tableColumn27 = new TableColumn("Time");
         tableColumn27.setCellValueFactory(new PropertyValueFactory<FlightModel,String>("time"));
+        tableColumn27.setMinWidth(50);
         TableColumn tableColumn28 = new TableColumn("Number Of Sold Tickets");
         tableColumn28.setCellValueFactory(new PropertyValueFactory<FlightModel,Integer>("numberOfSoldTickets"));
+        tableColumn28.setMinWidth(100);
         TableColumn tableColumn29 = new TableColumn("Flight Time");
         tableColumn29.setCellValueFactory(new PropertyValueFactory<FlightModel,Double>("flightTime"));
+        tableColumn29.setMinWidth(50);
         TableColumn tableColumn30 = new TableColumn("Flight Condition");
         tableColumn30.setCellValueFactory(new PropertyValueFactory<FlightModel, FlightModel.FlightCondition>("flightCondition"));
+        tableColumn30.setMinWidth(100);
         tableView5.getColumns().addAll(tableColumn23,tableColumn24,tableColumn25,tableColumn26,tableColumn27,tableColumn28,tableColumn29,tableColumn30);
         tableView5.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -1289,13 +1457,23 @@ public class ManagerView
         jfxButton34.setPrefSize(95,25);
         jfxButton34.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
         jfxButton34.setTextFill(Color.BLACK);
+        jfxButton544 = new JFXButton();
+        jfxButton544.setText("See Airplanes Flights");
+        jfxButton544.setPrefSize(190,25);
+        jfxButton544.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton544.setTextFill(Color.BLACK);
+        jfxButton545 = new JFXButton();
+        jfxButton545.setText("See Flights Passengers");
+        jfxButton545.setPrefSize(190,25);
+        jfxButton545.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton545.setTextFill(Color.BLACK);
 
         BorderPane borderPane128 = new BorderPane();
         borderPane128.setCenter(label19);
         borderPane128.setPrefSize(300,60);
         BorderPane borderPane129 = new BorderPane();
         borderPane129.setCenter(tableView5);
-        borderPane129.setPrefSize(300,250);
+        borderPane129.setPrefSize(900,250);
         BorderPane borderPane130 = new BorderPane();
         borderPane130.setCenter(jfxButton31);
         borderPane130.setPrefSize(300,30);
@@ -1303,7 +1481,7 @@ public class ManagerView
         borderPane131.setCenter(jfxButton32);
         borderPane131.setPrefSize(300,30);
         BorderPane borderPane132 = new BorderPane();
-        borderPane132.setPrefSize(600,60);
+        borderPane132.setPrefSize(900,60);
         BorderPane borderPane133 = new BorderPane();
         borderPane133.setCenter(jfxButton33);
         borderPane133.setPrefSize(300,30);
@@ -1311,18 +1489,29 @@ public class ManagerView
         borderPane134.setCenter(jfxButton34);
         borderPane134.setPrefSize(300,30);
         BorderPane borderPane135 = new BorderPane();
-        borderPane135.setPrefSize(600,60);
+        borderPane135.setPrefSize(900,60);
         borderPane135.setLeft(borderPane133);
         borderPane135.setRight(borderPane130);
         borderPane132.setLeft(borderPane134);
         borderPane132.setRight(borderPane131);
+        BorderPane borderPane544 = new BorderPane();
+        borderPane544.setCenter(jfxButton544);
+        borderPane544.setPrefSize(300,30);
+        BorderPane borderPane545 = new BorderPane();
+        borderPane545.setCenter(jfxButton545);
+        borderPane545.setPrefSize(300,30);
+        BorderPane borderPane546 = new BorderPane();
+        borderPane546.setPrefSize(900,60);
+        borderPane546.setLeft(borderPane544);
+        borderPane546.setRight(borderPane545);
 
         GridPane gridPane13 = new GridPane();
         gridPane13.add(borderPane128,0,0);
         gridPane13.add(borderPane129,0,1);
-        gridPane13.add(borderPane135,0,2);
-        gridPane13.add(borderPane132,0,3);
-        gridPane13.setPrefSize(750,580);
+        gridPane13.add(borderPane546,0,2);
+        gridPane13.add(borderPane135,0,3);
+        gridPane13.add(borderPane132,0,4);
+        gridPane13.setPrefSize(1000,580);
         gridPane13.setAlignment(Pos.CENTER);
         gridPane13.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
         gridPane13.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -1376,7 +1565,7 @@ public class ManagerView
 
         jfxButton35 = new JFXButton();
         jfxButton35.setText("See Airplanes Flights");
-        jfxButton35.setPrefSize(95,25);
+        jfxButton35.setPrefSize(190,25);
         jfxButton35.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
         jfxButton35.setTextFill(Color.BLACK);
         jfxButton36 = new JFXButton();
@@ -1669,26 +1858,34 @@ public class ManagerView
 
 //manage managers (for super admin)
         tableView12 = new TableView<ManagerModel>();
-        tableView12.setPrefSize(600,400);
+ //       tableView12.setPrefSize(800,400);
         TableColumn tableColumn50 = new TableColumn("ID");
         tableColumn50.setCellValueFactory(new PropertyValueFactory<PassengerModel,Long>("id"));
+        tableColumn50.setMinWidth(50);
         TableColumn tableColumn51 = new TableColumn("Name");
         tableColumn51.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("name"));
+        tableColumn51.setMinWidth(50);
         TableColumn tableColumn52 = new TableColumn("Last Name");
         tableColumn52.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("lastName"));
+        tableColumn52.setMinWidth(50);
         TableColumn tableColumn53 = new TableColumn("Username");
         tableColumn53.setCellValueFactory(new PropertyValueFactory<PassengerModel, String>("username"));
+        tableColumn53.setMinWidth(50);
         TableColumn tableColumn54 = new TableColumn("Password");
         tableColumn54.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("password"));
+        tableColumn54.setMinWidth(50);
         TableColumn tableColumn55 = new TableColumn("Email");
         tableColumn55.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("email"));
+        tableColumn55.setMinWidth(100);
         TableColumn tableColumn56 = new TableColumn("Address");
         tableColumn56.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("address"));
+        tableColumn56.setMinWidth(50);
         TableColumn tableColumn57 = new TableColumn("Phone Number");
         tableColumn57.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("phoneNumber"));
-        tableColumn57.setMinWidth(50);
+        tableColumn57.setMinWidth(100);
         TableColumn tableColumn58 = new TableColumn("Salary");
         tableColumn58.setCellValueFactory(new PropertyValueFactory<PassengerModel,Long>("salary"));
+        tableColumn58.setMinWidth(50);
         tableView12.getColumns().addAll(tableColumn50,tableColumn51,tableColumn52,tableColumn53,tableColumn54,tableColumn55,tableColumn56,tableColumn57,tableColumn58);
         tableView12.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -1722,7 +1919,7 @@ public class ManagerView
         borderPane175.setPrefSize(300,60);
         BorderPane borderPane176 = new BorderPane();
         borderPane176.setCenter(tableView12);
-        borderPane176.setPrefSize(300,250);
+        borderPane176.setPrefSize(800,250);
         BorderPane borderPane177 = new BorderPane();
         borderPane177.setCenter(jfxButton46);
         borderPane177.setPrefSize(300,30);
@@ -1730,7 +1927,7 @@ public class ManagerView
         borderPane178.setCenter(jfxButton48);
         borderPane178.setPrefSize(300,30);
         BorderPane borderPane179 = new BorderPane();
-        borderPane179.setPrefSize(600,60);
+        borderPane179.setPrefSize(800,60);
         BorderPane borderPane180 = new BorderPane();
         borderPane180.setCenter(jfxButton47);
         borderPane180.setPrefSize(300,30);
@@ -1738,7 +1935,7 @@ public class ManagerView
         borderPane181.setCenter(jfxButton49);
         borderPane181.setPrefSize(300,30);
         BorderPane borderPane182 = new BorderPane();
-        borderPane182.setPrefSize(600,60);
+        borderPane182.setPrefSize(800,60);
         borderPane179.setLeft(borderPane178);
         borderPane179.setRight(borderPane177);
         borderPane182.setLeft(borderPane181);
@@ -1749,7 +1946,7 @@ public class ManagerView
         gridPane17.add(borderPane176,0,1);
         gridPane17.add(borderPane179,0,2);
         gridPane17.add(borderPane182,0,3);
-        gridPane17.setPrefSize(750,580);
+        gridPane17.setPrefSize(900,580);
         gridPane17.setAlignment(Pos.CENTER);
         gridPane17.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
         gridPane17.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -1980,14 +2177,42 @@ public class ManagerView
         gridPane19.add(borderPane210,0,14);
         gridPane19.add(borderPane209,0,15);
         gridPane19.add(borderPane211,0,16);
-        gridPane19.setPrefSize(750,750);
+        gridPane19.setPrefSize(750,600);
         gridPane19.setAlignment(Pos.CENTER);
         gridPane19.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
         gridPane19.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 
         managerEditScene = new Scene(gridPane19);
 
+//passengers of flight
+        tableView400 = new TableView<PassengerModel>();
+        tableView400.setPrefSize(600,400);
+        TableColumn tableColumn400 = new TableColumn("ID");
+        tableColumn400.setCellValueFactory(new PropertyValueFactory<PassengerModel,Long>("id"));
+        TableColumn tableColumn401 = new TableColumn("Name");
+        tableColumn401.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("name"));
+        TableColumn tableColumn402 = new TableColumn("Last Name");
+        tableColumn402.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("lastName"));
+        TableColumn tableColumn403 = new TableColumn("Username");
+        tableColumn403.setCellValueFactory(new PropertyValueFactory<PassengerModel, String>("username"));
+        TableColumn tableColumn404 = new TableColumn("Password");
+        tableColumn404.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("password"));
+        TableColumn tableColumn405 = new TableColumn("Email");
+        tableColumn405.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("email"));
+        TableColumn tableColumn406 = new TableColumn("Phone Number");
+        tableColumn406.setCellValueFactory(new PropertyValueFactory<PassengerModel,String>("phoneNumber"));
+        tableColumn406.setMinWidth(50);
+        TableColumn tableColumn407 = new TableColumn("Credit");
+        tableColumn407.setCellValueFactory(new PropertyValueFactory<PassengerModel,Long>("credit"));
+        tableView400.getColumns().addAll(tableColumn400,tableColumn401,tableColumn402,tableColumn403,tableColumn404,tableColumn405,tableColumn406,tableColumn407);
+        tableView400.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
+        BorderPane borderPane400 = new BorderPane();
+        borderPane400.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
+        borderPane400.setCenter(tableView400);
+        borderPane400.setPrefSize(600,400);
+
+        flightsPassengersScene = new Scene(borderPane400);
 
 
 
@@ -2298,16 +2523,6 @@ public class ManagerView
         this.jfxTextField13 = jfxTextField13;
     }
 
-    public JFXButton getJfxButton10()
-    {
-        return jfxButton10;
-    }
-
-    public void setJfxButton10(JFXButton jfxButton10)
-    {
-        this.jfxButton10 = jfxButton10;
-    }
-
     public JFXButton getJfxButton11()
     {
         return jfxButton11;
@@ -2506,36 +2721,6 @@ public class ManagerView
     public void setJfxPasswordField4(JFXPasswordField jfxPasswordField4)
     {
         this.jfxPasswordField4 = jfxPasswordField4;
-    }
-
-    public JFXButton getJfxButton5()
-    {
-        return jfxButton5;
-    }
-
-    public void setJfxButton5(JFXButton jfxButton5)
-    {
-        this.jfxButton5 = jfxButton5;
-    }
-
-    public JFXButton getJfxButton6()
-    {
-        return jfxButton6;
-    }
-
-    public void setJfxButton6(JFXButton jfxButton6)
-    {
-        this.jfxButton6 = jfxButton6;
-    }
-
-    public Scene getPassengerRegistrationScene()
-    {
-        return passengerRegistrationScene;
-    }
-
-    public void setPassengerRegistrationScene(Scene passengerRegistrationScene)
-    {
-        this.passengerRegistrationScene = passengerRegistrationScene;
     }
 
     public TableView<PassengerModel> getTableView2()
@@ -3617,5 +3802,235 @@ public class ManagerView
     public void setTableView(TableView<ManagerModel> tableView)
     {
         this.tableView = tableView;
+    }
+
+    public JFXTextField getJfxTextField311()
+    {
+        return jfxTextField311;
+    }
+
+    public void setJfxTextField311(JFXTextField jfxTextField311)
+    {
+        this.jfxTextField311 = jfxTextField311;
+    }
+
+    public JFXButton getJfxButton446()
+    {
+        return jfxButton446;
+    }
+
+    public void setJfxButton446(JFXButton jfxButton446)
+    {
+        this.jfxButton446 = jfxButton446;
+    }
+
+    public JFXButton getJfxButton447()
+    {
+        return jfxButton447;
+    }
+
+    public void setJfxButton447(JFXButton jfxButton447)
+    {
+        this.jfxButton447 = jfxButton447;
+    }
+
+    public JFXButton getJfxButton448()
+    {
+        return jfxButton448;
+    }
+
+    public void setJfxButton448(JFXButton jfxButton448)
+    {
+        this.jfxButton448 = jfxButton448;
+    }
+
+    public JFXButton getJfxButton449()
+    {
+        return jfxButton449;
+    }
+
+    public void setJfxButton449(JFXButton jfxButton449)
+    {
+        this.jfxButton449 = jfxButton449;
+    }
+
+    public TableView<EmployeeModel> getTableView412()
+    {
+        return tableView412;
+    }
+
+    public void setTableView412(TableView<EmployeeModel> tableView412)
+    {
+        this.tableView412 = tableView412;
+    }
+
+    public Scene getManageEmployeesScene()
+    {
+        return manageEmployeesScene;
+    }
+
+    public void setManageEmployeesScene(Scene manageEmployeesScene)
+    {
+        this.manageEmployeesScene = manageEmployeesScene;
+    }
+
+    public JFXTextField getJfxTextField448()
+    {
+        return jfxTextField448;
+    }
+
+    public void setJfxTextField448(JFXTextField jfxTextField448)
+    {
+        this.jfxTextField448 = jfxTextField448;
+    }
+
+    public JFXTextField getJfxTextField449()
+    {
+        return jfxTextField449;
+    }
+
+    public void setJfxTextField449(JFXTextField jfxTextField449)
+    {
+        this.jfxTextField449 = jfxTextField449;
+    }
+
+    public JFXTextField getJfxTextField450()
+    {
+        return jfxTextField450;
+    }
+
+    public void setJfxTextField450(JFXTextField jfxTextField450)
+    {
+        this.jfxTextField450 = jfxTextField450;
+    }
+
+    public JFXTextField getJfxTextField451()
+    {
+        return jfxTextField451;
+    }
+
+    public void setJfxTextField451(JFXTextField jfxTextField451)
+    {
+        this.jfxTextField451 = jfxTextField451;
+    }
+
+    public JFXTextField getJfxTextField452()
+    {
+        return jfxTextField452;
+    }
+
+    public void setJfxTextField452(JFXTextField jfxTextField452)
+    {
+        this.jfxTextField452 = jfxTextField452;
+    }
+
+    public JFXTextField getJfxTextField453()
+    {
+        return jfxTextField453;
+    }
+
+    public void setJfxTextField453(JFXTextField jfxTextField453)
+    {
+        this.jfxTextField453 = jfxTextField453;
+    }
+
+    public JFXTextField getJfxTextField454()
+    {
+        return jfxTextField454;
+    }
+
+    public void setJfxTextField454(JFXTextField jfxTextField454)
+    {
+        this.jfxTextField454 = jfxTextField454;
+    }
+
+    public JFXTextField getJfxTextField455()
+    {
+        return jfxTextField455;
+    }
+
+    public void setJfxTextField455(JFXTextField jfxTextField455)
+    {
+        this.jfxTextField455 = jfxTextField455;
+    }
+
+    public JFXButton getJfxButton452()
+    {
+        return jfxButton452;
+    }
+
+    public void setJfxButton452(JFXButton jfxButton452)
+    {
+        this.jfxButton452 = jfxButton452;
+    }
+
+    public JFXButton getJfxButton453()
+    {
+        return jfxButton453;
+    }
+
+    public void setJfxButton453(JFXButton jfxButton453)
+    {
+        this.jfxButton453 = jfxButton453;
+    }
+
+    public Scene getEmployeeRegistrationScene()
+    {
+        return employeeRegistrationScene;
+    }
+
+    public void setEmployeeRegistrationScene(Scene employeeRegistrationScene)
+    {
+        this.employeeRegistrationScene = employeeRegistrationScene;
+    }
+
+    public Scene getEmployeeEditScene()
+    {
+        return employeeEditScene;
+    }
+
+    public void setEmployeeEditScene(Scene employeeEditScene)
+    {
+        this.employeeEditScene = employeeEditScene;
+    }
+
+    public JFXButton getJfxButton544()
+    {
+        return jfxButton544;
+    }
+
+    public void setJfxButton544(JFXButton jfxButton544)
+    {
+        this.jfxButton544 = jfxButton544;
+    }
+
+    public JFXButton getJfxButton545()
+    {
+        return jfxButton545;
+    }
+
+    public void setJfxButton545(JFXButton jfxButton545)
+    {
+        this.jfxButton545 = jfxButton545;
+    }
+
+    public TableView<PassengerModel> getTableView400()
+    {
+        return tableView400;
+    }
+
+    public void setTableView400(TableView<PassengerModel> tableView400)
+    {
+        this.tableView400 = tableView400;
+    }
+
+    public Scene getFlightsPassengersScene()
+    {
+        return flightsPassengersScene;
+    }
+
+    public void setFlightsPassengersScene(Scene flightsPassengersScene)
+    {
+        this.flightsPassengersScene = flightsPassengersScene;
     }
 }

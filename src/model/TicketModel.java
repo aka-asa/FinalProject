@@ -9,6 +9,7 @@ public class TicketModel
     private long price;
     private long penaltyOfCancellation;
     private static ArrayList <TicketModel> tickets = new ArrayList<TicketModel>();
+    private static ArrayList <TicketModel> usedTickets = new ArrayList<TicketModel>();
 
     public TicketModel(long price, long penaltyOfCancellation)
     {
@@ -68,6 +69,14 @@ public class TicketModel
         this.penaltyOfCancellation = penaltyOfCancellation;
     }
 
+    public static ArrayList<TicketModel> getUsedTickets()
+    {
+        return usedTickets;
+    }
 
+    public static void setUsedTickets(ArrayList<TicketModel> usedTickets)
+    {
+        TicketModel.usedTickets = usedTickets;
+    }
 }
 

@@ -24,7 +24,7 @@ public class PassengerController implements Showable
         initJfxButton4();
         initJfxButton5();
         initJfxButton6();
-//        initJfxButton7();
+        initJfxButton7();
         initJfxButton8();
         initJfxButton9();
         initJfxButton10();
@@ -43,6 +43,7 @@ public class PassengerController implements Showable
     public void showLoginMenu ()
     {
         passengerView.getStage().setScene(passengerView.getLoginScene());
+        passengerView.getStage().setTitle("Passenger Login Menu");
         passengerView.getStage().show();
     }
 
@@ -173,22 +174,62 @@ public class PassengerController implements Showable
                 }
                 else
                 {
-                    PassengerModel passengerModel = new PassengerModel(passengerView.getJfxTextField().getText(), passengerView.getJfxTextField2().getText(), passengerView.getJfxTextField3().getText(), passengerView.getJfxPasswordField().getText(), passengerView.getJfxTextField4().getText());
-                    passengerModel.setPhoneNumber(passengerView.getJfxTextField5().getText());
-                    PassengerModel.getPassengers().add(passengerModel);
-                    sort(0, PassengerModel.getPassengers().size() - 1);
-                    passengerView.getStage().close();
-                    passengerView.getJfxTextField().clear();
-                    passengerView.getJfxTextField2().clear();
-                    passengerView.getJfxTextField3().clear();
-                    passengerView.getJfxTextField4().clear();
-                    passengerView.getJfxTextField5().clear();
-                    passengerView.getJfxPasswordField().clear();
-                    passengerView.getJfxPasswordField2().clear();
-                    passengerView.getStage().setScene(passengerView.getLoginScene());
-                    passengerView.getStage().setTitle("Passenger Login Menu");
-                    passengerView.getStage().show();
-                    MessageController messageController = new MessageController("Your ID is : ("+passengerModel.getId()+") please remember it!");
+                    int emailError = 0;
+                    int phoneNumberError = 0;
+                    String phoneNumber;
+                    if (passengerView.getJfxTextField5().getText().charAt(0) == '0')
+                        phoneNumber = passengerView.getJfxTextField5().getText().replaceFirst("0", "98");
+                    else
+                    {
+                        phoneNumber = passengerView.getJfxTextField5().getText();
+                    }
+
+                    for (int i=0 ; i<PassengerModel.getPassengers().size() ; i++)
+                    {
+                        if (passengerView.getJfxTextField4().getText().equals(PassengerModel.getPassengers().get(i).getEmail()))
+                        {
+                            emailError = 1;
+                            break;
+                        }
+                    }
+                    for (int i=0 ; i<PassengerModel.getPassengers().size() ; i++)
+                    {
+                        if (phoneNumber.equals(PassengerModel.getPassengers().get(i).getPhoneNumber()))
+                        {
+                            phoneNumberError = 1;
+                            break;
+                        }
+                    }
+
+                    if (emailError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a passenger with this email address!");
+                    }
+                    else if (phoneNumberError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a passenger with this phone number!");
+                    }
+                    else
+                    {
+                        PassengerModel passengerModel = new PassengerModel(passengerView.getJfxTextField().getText(), passengerView.getJfxTextField2().getText(), passengerView.getJfxTextField3().getText(), passengerView.getJfxPasswordField().getText(), passengerView.getJfxTextField4().getText());
+                        passengerModel.setPhoneNumber(passengerView.getJfxTextField5().getText());
+                        PassengerModel.getPassengers().add(passengerModel);
+                        sort(0, PassengerModel.getPassengers().size() - 1);
+                        passengerView.getStage().close();
+                        passengerView.getJfxTextField().clear();
+                        passengerView.getJfxTextField2().clear();
+                        passengerView.getJfxTextField3().clear();
+                        passengerView.getJfxTextField4().clear();
+                        passengerView.getJfxTextField5().clear();
+                        passengerView.getJfxPasswordField().clear();
+                        passengerView.getJfxPasswordField2().clear();
+                        passengerView.getStage().setScene(passengerView.getLoginScene());
+                        passengerView.getStage().setTitle("Passenger Login Menu");
+                        passengerView.getStage().show();
+                        MessageController messageController = new MessageController("Your ID is : (" + passengerModel.getId() + ") please remember it!");
+                    }
+
+
                 }
             }
         });
@@ -251,22 +292,68 @@ public class PassengerController implements Showable
                 }
                 else
                 {
-                    PassengerModel passengerModel = new PassengerModel(passengerView.getJfxTextField6().getText(), passengerView.getJfxTextField7().getText(), passengerView.getJfxTextField8().getText(), PassengerModel.getPassengers().get(index).getPassword(), passengerView.getJfxTextField9().getText());
-                    passengerModel.setPhoneNumber(passengerView.getJfxTextField10().getText());
-                    passengerModel.setId(PassengerModel.getPassengers().get(index).getId());
-                    passengerModel.setCredit(PassengerModel.getPassengers().get(index).getCredit());
-                    PassengerModel.getPassengers().set(index,passengerModel);
-                    PassengerModel.setIdGenerator(PassengerModel.getIdGenerator()-1);
-                    passengerView.getStage().close();
-                    passengerView.getJfxTextField6().clear();
-                    passengerView.getJfxTextField7().clear();
-                    passengerView.getJfxTextField8().clear();
-                    passengerView.getJfxTextField9().clear();
-                    passengerView.getJfxTextField10().clear();
-                    passengerView.getStage().setScene(passengerView.getMainMenuScene());
-                    passengerView.getStage().setTitle("Passenger Main Menu");
-                    passengerView.getStage().show();
+                    int emailError = 0;
+                    int phoneNumberError = 0;
+                    String phoneNumber;
+                    if (passengerView.getJfxTextField10().getText().charAt(0) == '0')
+                        phoneNumber = passengerView.getJfxTextField10().getText().replaceFirst("0", "98");
+                    else
+                    {
+                        phoneNumber = passengerView.getJfxTextField10().getText();
+                    }
 
+                    for (int i=0 ; i<PassengerModel.getPassengers().size() ; i++)
+                    {
+                        if (i == index)
+                        {
+                            continue;
+                        }
+                        else if (passengerView.getJfxTextField9().getText().equals(PassengerModel.getPassengers().get(i).getEmail()))
+                        {
+                            emailError = 1;
+                            break;
+                        }
+                    }
+                    for (int i=0 ; i<PassengerModel.getPassengers().size() ; i++)
+                    {
+                        if (i == index)
+                        {
+                            continue;
+                        }
+                        else if (phoneNumber.equals(PassengerModel.getPassengers().get(i).getPhoneNumber()))
+                        {
+                            phoneNumberError = 1;
+                            break;
+                        }
+                    }
+
+                    if (emailError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a passenger with this email address!");
+                    }
+                    else if (phoneNumberError == 1)
+                    {
+                        MessageController messageController = new MessageController("There is a passenger with this phone number!");
+                    }
+
+                    else
+                    {
+                        PassengerModel passengerModel = new PassengerModel(passengerView.getJfxTextField6().getText(), passengerView.getJfxTextField7().getText(), passengerView.getJfxTextField8().getText(), PassengerModel.getPassengers().get(index).getPassword(), passengerView.getJfxTextField9().getText());
+                        passengerModel.setPhoneNumber(passengerView.getJfxTextField10().getText());
+                        passengerModel.setId(PassengerModel.getPassengers().get(index).getId());
+                        passengerModel.setCredit(PassengerModel.getPassengers().get(index).getCredit());
+                        PassengerModel.getPassengers().set(index, passengerModel);
+                        PassengerModel.setIdGenerator(PassengerModel.getIdGenerator() - 1);
+                        passengerView.getStage().close();
+                        passengerView.getJfxTextField6().clear();
+                        passengerView.getJfxTextField7().clear();
+                        passengerView.getJfxTextField8().clear();
+                        passengerView.getJfxTextField9().clear();
+                        passengerView.getJfxTextField10().clear();
+                        passengerView.getStage().setScene(passengerView.getMainMenuScene());
+                        passengerView.getStage().setTitle("Passenger Main Menu");
+                        passengerView.getStage().show();
+                    }
                 }
             }
         });
@@ -356,17 +443,20 @@ public class PassengerController implements Showable
     }
 
 //exit login menu
-//    public void initJfxButton7()
-//    {
-//        passengerView.getJfxButton7().setOnAction(new EventHandler<ActionEvent>()
-//        {
-//            @Override
-//            public void handle(ActionEvent event)
-//            {
-//
-//            }
-//        });
-//    }
+    public void initJfxButton7()
+    {
+        passengerView.getJfxButton7().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                passengerView.getStage().close();
+                passengerView.getJfxTextField11().clear();
+                passengerView.getJfxPasswordField5().clear();
+                AirportController airportController = new AirportController();
+            }
+        });
+    }
 
 //select an ability
     public void initJfxButton8()
@@ -624,38 +714,157 @@ public class PassengerController implements Showable
                 else
                 {
                     FlightModel flightModel = passengerView.getTableView5().getSelectionModel().getSelectedItem();
-                    selectedRowIndex = FlightController.search((int) flightModel.getId());
-                    int numberOfRemainingTickets = FlightModel.getFlights().get(selectedRowIndex).getAirplane().getNumberOfSeats() - FlightModel.getFlights().get(selectedRowIndex).getNumberOfSoldTickets();
-                    if ((numberOfRemainingTickets>0)&&((numberOfRemainingTickets>Integer.parseInt(passengerView.getJfxTextField229().getText()))||(numberOfRemainingTickets==Integer.parseInt(passengerView.getJfxTextField229().getText()))))
+                    long price = flightModel.getTicket().getPrice()*(Integer.parseInt(passengerView.getJfxTextField229().getText()));
+                    if (PassengerModel.getPassengers().get(index).getCredit() < price)
                     {
-                        for (int i=0 ; i<Integer.parseInt(passengerView.getJfxTextField229().getText()) ; i++)
-                        {
-                            PassengerModel.getPassengers().get(index).getTickets().add(FlightModel.getFlights().get(selectedRowIndex).getTicket());
-                        }
-                        for (int i=0 ; i<FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().size() ; i++)
-                        {
-                            if (FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().get(i).getId() == PassengerModel.getPassengers().get(index).getId())
-                            {
-                                break;
-                            }
-                            else if ((FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().get(i).getId() != PassengerModel.getPassengers().get(index).getId())&&(i == FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().size()-1))
-                            {
-                                FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().add(PassengerModel.getPassengers().get(index));
-                            }
-                        }
-                        FlightModel.getFlights().get(selectedRowIndex).setNumberOfSoldTickets(FlightModel.getFlights().get(selectedRowIndex).getNumberOfSoldTickets()+Integer.parseInt(passengerView.getJfxTextField229().getText()));
-
-                        passengerView.getStage().close();
-                        passengerView.getStage().setScene(passengerView.getMainMenuScene());
-                        passengerView.getStage().setTitle("Passenger Main Menu");
-                        passengerView.getStage().show();
-                        MessageController messageController = new MessageController("Your Ticket id is : ("+FlightModel.getFlights().get(selectedRowIndex).getTicket().getId()+") you bought "+passengerView.getJfxTextField229().getText()+" of it.");
-                        passengerView.getJfxTextField229().clear();
+                        MessageController messageController = new MessageController("Sorry you dont have enough credit !");
                     }
                     else
                     {
-                        MessageController messageController = new MessageController("Sorry there are not that much remaining seats!");
+                        String [] strings = flightModel.getTime().split(":");
+                        for (int i = 0; i < 2; i++)
+                        {
+                            if (strings[i].charAt(0) == '0')
+                                strings[i] = Character.toString(strings[i].charAt(1));
+                        }
+                        String string = strings[0]+"."+strings[1];
+                        double startTime = Double.parseDouble(string);
+                        double endTime = Double.parseDouble(string) + flightModel.getFlightTime();
+
+                        selectedRowIndex = FlightController.search((int) flightModel.getId());
+                        int numberOfRemainingTickets = FlightModel.getFlights().get(selectedRowIndex).getAirplane().getNumberOfSeats() - FlightModel.getFlights().get(selectedRowIndex).getNumberOfSoldTickets();
+                        int error = 0;
+
+                        for (int i = 0; i < PassengerModel.getPassengers().get(index).getTickets().size(); i++)
+                        {
+                            FlightModel flightModel2 = null;
+                            for (int j=0 ; j<FlightModel.getFlights().size(); j++)
+                            {
+                                if (FlightModel.getFlights().get(j).getTicket().getId() == PassengerModel.getPassengers().get(index).getTickets().get(i).getId())
+                                {
+                                    flightModel2 = FlightModel.getFlights().get(j);
+                                    break;
+                                }
+                            }
+
+                            String [] strings2 = flightModel2.getTime().split(":");
+                            for (int k = 0; k < 2; k++)
+                            {
+                                if (strings2[k].charAt(0) == '0')
+                                    strings2[k] = Character.toString(strings2[k].charAt(1));
+                            }
+                            String string2 = strings2[0]+"."+strings2[1];
+                            double startTime2 = Double.parseDouble(string2);
+                            double endTime2 = (Double.parseDouble(string2)) + flightModel2.getFlightTime();
+
+                            String date1 = flightModel.getDate().toString();
+                            String date2 = flightModel2.getDate().toString();
+
+                            if ((date1.equals(date2))&&(endTime<24)&&(endTime<24))
+                            {
+                                if (!((endTime < startTime2) || (startTime > endTime2)))
+                                {
+                                    MessageController messageController = new MessageController("Sorry you already have a flight in this interval");
+                                    error = 1;
+                                    break;
+                                }
+                            }
+                            else if ((endTime>23.59)&&(endTime2<24)&&(date1.equals(date2)))
+                            {
+                                if (!(startTime > endTime2))
+                                {
+                                    endTime -= 24.00;
+                                    MessageController messageController = new MessageController("Sorry you already have a flight in this interval");
+                                    error = 1;
+                                    break;
+                                }
+                            }
+                            else if ((endTime<24)&&(endTime2>23.59)&&(date1.equals(date2)))
+                            {
+                                if (!(endTime < startTime2))
+                                {
+                                    endTime2 -= 24.00;
+                                    MessageController messageController = new MessageController("Sorry you already have a flight in this interval");
+                                    error = 1;
+                                    break;
+                                }
+                            }
+                            else if ((!(date1.equals(date2)))&&(endTime2>23.59))
+                            {
+                                if (flightModel.getDate().isAfter(flightModel2.getDate()))
+                                {
+                                    endTime2 -= 24.00;
+                                    if (!(endTime2 < startTime))
+                                    {
+                                        MessageController messageController = new MessageController("Sorry you already have a flight in this interval");
+                                        error = 1;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if ((!(date1.equals(date2)))&&(endTime>23.59))
+                            {
+                                if (flightModel2.getDate().isAfter(flightModel.getDate()))
+                                {
+                                    endTime -= 24.00;
+                                    if (!(endTime < startTime2))
+                                    {
+                                        MessageController messageController = new MessageController("Sorry you already have a flight in this interval");
+                                        error = 1;
+                                        break;
+                                    }
+                                }
+                            }
+
+                        }
+
+
+                        if (error != 1)
+                        {
+                            if ((numberOfRemainingTickets > 0) && ((numberOfRemainingTickets > Integer.parseInt(passengerView.getJfxTextField229().getText())) || (numberOfRemainingTickets == Integer.parseInt(passengerView.getJfxTextField229().getText()))))
+                            {
+                                for (int i = 0; i < Integer.parseInt(passengerView.getJfxTextField229().getText()); i++)
+                                {
+                                    PassengerModel.getPassengers().get(index).getTickets().add(FlightModel.getFlights().get(selectedRowIndex).getTicket());
+                                }
+
+                                if (FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().size() == 0)
+                                    FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().add(PassengerModel.getPassengers().get(index));
+                                else
+                                {
+                                    for (int i = 0; i < FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().size(); i++)
+                                    {
+                                        if (FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().get(i).getId() == PassengerModel.getPassengers().get(index).getId())
+                                        {
+                                            break;
+                                        }
+                                        else if ((FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().get(i).getId() != PassengerModel.getPassengers().get(index).getId()) && (i == FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().size() - 1))
+                                        {
+                                            FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().add(PassengerModel.getPassengers().get(index));
+                                        }
+                                    }
+                                }
+
+                                FlightModel.getFlights().get(selectedRowIndex).setNumberOfSoldTickets(FlightModel.getFlights().get(selectedRowIndex).getNumberOfSoldTickets() + Integer.parseInt(passengerView.getJfxTextField229().getText()));
+                                PassengerModel.getPassengers().get(index).setCredit(PassengerModel.getPassengers().get(index).getCredit() - price);
+
+                                passengerView.getStage().close();
+                                passengerView.getStage().setScene(passengerView.getMainMenuScene());
+                                passengerView.getStage().setTitle("Passenger Main Menu");
+                                passengerView.getStage().show();
+                                MessageController messageController = new MessageController("Your Ticket id is : (" + FlightModel.getFlights().get(selectedRowIndex).getTicket().getId() + ") you bought " + passengerView.getJfxTextField229().getText() + " of it.");
+                                passengerView.getJfxTextField229().clear();
+                            } else
+                            {
+                                MessageController messageController = new MessageController("Sorry there are not that much remaining seats!");
+                            }
+
+
+                        }
+
+
                     }
+
                 }
             }
         });
@@ -684,6 +893,10 @@ public class PassengerController implements Showable
                 else
                 {
                     FlightModel flightModel = passengerView.getTableView5().getSelectionModel().getSelectedItem();
+                    long penaltyPrice = flightModel.getTicket().getPenaltyOfCancellation()*(Integer.parseInt(passengerView.getJfxTextField229().getText()));
+                    long price =(flightModel.getTicket().getPrice()*(Integer.parseInt(passengerView.getJfxTextField229().getText())));
+
+
                     selectedRowIndex = FlightController.search((int) flightModel.getId());
                     int numberOfCancellation = Integer.parseInt(passengerView.getJfxTextField229().getText());
                     int numberOfTickets = 0;
@@ -698,6 +911,7 @@ public class PassengerController implements Showable
                     if (!(numberOfCancellation > numberOfTickets))
                     {
                         FlightModel.getFlights().get(selectedRowIndex).setNumberOfSoldTickets(FlightModel.getFlights().get(selectedRowIndex).getNumberOfSoldTickets() - numberOfCancellation);
+                        PassengerModel.getPassengers().get(index).setCredit(PassengerModel.getPassengers().get(index).getCredit()+(price-penaltyPrice));
                         for (int i = 0; i < FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().size(); i++)
                         {
                             if ((FlightModel.getFlights().get(selectedRowIndex).getListOfPassengers().get(i).getId() == PassengerModel.getPassengers().get(index).getId()) && (numberOfCancellation == numberOfTickets))
@@ -719,6 +933,9 @@ public class PassengerController implements Showable
                             if (numberOfCancellation == 0)
                                 break;
                         }
+
+
+
                         passengerView.getStage().close();
                         passengerView.getStage().setScene(passengerView.getMainMenuScene());
                         passengerView.getStage().setTitle("Passenger Main Menu");
@@ -800,6 +1017,7 @@ public class PassengerController implements Showable
             public void handle(ActionEvent event)
             {
                 passengerView.getStage().close();
+                passengerView.getJfxTextField229().clear();
                 passengerView.getStage().setScene(passengerView.getMainMenuScene());
                 passengerView.getStage().setTitle("Passenger Main Menu");
                 passengerView.getStage().show();

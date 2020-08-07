@@ -4,27 +4,81 @@
     <list default="true" id="ca7373bb-7bcd-4618-9eaf-486f90d4c52f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AirplaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AirplaneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/FlightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/FlightController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ManagerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/PassengerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PassengerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TicketController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/FlightModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FlightModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PassengerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PassengerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/AirplaneView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AirplaneView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/FlightView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FlightView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ManagerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ManagerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/TicketModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/TicketModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ManagerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ManagerView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/PassengerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PassengerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PersonView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PersonView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/TicketView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TicketView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/AirplaneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/AirplaneController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/FlightController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/FlightController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/MessageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$21.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$22.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$23.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$23.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$24.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$24.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$25.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$25.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$26.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$26.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$27.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$27.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$28.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$28.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$29.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$29.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$30.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$30.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$31.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$31.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$32.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$32.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$33.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$33.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$34.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$34.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$35.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$35.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$36.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$36.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$37.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$37.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$38.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$38.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$39.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$39.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$40.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$40.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$41.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$41.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$42.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$42.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$43.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$43.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$44.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$44.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$45.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$45.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$46.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$46.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$47.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$47.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$48.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$48.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$49.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$49.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$50.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$50.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$51.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$51.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$52.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$52.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$53.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$53.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$54.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$54.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$55.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$55.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ManagerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$11.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$14.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$19.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$4.class" afterDir="false" />
@@ -34,15 +88,11 @@
       <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/PassengerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PassengerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/PersonController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/TicketController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/TicketController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/model/FlightModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/FlightModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/PassengerModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/PassengerModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/AirplaneView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/AirplaneView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/FlightView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/FlightView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/ManagerModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/ManagerModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/model/TicketModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/TicketModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/ManagerView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/ManagerView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/PassengerView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/PassengerView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/PersonView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/PersonView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/TicketView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/TicketView.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +123,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tamrin" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager">
@@ -138,6 +188,13 @@
       <workItem from="1596283790244" duration="19551000" />
       <workItem from="1596310594437" duration="11000" />
       <workItem from="1596371193880" duration="142000" />
+      <workItem from="1596371904075" duration="19066000" />
+      <workItem from="1596411210833" duration="236000" />
+      <workItem from="1596539063998" duration="100000" />
+      <workItem from="1596628190093" duration="12853000" />
+      <workItem from="1596651040165" duration="7972000" />
+      <workItem from="1596718887003" duration="20076000" />
+      <workItem from="1596810410565" duration="8094000" />
     </task>
     <servers />
   </component>
@@ -145,82 +202,91 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser" timestamp="1596299475682">
+    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser" timestamp="1596725286629">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1596299475682" />
+    <state x="488" y="79" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1596725286629" />
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595626403718">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1595626403718" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1596284256499">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1596813218069">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596284256499" />
-    <state width="1323" height="138" key="GridCell.Tab.0.bottom" timestamp="1596310581298">
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1596813218069" />
+    <state width="1323" height="230" key="GridCell.Tab.0.bottom" timestamp="1596821234630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="138" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596310581298" />
-    <state width="1323" height="138" key="GridCell.Tab.0.center" timestamp="1596310581298">
+    <state width="1323" height="230" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596821234630" />
+    <state width="1323" height="230" key="GridCell.Tab.0.center" timestamp="1596821234630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="138" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596310581298" />
-    <state width="1323" height="138" key="GridCell.Tab.0.left" timestamp="1596310581298">
+    <state width="1323" height="230" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1596821234630" />
+    <state width="1323" height="230" key="GridCell.Tab.0.left" timestamp="1596821234630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="138" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596310581298" />
-    <state width="1323" height="138" key="GridCell.Tab.0.right" timestamp="1596310581298">
+    <state width="1323" height="230" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1596821234630" />
+    <state width="1323" height="230" key="GridCell.Tab.0.right" timestamp="1596821234630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="138" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596310581298" />
-    <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1593710037050">
+    <state width="1323" height="230" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1596821234630" />
+    <state width="1323" height="230" key="GridCell.Tab.1.bottom" timestamp="1596821234631">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1593710037050" />
-    <state width="1323" height="223" key="GridCell.Tab.1.center" timestamp="1593710037050">
+    <state width="1323" height="230" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1596821234631" />
+    <state width="1323" height="230" key="GridCell.Tab.1.center" timestamp="1596821234631">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1593710037050" />
-    <state width="1323" height="223" key="GridCell.Tab.1.left" timestamp="1593710037049">
+    <state width="1323" height="230" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1596821234631" />
+    <state width="1323" height="230" key="GridCell.Tab.1.left" timestamp="1596821234630">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1593710037049" />
-    <state width="1323" height="223" key="GridCell.Tab.1.right" timestamp="1593710037050">
+    <state width="1323" height="230" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1596821234630" />
+    <state width="1323" height="230" key="GridCell.Tab.1.right" timestamp="1596821234631">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1593710037050" />
+    <state width="1323" height="230" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1596821234631" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1596398083418">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1596398083418" />
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1595690333011">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595690333011" />
-    <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593295182222">
+    <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596409076563">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1593295182222" />
+    <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1596409076563" />
     <state x="380" y="0" width="606" height="728" key="find.popup" timestamp="1595526745423">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="380" y="0" width="606" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1595526745423" />
-    <state x="65" y="0" key="new project wizard" timestamp="1595249842772">
+    <state x="65" y="0" key="new project wizard" timestamp="1596539173647">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="65" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1595249842772" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1595870997520">
+    <state x="65" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1596539173647" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1596721595479">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1595870997520" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1596304711534">
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1596721595479" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1596378174543">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1596304711534" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1596378174543" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/PassengerView.java</url>
-          <line>705</line>
+          <line>708</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/PassengerController.java</url>
+          <line>737</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
