@@ -4,17 +4,52 @@ import java.util.ArrayList;
 
 public class ManagerModel extends PersonModel
 {
+    private long id;
+    private static long idGenerator = 200000;
     private String phoneNumber;
     private String address;
+    private String securityAnswer;
     private long salary;
     private static ArrayList<ManagerModel> managers = new ArrayList<ManagerModel>();
     private static ArrayList<String> criticsAndSuggestions = new ArrayList<String>();
+    private static ArrayList<String> reports = new ArrayList<String>();
 
     public ManagerModel(String name, String lastName, String username, String password, String email, String address)
     {
         super(name, lastName, username, password, email);
-        setId(getId()-500000);
+        idGenerator++;
+        this.id = idGenerator;
         this.address = address;
+    }
+
+    public long getId()
+    {
+        return id;
+    }
+
+    public void setId(long id)
+    {
+        this.id = id;
+    }
+
+    public static long getIdGenerator()
+    {
+        return idGenerator;
+    }
+
+    public static void setIdGenerator(long idGenerator)
+    {
+        ManagerModel.idGenerator = idGenerator;
+    }
+
+    public static ArrayList<String> getReports()
+    {
+        return reports;
+    }
+
+    public static void setReports(ArrayList<String> reports)
+    {
+        ManagerModel.reports = reports;
     }
 
     public static ArrayList<ManagerModel> getManagers()
@@ -69,6 +104,16 @@ public class ManagerModel extends PersonModel
     public void setSalary(long salary)
     {
         this.salary = salary;
+    }
+
+    public String getSecurityAnswer()
+    {
+        return securityAnswer;
+    }
+
+    public void setSecurityAnswer(String securityAnswer)
+    {
+        this.securityAnswer = securityAnswer;
     }
 }
 

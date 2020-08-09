@@ -43,6 +43,7 @@ public class EmployeeView
     private JFXTextField jfxTextField39;
     private JFXTextField jfxTextField40;
     private JFXTextField jfxTextField70;
+    private JFXTextField jfxTextField606;
     private JFXTextArea jfxTextArea300;
     private JFXPasswordField jfxPasswordField70;
     private JFXPasswordField jfxPasswordField71;
@@ -78,6 +79,8 @@ public class EmployeeView
     private JFXButton jfxButton301;
     private JFXButton jfxButton544;
     private JFXButton jfxButton545;
+    private JFXButton jfxButton605;
+    private JFXButton jfxButton606;
     private ChoiceBox <String> choiceBox;
     private TableView <EmployeeModel> tableView;
     private TableView <TicketModel> tableView3;
@@ -102,6 +105,7 @@ public class EmployeeView
     private Scene criticsAndSuggestionsScene;
     private Scene showEmployeesScene;
     private Scene flightsPassengersScene;
+    private Scene forgotPasswordScene;
 
     public EmployeeView()
     {
@@ -257,6 +261,7 @@ public class EmployeeView
         choiceBox.getItems().add("Manage flights");
         choiceBox.getItems().add("Manage tickets");
         choiceBox.getItems().add("Send critics and suggestions");
+        choiceBox.getItems().add("Forgot Password");
 
         Label label8 = new Label();
         label8.setTextFill(Color.BLACK);
@@ -482,9 +487,9 @@ public class EmployeeView
         jfxTextField23 = new JFXTextField();
         jfxTextField23.setPromptText("Price");
         jfxTextField23.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxTextField24 = new JFXTextField();
-        jfxTextField24.setPromptText("Penalty Of Cancellation");
-        jfxTextField24.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+//        jfxTextField24 = new JFXTextField();
+//        jfxTextField24.setPromptText("Penalty Of Cancellation");
+//        jfxTextField24.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
 
         jfxButton19 = new JFXButton();
         jfxButton19.setText("Enter");
@@ -500,9 +505,9 @@ public class EmployeeView
         BorderPane borderPane69 = new BorderPane();
         borderPane69.setCenter(jfxTextField23);
         borderPane69.setPrefSize(600,60);
-        BorderPane borderPane100 = new BorderPane();
-        borderPane100.setCenter(jfxTextField24);
-        borderPane100.setPrefSize(600,60);
+//        BorderPane borderPane100 = new BorderPane();
+//        borderPane100.setCenter(jfxTextField24);
+//        borderPane100.setPrefSize(600,60);
         BorderPane borderPane101 = new BorderPane();
         borderPane101.setPrefSize(600,60);
         BorderPane borderPane102 = new BorderPane();
@@ -514,8 +519,8 @@ public class EmployeeView
 
         GridPane gridPane8 = new GridPane();
         gridPane8.add(borderPane69,0,0);
-        gridPane8.add(borderPane100,0,1);
-        gridPane8.add(borderPane101,0,2);
+//        gridPane8.add(borderPane100,0,1);
+        gridPane8.add(borderPane101,0,1);
         gridPane8.setPrefSize(750,580);
         gridPane8.setAlignment(Pos.CENTER);
         gridPane8.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
@@ -526,15 +531,15 @@ public class EmployeeView
 //edit a ticket menu
         jfxTextField25 = new JFXTextField();
         jfxTextField25.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
-        jfxTextField26 = new JFXTextField();
-        jfxTextField26.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+//        jfxTextField26 = new JFXTextField();
+//        jfxTextField26.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
 
         Label label15 = new Label();
-        Label label16 = new Label();
+//        Label label16 = new Label();
         label15.setTextFill(Color.BLACK);
-        label16.setTextFill(Color.BLACK);
+//        label16.setTextFill(Color.BLACK);
         label15.setText("Price");
-        label16.setText("Penalty Of Cancellation");
+//        label16.setText("Penalty Of Cancellation");
 
         jfxButton21 = new JFXButton();
         jfxButton21.setText("Enter");
@@ -553,12 +558,12 @@ public class EmployeeView
         BorderPane borderPane105 = new BorderPane();
         borderPane105.setCenter(jfxTextField25);
         borderPane105.setPrefSize(300,30);
-        BorderPane borderPane106 = new BorderPane();
-        borderPane106.setLeft(label16);
-        borderPane106.setPrefSize(300,30);
-        BorderPane borderPane107 = new BorderPane();
-        borderPane107.setCenter(jfxTextField26);
-        borderPane107.setPrefSize(300,30);
+//        BorderPane borderPane106 = new BorderPane();
+//        borderPane106.setLeft(label16);
+//        borderPane106.setPrefSize(300,30);
+//        BorderPane borderPane107 = new BorderPane();
+//        borderPane107.setCenter(jfxTextField26);
+//        borderPane107.setPrefSize(300,30);
         BorderPane borderPane108 = new BorderPane();
         borderPane108.setPrefSize(600,60);
         BorderPane borderPane109 = new BorderPane();
@@ -571,9 +576,9 @@ public class EmployeeView
         GridPane gridPane9 = new GridPane();
         gridPane9.add(borderPane105,0,0);
         gridPane9.add(borderPane104,0,1);
-        gridPane9.add(borderPane107,0,2);
-        gridPane9.add(borderPane106,0,3);
-        gridPane9.add(borderPane108,0,4);
+//        gridPane9.add(borderPane107,0,2);
+//        gridPane9.add(borderPane106,0,3);
+        gridPane9.add(borderPane108,0,2);
         gridPane9.setPrefSize(750,580);
         gridPane9.setAlignment(Pos.CENTER);
         gridPane9.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
@@ -1081,7 +1086,53 @@ public class EmployeeView
 
         criticsAndSuggestionsScene = new Scene(gridPane300);
 
+//forgot password
+        jfxTextField606 = new JFXTextField();
+        jfxTextField606.setStyle("-fx-prompt-text-fill: black; -fx-text-inner-color: black;");
+        jfxTextField606.setPromptText("Answer");
 
+        Label label605 = new Label();
+        label605.setTextFill(Color.BLACK);
+        label605.setText("What was the name of your first grade teacher?");
+
+        jfxButton605 = new JFXButton();
+        jfxButton605.setText("Enter");
+        jfxButton605.setPrefSize(95,25);
+        jfxButton605.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton605.setTextFill(Color.BLACK);
+        jfxButton606 = new JFXButton();
+        jfxButton606.setText("Back");
+        jfxButton606.setPrefSize(95,25);
+        jfxButton606.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
+        jfxButton606.setTextFill(Color.BLACK);
+
+        BorderPane borderPane707 = new BorderPane();
+        borderPane707.setCenter(label605);
+        borderPane707.setPrefSize(300,60);
+        BorderPane borderPane708= new BorderPane();
+        borderPane708.setCenter(jfxTextField606);
+        borderPane708.setPrefSize(300,30);
+        BorderPane borderPane709 = new BorderPane();
+        borderPane709.setCenter(jfxButton605);
+        borderPane709.setPrefSize(300,30);
+        BorderPane borderPane710 = new BorderPane();
+        borderPane710.setCenter(jfxButton606);
+        borderPane710.setPrefSize(300,30);
+        BorderPane borderPane711 = new BorderPane();
+        borderPane711.setPrefSize(600,60);
+        borderPane711.setLeft(borderPane710);
+        borderPane711.setRight(borderPane709);
+
+        GridPane gridPane605 = new GridPane();;
+        gridPane605.add(borderPane707,0,0);
+        gridPane605.add(borderPane708,0,1);
+        gridPane605.add(borderPane711,0,2);
+        gridPane605.setPrefSize(750,580);
+        gridPane605.setAlignment(Pos.CENTER);
+        gridPane605.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,  CornerRadii.EMPTY, new BorderWidths(3))));
+        gridPane605.setBackground(new Background(new BackgroundFill(Color.DIMGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        forgotPasswordScene = new Scene(gridPane605);
 
 
 
@@ -1916,5 +1967,45 @@ public class EmployeeView
     public void setFlightsPassengersScene(Scene flightsPassengersScene)
     {
         this.flightsPassengersScene = flightsPassengersScene;
+    }
+
+    public JFXTextField getJfxTextField606()
+    {
+        return jfxTextField606;
+    }
+
+    public void setJfxTextField606(JFXTextField jfxTextField606)
+    {
+        this.jfxTextField606 = jfxTextField606;
+    }
+
+    public JFXButton getJfxButton605()
+    {
+        return jfxButton605;
+    }
+
+    public void setJfxButton605(JFXButton jfxButton605)
+    {
+        this.jfxButton605 = jfxButton605;
+    }
+
+    public JFXButton getJfxButton606()
+    {
+        return jfxButton606;
+    }
+
+    public void setJfxButton606(JFXButton jfxButton606)
+    {
+        this.jfxButton606 = jfxButton606;
+    }
+
+    public Scene getForgotPasswordScene()
+    {
+        return forgotPasswordScene;
+    }
+
+    public void setForgotPasswordScene(Scene forgotPasswordScene)
+    {
+        this.forgotPasswordScene = forgotPasswordScene;
     }
 }

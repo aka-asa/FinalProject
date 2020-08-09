@@ -24,8 +24,8 @@ public class AirportView
         jfxButton.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
         jfxButton.setTextFill(Color.BLACK);
         jfxButton2 = new JFXButton();
-        jfxButton2.setText("Exit Program");
-        jfxButton2.setPrefSize(95,25);
+        jfxButton2.setText("Exit And Save Program");
+        jfxButton2.setPrefSize(190,25);
         jfxButton2.setBackground(new Background(new BackgroundFill(Color.SILVER, CornerRadii.EMPTY, Insets.EMPTY)));
         jfxButton2.setTextFill(Color.BLACK);
 
@@ -66,6 +66,8 @@ public class AirportView
         stage = new Stage();
         stage.setScene(new Scene(gridPane));
         stage.setTitle("Airport Menu");
+        stage.setMinWidth(570);
+        stage.setMinHeight(270);
     }
 
     public Stage getStage()

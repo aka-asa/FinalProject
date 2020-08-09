@@ -3,11 +3,12 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import model.AirplaneModel;
-import model.FlightModel;
-import model.ManagerModel;
-import model.PassengerModel;
+import model.*;
 import view.PassengerView;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class PassengerController implements Showable
 {
@@ -38,15 +39,19 @@ public class PassengerController implements Showable
         initJfxButton33();
         initJfxButton34();
         initJfxButton35();
+        initJfxButton435();
+        initJfxButton605();
+        initJfxButton606();
     }
 
     public void showLoginMenu ()
     {
         passengerView.getStage().setScene(passengerView.getLoginScene());
         passengerView.getStage().setTitle("Passenger Login Menu");
+        passengerView.getStage().setMinWidth(750);
+        passengerView.getStage().setMinHeight(580);
         passengerView.getStage().show();
     }
-
 
     public void show()
     {
@@ -56,6 +61,9 @@ public class PassengerController implements Showable
             passengerView.getTableView().getItems().add(PassengerModel.getPassengers().get(i));
         }
         passengerView.getStage().setScene(passengerView.getShowPassengersScene());
+        passengerView.getStage().setTitle("Show Passengers");
+        passengerView.getStage().setMinWidth(600);
+        passengerView.getStage().setMinHeight(400);
         passengerView.getStage().show();
     }
 
@@ -148,19 +156,19 @@ public class PassengerController implements Showable
                 {
                     MessageController messageController = new MessageController("Passwords are not same!");
                 }
-                else if (!(passengerView.getJfxTextField().getText().matches("[a-zA-z]+")))
+                else if (!(passengerView.getJfxTextField().getText().matches("[a-zA-z]{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters for name section!");
                 }
-                else if (!(passengerView.getJfxTextField2().getText().matches("[a-zA-z]+")))
+                else if (!(passengerView.getJfxTextField2().getText().matches("[a-zA-z]{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters for last name section!");
                 }
-                else if (!(passengerView.getJfxTextField3().getText().matches("\\w+")))
+                else if (!(passengerView.getJfxTextField3().getText().matches("\\w{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters,numbers and (_) for username section!");
                 }
-                else if (!(passengerView.getJfxPasswordField().getText().matches("\\S+")))
+                else if (!(passengerView.getJfxPasswordField().getText().matches("\\S{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can not use whitespace for password section!");
                 }
@@ -168,9 +176,17 @@ public class PassengerController implements Showable
                 {
                     MessageController messageController = new MessageController("Wrong email address,please try again!");
                 }
+                else if (passengerView.getJfxTextField4().getLength()>20)
+                {
+                    MessageController messageController = new MessageController("Email address is too long,please try again!");
+                }
                 else if (!(passengerView.getJfxTextField5().getText().matches("[0]\\d{10}||[9][8]\\d{10}")))
                 {
                     MessageController messageController = new MessageController("You can only use 11 numbers starting with 0 or 12 numbers starting with 98 for phone number section");
+                }
+                else if (!(passengerView.getJfxTextField605().getText().matches("[a-zA-z]{1,13}")))
+                {
+                    MessageController messageController = new MessageController("You can only use letters for security question section!");
                 }
                 else
                 {
@@ -213,18 +229,25 @@ public class PassengerController implements Showable
                     {
                         PassengerModel passengerModel = new PassengerModel(passengerView.getJfxTextField().getText(), passengerView.getJfxTextField2().getText(), passengerView.getJfxTextField3().getText(), passengerView.getJfxPasswordField().getText(), passengerView.getJfxTextField4().getText());
                         passengerModel.setPhoneNumber(passengerView.getJfxTextField5().getText());
+                        passengerModel.setSecurityAnswer(passengerView.getJfxTextField605().getText());
                         PassengerModel.getPassengers().add(passengerModel);
                         sort(0, PassengerModel.getPassengers().size() - 1);
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                        LocalDateTime localDateTime = LocalDateTime.now();
+                        ManagerModel.getReports().add("Passenger with "+passengerModel.getId()+" as id registered at "+dtf.format(localDateTime));
                         passengerView.getStage().close();
                         passengerView.getJfxTextField().clear();
                         passengerView.getJfxTextField2().clear();
                         passengerView.getJfxTextField3().clear();
                         passengerView.getJfxTextField4().clear();
                         passengerView.getJfxTextField5().clear();
+                        passengerView.getJfxTextField605().clear();
                         passengerView.getJfxPasswordField().clear();
                         passengerView.getJfxPasswordField2().clear();
                         passengerView.getStage().setScene(passengerView.getLoginScene());
                         passengerView.getStage().setTitle("Passenger Login Menu");
+                        passengerView.getStage().setMinWidth(750);
+                        passengerView.getStage().setMinHeight(580);
                         passengerView.getStage().show();
                         MessageController messageController = new MessageController("Your ID is : (" + passengerModel.getId() + ") please remember it!");
                     }
@@ -253,6 +276,8 @@ public class PassengerController implements Showable
                 passengerView.getJfxPasswordField2().clear();
                 passengerView.getStage().setScene(passengerView.getLoginScene());
                 passengerView.getStage().setTitle("Passenger Login Menu");
+                passengerView.getStage().setMinWidth(750);
+                passengerView.getStage().setMinHeight(580);
                 passengerView.getStage().show();
             }
         });
@@ -270,21 +295,25 @@ public class PassengerController implements Showable
                 {
                     MessageController messageController = new MessageController("Please complete all parts!");
                 }
-                else if (!(passengerView.getJfxTextField6().getText().matches("[a-zA-z]+")))
+                else if (!(passengerView.getJfxTextField6().getText().matches("[a-zA-z]{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters for name section!");
                 }
-                else if (!(passengerView.getJfxTextField7().getText().matches("[a-zA-z]+")))
+                else if (!(passengerView.getJfxTextField7().getText().matches("[a-zA-z]{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters for last name section!");
                 }
-                else if (!(passengerView.getJfxTextField8().getText().matches("\\w+")))
+                else if (!(passengerView.getJfxTextField8().getText().matches("\\w{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters,numbers and (_) for username section!");
                 }
                 else if (!(passengerView.getJfxTextField9().getText().matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")))
                 {
                     MessageController messageController = new MessageController("Wrong email address,please try again!");
+                }
+                else if (passengerView.getJfxTextField9().getLength()>20)
+                {
+                    MessageController messageController = new MessageController("Email address is too long,please try again!");
                 }
                 else if (!(passengerView.getJfxTextField10().getText().matches("[0]\\d{10}||[9][8]\\d{10}")))
                 {
@@ -344,6 +373,9 @@ public class PassengerController implements Showable
                         passengerModel.setCredit(PassengerModel.getPassengers().get(index).getCredit());
                         PassengerModel.getPassengers().set(index, passengerModel);
                         PassengerModel.setIdGenerator(PassengerModel.getIdGenerator() - 1);
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                        LocalDateTime localDateTime = LocalDateTime.now();
+                        ManagerModel.getReports().add("Passenger with "+PassengerModel.getPassengers().get(index).getId()+" as id edited his/her profile at "+dtf.format(localDateTime));
                         passengerView.getStage().close();
                         passengerView.getJfxTextField6().clear();
                         passengerView.getJfxTextField7().clear();
@@ -352,6 +384,8 @@ public class PassengerController implements Showable
                         passengerView.getJfxTextField10().clear();
                         passengerView.getStage().setScene(passengerView.getMainMenuScene());
                         passengerView.getStage().setTitle("Passenger Main Menu");
+                        passengerView.getStage().setMinWidth(570);
+                        passengerView.getStage().setMinHeight(270);
                         passengerView.getStage().show();
                     }
                 }
@@ -375,6 +409,8 @@ public class PassengerController implements Showable
                 passengerView.getJfxTextField10().clear();
                 passengerView.getStage().setScene(passengerView.getMainMenuScene());
                 passengerView.getStage().setTitle("Passenger Main Menu");
+                passengerView.getStage().setMinWidth(570);
+                passengerView.getStage().setMinHeight(270);
                 passengerView.getStage().show();
             }
         });
@@ -393,11 +429,15 @@ public class PassengerController implements Showable
                 {
                     MessageController messageController = new MessageController("Please complete all parts!");
                 }
-                else if (!(passengerView.getJfxTextField11().getText().matches("\\d+")))
+                else if (!(passengerView.getJfxTextField11().getText().matches("\\d{1,7}")))
                 {
                     MessageController messageController = new MessageController("You can only use numbers for id section");
                 }
-                else if (!(passengerView.getJfxPasswordField5().getText().matches("\\S+")))
+                else if ((passengerView.getJfxTextField11().getText().charAt(0) == '0')&&(passengerView.getJfxTextField11().getLength()>1))
+                {
+                    MessageController messageController = new MessageController("Wrong id!");
+                }
+                else if (!(passengerView.getJfxPasswordField5().getText().matches("\\S{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can not use whitespace for password section!");
                 }
@@ -412,11 +452,16 @@ public class PassengerController implements Showable
                         MessageController messageController = new MessageController("Sorry password is wrong,please try again.");
                     } else
                     {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                        LocalDateTime localDateTime = LocalDateTime.now();
+                        ManagerModel.getReports().add("Passenger with "+PassengerModel.getPassengers().get(index).getId()+" as id logged in at "+dtf.format(localDateTime));
                         passengerView.getStage().close();
                         passengerView.getJfxTextField11().clear();
                         passengerView.getJfxPasswordField5().clear();
                         passengerView.getStage().setScene(passengerView.getMainMenuScene());
                         passengerView.getStage().setTitle("Passenger Main Menu");
+                        passengerView.getStage().setMinWidth(570);
+                        passengerView.getStage().setMinHeight(270);
                         passengerView.getStage().show();
                     }
                 }
@@ -437,6 +482,8 @@ public class PassengerController implements Showable
                 passengerView.getJfxPasswordField5().clear();
                 passengerView.getStage().setScene(passengerView.getRegistrationScene());
                 passengerView.getStage().setTitle("Passenger Registration Menu");
+                passengerView.getStage().setMinWidth(750);
+                passengerView.getStage().setMinHeight(580);
                 passengerView.getStage().show();
             }
         });
@@ -481,6 +528,8 @@ public class PassengerController implements Showable
                             passengerView.getJfxTextField10().setText(PassengerModel.getPassengers().get(index).getPhoneNumber());
                             passengerView.getStage().setScene(passengerView.getEditAllScene());
                             passengerView.getStage().setTitle("Passenger Edit Menu");
+                            passengerView.getStage().setMinWidth(750);
+                            passengerView.getStage().setMinHeight(580);
                             passengerView.getStage().show();
                             break;
 
@@ -488,6 +537,8 @@ public class PassengerController implements Showable
                             passengerView.getStage().close();
                             passengerView.getStage().setScene(passengerView.getChangePasswordScene());
                             passengerView.getStage().setTitle("Passenger Change Password Menu");
+                            passengerView.getStage().setMinWidth(750);
+                            passengerView.getStage().setMinHeight(580);
                             passengerView.getStage().show();
                             break;
 
@@ -496,11 +547,14 @@ public class PassengerController implements Showable
                             passengerView.getLabel9().setText("How much would you like to charge?\nyour current credit is : ("+PassengerModel.getPassengers().get(index).getCredit()+")");
                             passengerView.getStage().setScene(passengerView.getChargeScene());
                             passengerView.getStage().setTitle("Passenger Charge Account Menu");
+                            passengerView.getStage().setMinWidth(750);
+                            passengerView.getStage().setMinHeight(580);
                             passengerView.getStage().show();
                             break;
 
                         case "Ticket section":
                             passengerView.getStage().close();
+                            passengerView.getLabel19().setText("Youre current credit is : ("+PassengerModel.getPassengers().get(index).getCredit()+")\nPlease slect a row from table!");
                             passengerView.getTableView5().getItems().clear();
                             for (int i=0 ; i<FlightModel.getFlights().size() ; i++)
                             {
@@ -508,6 +562,8 @@ public class PassengerController implements Showable
                             }
                             passengerView.getStage().setScene(passengerView.getBuyTicketScene());
                             passengerView.getStage().setTitle("Passenger Buy Ticket Menu");
+                            passengerView.getStage().setMinWidth(1000);
+                            passengerView.getStage().setMinHeight(600);
                             passengerView.getStage().show();
                             break;
 
@@ -515,6 +571,17 @@ public class PassengerController implements Showable
                             passengerView.getStage().close();
                             passengerView.getStage().setScene(passengerView.getCriticsAndSuggestionsScene());
                             passengerView.getStage().setTitle("Passenger Critics And Suggestions Menu");
+                            passengerView.getStage().setMinWidth(750);
+                            passengerView.getStage().setMinHeight(580);
+                            passengerView.getStage().show();
+                            break;
+
+                        case "Forgot Password" :
+                            passengerView.getStage().close();
+                            passengerView.getStage().setScene(passengerView.getForgotPasswordScene());
+                            passengerView.getStage().setTitle("Forgot Password Menu");
+                            passengerView.getStage().setMinWidth(750);
+                            passengerView.getStage().setMinHeight(580);
                             passengerView.getStage().show();
                             break;
 
@@ -536,8 +603,13 @@ public class PassengerController implements Showable
             public void handle(ActionEvent event)
             {
                 passengerView.getStage().close();
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime localDateTime = LocalDateTime.now();
+                ManagerModel.getReports().add("Passenger with "+PassengerModel.getPassengers().get(index).getId()+" as id quited the program at "+dtf.format(localDateTime));
                 passengerView.getStage().setScene(passengerView.getLoginScene());
                 passengerView.getStage().setTitle("Passenger Login Menu");
+                passengerView.getStage().setMinWidth(570);
+                passengerView.getStage().setMinHeight(270);
                 passengerView.getStage().show();
             }
         });
@@ -559,7 +631,7 @@ public class PassengerController implements Showable
                 {
                     MessageController messageController = new MessageController("Passwords are not same!");
                 }
-                else if (!((passengerView.getJfxPasswordField3().getText().matches("\\S+"))&&(passengerView.getJfxPasswordField4().getText().matches("\\S+"))))
+                else if (!((passengerView.getJfxPasswordField3().getText().matches("\\S+"))&&(passengerView.getJfxPasswordField4().getText().matches("\\S{1,13}"))))
                 {
                     MessageController messageController = new MessageController("You can not use whitespace for password section!");
                 }
@@ -573,19 +645,21 @@ public class PassengerController implements Showable
                     passengerView.getJfxPasswordField3().clear();
                     passengerView.getJfxPasswordField4().clear();
                     passengerView.getJfxPasswordField6().clear();
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Passenger with "+PassengerModel.getPassengers().get(index).getId()+" as id changed his/her password at "+dtf.format(localDateTime));
                     passengerView.getStage().close();
                     passengerView.getStage().setScene(passengerView.getMainMenuScene());
                     passengerView.getStage().setTitle("Passenger Main Menu");
+                    passengerView.getStage().setMinWidth(570);
+                    passengerView.getStage().setMinHeight(270);
                     passengerView.getStage().show();
                 }
-
-
 
 
             }
         });
     }
-
 
 //exit change password menu
     public void initJfxButton11()
@@ -601,6 +675,8 @@ public class PassengerController implements Showable
                 passengerView.getJfxPasswordField6().clear();
                 passengerView.getStage().setScene(passengerView.getMainMenuScene());
                 passengerView.getStage().setTitle("Passenger Main Menu");
+                passengerView.getStage().setMinWidth(570);
+                passengerView.getStage().setMinHeight(270);
                 passengerView.getStage().show();
             }
         });
@@ -618,21 +694,30 @@ public class PassengerController implements Showable
                 {
                     MessageController messageController = new MessageController("Please complete the part!");
                 }
-                else if (!(Long.parseLong(passengerView.getJfxTextField12().getText())>0))
-                {
-                    MessageController messageController = new MessageController("Your number should be larger than 0 !");
-                }
-                else if (!(passengerView.getJfxTextField12().getText().matches("\\d+")))
+                else if (!(passengerView.getJfxTextField12().getText().matches("\\d{1,7}")))
                 {
                     MessageController messageController = new MessageController("Please write a number!");
                 }
+                else if (passengerView.getJfxTextField12().getText().charAt(0) == '0')
+                {
+                    MessageController messageController = new MessageController("You can only use natural numbers for charge acoount section!");
+                }
+//                else if (!(Long.parseLong(passengerView.getJfxTextField12().getText())>0))
+//                {
+//                    MessageController messageController = new MessageController("Your number should be larger than 0 !");
+//                }
                 else
                 {
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Passenger with "+PassengerModel.getPassengers().get(index).getId()+" as id charged his/her profile with "+passengerView.getJfxTextField12().getText() +" at "+dtf.format(localDateTime));
                     passengerView.getStage().close();
                     PassengerModel.getPassengers().get(index).setCredit((PassengerModel.getPassengers().get(index).getCredit())+(Long.parseLong(passengerView.getJfxTextField12().getText())));
                     passengerView.getJfxTextField12().clear();
                     passengerView.getStage().setScene(passengerView.getMainMenuScene());
                     passengerView.getStage().setTitle("Passenger Main Menu");
+                    passengerView.getStage().setMinWidth(570);
+                    passengerView.getStage().setMinHeight(270);
                     passengerView.getStage().show();
                 }
             }
@@ -651,6 +736,8 @@ public class PassengerController implements Showable
                 passengerView.getJfxTextField12().clear();
                 passengerView.getStage().setScene(passengerView.getMainMenuScene());
                 passengerView.getStage().setTitle("Passenger Main Menu");
+                passengerView.getStage().setMinWidth(570);
+                passengerView.getStage().setMinHeight(270);
                 passengerView.getStage().show();
             }
         });
@@ -664,12 +751,21 @@ public class PassengerController implements Showable
             @Override
             public void handle(ActionEvent event)
             {
-                passengerView.getStage().close();
-                ManagerModel.getCriticsAndSuggestions().add(passengerView.getJfxTextArea100().getText());
-                passengerView.getJfxTextArea100().clear();
-                passengerView.getStage().setScene(passengerView.getMainMenuScene());
-                passengerView.getStage().setTitle("Passenger Main Menu");
-                passengerView.getStage().show();
+                if (passengerView.getJfxTextArea100().getText().contains("$"))
+                {
+                    MessageController messageController = new MessageController("Sorry you cannot use ($)!");
+                }
+                else
+                {
+                    passengerView.getStage().close();
+                    ManagerModel.getCriticsAndSuggestions().add(passengerView.getJfxTextArea100().getText());
+                    passengerView.getJfxTextArea100().clear();
+                    passengerView.getStage().setScene(passengerView.getMainMenuScene());
+                    passengerView.getStage().setTitle("Passenger Main Menu");
+                    passengerView.getStage().setMinWidth(570);
+                    passengerView.getStage().setMinHeight(270);
+                    passengerView.getStage().show();
+                }
             }
         });
     }
@@ -686,6 +782,8 @@ public class PassengerController implements Showable
                 passengerView.getJfxTextArea100().clear();
                 passengerView.getStage().setScene(passengerView.getMainMenuScene());
                 passengerView.getStage().setTitle("Passenger Main Menu");
+                passengerView.getStage().setMinWidth(570);
+                passengerView.getStage().setMinHeight(270);
                 passengerView.getStage().show();
             }
         });
@@ -707,14 +805,31 @@ public class PassengerController implements Showable
                 {
                     MessageController messageController = new MessageController("Please complete all parts!");
                 }
-                else if (!(passengerView.getJfxTextField229().getText().matches("\\d+")))
+                else if (!(passengerView.getJfxTextField229().getText().matches("\\d{1,7}")))
                 {
-                    MessageController messageController = new MessageController("You can only use whole numbers for Number Of Seats section");
+                    MessageController messageController = new MessageController("You can only use natural numbers for this section!");
+                }
+                else if (passengerView.getJfxTextField229().getText().charAt(0) == '0')
+                {
+                    MessageController messageController = new MessageController("You can only use natural numbers for this section!");
                 }
                 else
                 {
                     FlightModel flightModel = passengerView.getTableView5().getSelectionModel().getSelectedItem();
-                    long price = flightModel.getTicket().getPrice()*(Integer.parseInt(passengerView.getJfxTextField229().getText()));
+                    long price;
+                    if ((Integer.parseInt(passengerView.getJfxTextField229().getText())==4)&&(Integer.parseInt(passengerView.getJfxTextField229().getText())==5))
+                    {
+                        price = ((flightModel.getTicket().getPrice()*90)/100)*(Integer.parseInt(passengerView.getJfxTextField229().getText()));
+                    }
+                    else if (Integer.parseInt(passengerView.getJfxTextField229().getText())>5)
+                    {
+                        price = ((flightModel.getTicket().getPrice()*80)/100)*(Integer.parseInt(passengerView.getJfxTextField229().getText()));
+                    }
+                    else
+                    {
+                        price = flightModel.getTicket().getPrice()*(Integer.parseInt(passengerView.getJfxTextField229().getText()));
+                    }
+
                     if (PassengerModel.getPassengers().get(index).getCredit() < price)
                     {
                         MessageController messageController = new MessageController("Sorry you dont have enough credit !");
@@ -760,7 +875,7 @@ public class PassengerController implements Showable
                             String date1 = flightModel.getDate().toString();
                             String date2 = flightModel2.getDate().toString();
 
-                            if ((date1.equals(date2))&&(endTime<24)&&(endTime<24))
+                            if ((date1.equals(date2))&&(endTime<24)&&(endTime2<24))
                             {
                                 if (!((endTime < startTime2) || (startTime > endTime2)))
                                 {
@@ -773,7 +888,6 @@ public class PassengerController implements Showable
                             {
                                 if (!(startTime > endTime2))
                                 {
-                                    endTime -= 24.00;
                                     MessageController messageController = new MessageController("Sorry you already have a flight in this interval");
                                     error = 1;
                                     break;
@@ -783,7 +897,6 @@ public class PassengerController implements Showable
                             {
                                 if (!(endTime < startTime2))
                                 {
-                                    endTime2 -= 24.00;
                                     MessageController messageController = new MessageController("Sorry you already have a flight in this interval");
                                     error = 1;
                                     break;
@@ -791,7 +904,7 @@ public class PassengerController implements Showable
                             }
                             else if ((!(date1.equals(date2)))&&(endTime2>23.59))
                             {
-                                if (flightModel.getDate().isAfter(flightModel2.getDate()))
+                                if (flightModel2.getDate().getDayOfYear() == flightModel.getDate().getDayOfYear()-1)
                                 {
                                     endTime2 -= 24.00;
                                     if (!(endTime2 < startTime))
@@ -804,7 +917,7 @@ public class PassengerController implements Showable
                             }
                             else if ((!(date1.equals(date2)))&&(endTime>23.59))
                             {
-                                if (flightModel2.getDate().isAfter(flightModel.getDate()))
+                                if (flightModel.getDate().getDayOfYear() == flightModel2.getDate().getDayOfYear()-1)
                                 {
                                     endTime -= 24.00;
                                     if (!(endTime < startTime2))
@@ -815,6 +928,9 @@ public class PassengerController implements Showable
                                     }
                                 }
                             }
+
+
+
 
                         }
 
@@ -848,9 +964,15 @@ public class PassengerController implements Showable
                                 FlightModel.getFlights().get(selectedRowIndex).setNumberOfSoldTickets(FlightModel.getFlights().get(selectedRowIndex).getNumberOfSoldTickets() + Integer.parseInt(passengerView.getJfxTextField229().getText()));
                                 PassengerModel.getPassengers().get(index).setCredit(PassengerModel.getPassengers().get(index).getCredit() - price);
 
+                                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                                LocalDateTime localDateTime = LocalDateTime.now();
+                                ManagerModel.getReports().add("Passenger with "+PassengerModel.getPassengers().get(index).getId()+" as id bought ticket with "+FlightModel.getFlights().get(selectedRowIndex).getTicket().getId()+"as id at "+dtf.format(localDateTime));
+
                                 passengerView.getStage().close();
                                 passengerView.getStage().setScene(passengerView.getMainMenuScene());
                                 passengerView.getStage().setTitle("Passenger Main Menu");
+                                passengerView.getStage().setMinWidth(570);
+                                passengerView.getStage().setMinHeight(270);
                                 passengerView.getStage().show();
                                 MessageController messageController = new MessageController("Your Ticket id is : (" + FlightModel.getFlights().get(selectedRowIndex).getTicket().getId() + ") you bought " + passengerView.getJfxTextField229().getText() + " of it.");
                                 passengerView.getJfxTextField229().clear();
@@ -886,9 +1008,13 @@ public class PassengerController implements Showable
                 {
                     MessageController messageController = new MessageController("Please select a row from table!");
                 }
-                else if (!(passengerView.getJfxTextField229().getText().matches("\\d+")))
+                else if (!(passengerView.getJfxTextField229().getText().matches("\\d{1,7}")))
                 {
                     MessageController messageController = new MessageController("You can only use whole numbers for Number Of Seats section");
+                }
+                else if (passengerView.getJfxTextField229().getText().charAt(0) == '0')
+                {
+                    MessageController messageController = new MessageController("You can only use natural numbers for this section!");
                 }
                 else
                 {
@@ -935,10 +1061,15 @@ public class PassengerController implements Showable
                         }
 
 
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                        LocalDateTime localDateTime = LocalDateTime.now();
+                        ManagerModel.getReports().add("Passenger with "+PassengerModel.getPassengers().get(index).getId()+" as id cancelled ticket with "+FlightModel.getFlights().get(selectedRowIndex).getTicket().getId()+" as id at "+dtf.format(localDateTime));
 
                         passengerView.getStage().close();
                         passengerView.getStage().setScene(passengerView.getMainMenuScene());
                         passengerView.getStage().setTitle("Passenger Main Menu");
+                        passengerView.getStage().setMinWidth(570);
+                        passengerView.getStage().setMinHeight(270);
                         passengerView.getStage().show();
                         MessageController messageController = new MessageController("You have "+remaining+" remaining tickets with "+FlightModel.getFlights().get(selectedRowIndex).getTicket().getId()+" as id");
                         passengerView.getJfxTextField229().clear();
@@ -975,7 +1106,9 @@ public class PassengerController implements Showable
                     passengerView.getTableView9().getItems().add(FlightModel.getFlights().get(selectedRowIndex).getTicket());
                     Stage stage2 = new Stage();
                     stage2.setScene(passengerView.getTicketOfFlightScene());
-                    passengerView.getStage().setTitle("Show Ticket Of Flight");
+                    stage2.setTitle("Show Ticket Of Flight");
+                    passengerView.getStage().setMinWidth(600);
+                    passengerView.getStage().setMinHeight(400);
                     stage2.show();
                 }
             }
@@ -1001,7 +1134,9 @@ public class PassengerController implements Showable
                     passengerView.getTableView8().getItems().add(FlightModel.getFlights().get(selectedRowIndex).getAirplane());
                     Stage stage2 = new Stage();
                     stage2.setScene(passengerView.getAirplaneOfFlightScene());
-                    passengerView.getStage().setTitle("Show Airplane Of Flight");
+                    stage2.setTitle("Show Airplane Of Flight");
+                    passengerView.getStage().setMinWidth(600);
+                    passengerView.getStage().setMinHeight(400);
                     stage2.show();
                 }
             }
@@ -1020,10 +1155,89 @@ public class PassengerController implements Showable
                 passengerView.getJfxTextField229().clear();
                 passengerView.getStage().setScene(passengerView.getMainMenuScene());
                 passengerView.getStage().setTitle("Passenger Main Menu");
+                passengerView.getStage().setMinWidth(570);
+                passengerView.getStage().setMinHeight(270);
                 passengerView.getStage().show();
             }
         });
     }
+
+//show passengers tickets
+    public void initJfxButton435()
+    {
+        passengerView.getJfxButton435().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                passengerView.getTableView435().getItems().clear();
+                for (int i = 0; i< PassengerModel.getPassengers().get(index).getTickets().size() ; i++)
+                {
+                    passengerView.getTableView435().getItems().add(PassengerModel.getPassengers().get(index).getTickets().get(i));
+                }
+                Stage stage2 = new Stage();
+                stage2.setScene(passengerView.getPassengersTicketsScene());
+                stage2.setTitle("Show Passengers Tickets");
+                passengerView.getStage().setMinWidth(570);
+                passengerView.getStage().setMinHeight(270);
+                stage2.show();
+            }
+        });
+    }
+
+//exit forgot password menu
+    public void initJfxButton606()
+    {
+        passengerView.getJfxButton606().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                passengerView.getStage().close();
+                passengerView.getJfxTextField606().clear();
+                passengerView.getStage().setScene(passengerView.getMainMenuScene());
+                passengerView.getStage().setTitle("Passenger Main Menu");
+                passengerView.getStage().setMinWidth(570);
+                passengerView.getStage().setMinHeight(270);
+                passengerView.getStage().show();
+            }
+        });
+    }
+
+//forgot password menu
+    public void initJfxButton605()
+    {
+        passengerView.getJfxButton605().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                if (!(passengerView.getJfxTextField606().getText().matches("[a-zA-z]{1,13}")))
+                {
+                    MessageController messageController = new MessageController("You can only use letters for this section!");
+                }
+                else if (!(passengerView.getJfxTextField606().getText().equals(PassengerModel.getPassengers().get(index).getSecurityAnswer())))
+                {
+                    MessageController messageController = new MessageController("Answer is not true!");
+                }
+                else
+                {
+                    passengerView.getStage().close();
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Passenger with "+PassengerModel.getPassengers().get(index).getId()+" as id got his password back at "+dtf.format(localDateTime));
+                    passengerView.getJfxTextField606().clear();
+                    passengerView.getStage().setScene(passengerView.getMainMenuScene());
+                    passengerView.getStage().setTitle("Passenger Main Menu");
+                    passengerView.getStage().setMinWidth(570);
+                    passengerView.getStage().setMinHeight(270);
+                    passengerView.getStage().show();
+                    MessageController messageController = new MessageController("youre password is : ("+PassengerModel.getPassengers().get(index).getPassword()+") remember it this time!");
+                }
+            }
+        });
+    }
+
 
 
 }

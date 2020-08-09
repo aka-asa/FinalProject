@@ -9,6 +9,8 @@ import model.*;
 import view.EmployeeView;
 import view.ManagerView;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Formatter;
@@ -53,12 +55,16 @@ public class EmployeeController implements Showable
         initJfxButton301();
         initJfxButton544();
         initJfxButton545();
+        initJfxButton606();
+        initJfxButton605();
     }
 
     public void showLoginMenu ()
     {
         employeeView.getStage().setScene(employeeView.getLoginScene());
         employeeView.getStage().setTitle("Employee Login Menu");
+        employeeView.getStage().setMinWidth(750);
+        employeeView.getStage().setMinHeight(580);
         employeeView.getStage().show();
     }
 
@@ -71,6 +77,8 @@ public class EmployeeController implements Showable
         }
         employeeView.getStage().setScene(employeeView.getShowEmployeesScene());
         employeeView.getStage().setTitle("Show Employees");
+        employeeView.getStage().setMinWidth(600);
+        employeeView.getStage().setMinHeight(400);
         employeeView.getStage().show();
     }
 
@@ -157,7 +165,6 @@ public class EmployeeController implements Showable
         return -1;
     }
 
-
 //edit a employee
     public void initJfxButton3()
     {
@@ -170,21 +177,25 @@ public class EmployeeController implements Showable
                 {
                     MessageController messageController = new MessageController("Please complete all parts!");
                 }
-                else if (!(employeeView.getJfxTextField6().getText().matches("[a-zA-z]+")))
+                else if (!(employeeView.getJfxTextField6().getText().matches("[a-zA-z]{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters for name section!");
                 }
-                else if (!(employeeView.getJfxTextField7().getText().matches("[a-zA-z]+")))
+                else if (!(employeeView.getJfxTextField7().getText().matches("[a-zA-z]{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters for last name section!");
                 }
-                else if (!(employeeView.getJfxTextField8().getText().matches("\\w+")))
+                else if (!(employeeView.getJfxTextField8().getText().matches("\\w{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters,numbers and (_) for username section!");
                 }
                 else if (!(employeeView.getJfxTextField9().getText().matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$")))
                 {
                     MessageController messageController = new MessageController("Wrong email address,please try again!");
+                }
+                else if (employeeView.getJfxTextField9().getLength()>20)
+                {
+                    MessageController messageController = new MessageController("Email address is too long,please try again!");
                 }
                 else if (!(employeeView.getJfxTextField10().getText().matches("[0]\\d{10}||[9][8]\\d{10}")))
                 {
@@ -244,6 +255,9 @@ public class EmployeeController implements Showable
                         employeeModel.setPhoneNumber(employeeView.getJfxTextField10().getText());
                         EmployeeModel.setIdGenerator(EmployeeModel.getIdGenerator() - 1);
                         EmployeeModel.getEmployees().set(index, employeeModel);
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                        LocalDateTime localDateTime = LocalDateTime.now();
+                        ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id edited his/her profile at "+dtf.format(localDateTime));
                         employeeView.getStage().close();
                         employeeView.getJfxTextField6().clear();
                         employeeView.getJfxTextField7().clear();
@@ -253,6 +267,8 @@ public class EmployeeController implements Showable
                         employeeView.getJfxTextField13().clear();
                         employeeView.getStage().setScene(employeeView.getMainMenuScene());
                         employeeView.getStage().setTitle("Employee Main Menu");
+                        employeeView.getStage().setMinWidth(570);
+                        employeeView.getStage().setMinHeight(270);
                         employeeView.getStage().show();
                     }
                 }
@@ -277,6 +293,8 @@ public class EmployeeController implements Showable
                 employeeView.getJfxTextField13().clear();
                 employeeView.getStage().setScene(employeeView.getMainMenuScene());
                 employeeView.getStage().setTitle("Employee Main Menu");
+                employeeView.getStage().setMinWidth(570);
+                employeeView.getStage().setMinHeight(270);
                 employeeView.getStage().show();
             }
         });
@@ -295,11 +313,15 @@ public class EmployeeController implements Showable
                 {
                     MessageController messageController = new MessageController("Please complete all parts!");
                 }
-                else if (!(employeeView.getJfxTextField70().getText().matches("\\d+")))
+                else if (!(employeeView.getJfxTextField70().getText().matches("\\d{1,7}")))
                 {
                     MessageController messageController = new MessageController("Wrong id!");
                 }
-                else if (!(employeeView.getJfxPasswordField70().getText().matches("\\S+")))
+                else if ((employeeView.getJfxTextField70().getText().charAt(0) == '0')&&(employeeView.getJfxTextField70().getLength()>1))
+                {
+                    MessageController messageController = new MessageController("Wrong id!");
+                }
+                else if (!(employeeView.getJfxPasswordField70().getText().matches("\\S{1,13}")))
                 {
                     MessageController messageController = new MessageController("Wrong password!");
                 }
@@ -314,11 +336,16 @@ public class EmployeeController implements Showable
                         MessageController messageController = new MessageController("Sorry password is wrong,please try again.");
                     } else
                     {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                        LocalDateTime localDateTime = LocalDateTime.now();
+                        ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id has logged in at "+dtf.format(localDateTime));
                         employeeView.getStage().close();
                         employeeView.getJfxTextField70().clear();
                         employeeView.getJfxPasswordField70().clear();
                         employeeView.getStage().setScene(employeeView.getMainMenuScene());
                         employeeView.getStage().setTitle("Employee Main Menu");
+                        employeeView.getStage().setMinWidth(570);
+                        employeeView.getStage().setMinHeight(270);
                         employeeView.getStage().show();
                     }
                 }
@@ -372,6 +399,8 @@ public class EmployeeController implements Showable
                             employeeView.getJfxTextField13().setText(EmployeeModel.getEmployees().get(index).getAddress());
                             employeeView.getStage().setScene(employeeView.getEditAllScene());
                             employeeView.getStage().setTitle("Edit Menu");
+                            employeeView.getStage().setMinWidth(750);
+                            employeeView.getStage().setMinHeight(580);
                             employeeView.getStage().show();
                         }
                         break;
@@ -380,11 +409,14 @@ public class EmployeeController implements Showable
                         employeeView.getStage().close();
                         employeeView.getStage().setScene(employeeView.getChangePasswordScene());
                         employeeView.getStage().setTitle("Change Password Menu");
+                        employeeView.getStage().setMinWidth(750);
+                        employeeView.getStage().setMinHeight(580);
                         employeeView.getStage().show();
                         break;
 
                     case "Manage flights":
                         employeeView.getStage().close();
+                        refreshFlightCondition();
                         employeeView.getTableView5().getItems().clear();
                         for (int i=0; i< FlightModel.getFlights().size() ; i++)
                         {
@@ -392,6 +424,8 @@ public class EmployeeController implements Showable
                         }
                         employeeView.getStage().setScene(employeeView.getFlightScene());
                         employeeView.getStage().setTitle("Flight Menu");
+                        employeeView.getStage().setMinWidth(1000);
+                        employeeView.getStage().setMinHeight(580);
                         employeeView.getStage().show();
                         break;
 
@@ -404,6 +438,8 @@ public class EmployeeController implements Showable
                         }
                         employeeView.getStage().setScene(employeeView.getTicketScene());
                         employeeView.getStage().setTitle("Ticket Menu");
+                        employeeView.getStage().setMinWidth(750);
+                        employeeView.getStage().setMinHeight(580);
                         employeeView.getStage().show();
                         break;
 
@@ -411,6 +447,17 @@ public class EmployeeController implements Showable
                         employeeView.getStage().close();
                         employeeView.getStage().setScene(employeeView.getCriticsAndSuggestionsScene());
                         employeeView.getStage().setTitle("Employee Critics And Suggestions Menu");
+                        employeeView.getStage().setMinWidth(750);
+                        employeeView.getStage().setMinHeight(580);
+                        employeeView.getStage().show();
+                        break;
+
+                    case "Forgot Password":
+                        employeeView.getStage().close();
+                        employeeView.getStage().setScene(employeeView.getForgotPasswordScene());
+                        employeeView.getStage().setTitle("Forgot Password Menu");
+                        employeeView.getStage().setMinWidth(750);
+                        employeeView.getStage().setMinHeight(580);
                         employeeView.getStage().show();
                         break;
 
@@ -431,8 +478,13 @@ public class EmployeeController implements Showable
             public void handle(ActionEvent event)
             {
                 employeeView.getStage().close();
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime localDateTime = LocalDateTime.now();
+                ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id quited the program at "+dtf.format(localDateTime));
                 employeeView.getStage().setScene(employeeView.getLoginScene());
                 employeeView.getStage().setTitle("Login Menu");
+                employeeView.getStage().setMinWidth(750);
+                employeeView.getStage().setMinHeight(580);
                 employeeView.getStage().show();
             }
         });
@@ -454,7 +506,7 @@ public class EmployeeController implements Showable
                 {
                     MessageController messageController = new MessageController("Passwords are not same!");
                 }
-                else if (!((employeeView.getJfxPasswordField71().getText().matches("\\S+"))&&(employeeView.getJfxPasswordField72().getText().matches("\\S+"))))
+                else if (!((employeeView.getJfxPasswordField71().getText().matches("\\S+"))&&(employeeView.getJfxPasswordField72().getText().matches("\\S{1,13}"))))
                 {
                     MessageController messageController = new MessageController("You can not use whitespace for password section!");
                 }
@@ -468,9 +520,14 @@ public class EmployeeController implements Showable
                     employeeView.getJfxPasswordField71().clear();
                     employeeView.getJfxPasswordField72().clear();
                     employeeView.getJfxPasswordField73().clear();
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id changed his/her password with at "+dtf.format(localDateTime));
                     employeeView.getStage().close();
                     employeeView.getStage().setScene(employeeView.getMainMenuScene());
                     employeeView.getStage().setTitle("Employee Main Menu");
+                    employeeView.getStage().setMinWidth(570);
+                    employeeView.getStage().setMinHeight(270);
                     employeeView.getStage().show();
                 }
             }
@@ -491,6 +548,8 @@ public class EmployeeController implements Showable
                 employeeView.getJfxPasswordField73().clear();
                 employeeView.getStage().setScene(employeeView.getMainMenuScene());
                 employeeView.getStage().setTitle("Employee Main Menu");
+                employeeView.getStage().setMinWidth(570);
+                employeeView.getStage().setMinHeight(270);
                 employeeView.getStage().show();
             }
         });
@@ -507,6 +566,8 @@ public class EmployeeController implements Showable
                 employeeView.getStage().close();
                 employeeView.getStage().setScene(employeeView.getTicketRegistrationScene());
                 employeeView.getStage().setTitle("Ticket Registration menu");
+                employeeView.getStage().setMinWidth(750);
+                employeeView.getStage().setMinHeight(580);
                 employeeView.getStage().show();
             }
         });
@@ -520,26 +581,54 @@ public class EmployeeController implements Showable
             @Override
             public void handle(ActionEvent event)
             {
-                if (employeeView.getJfxTextField23().getText().isEmpty()||employeeView.getJfxTextField24().getText().isEmpty())
+                if (employeeView.getJfxTextField23().getText().isEmpty())
                 {
                     MessageController messageController = new MessageController("Please complete all parts!");
                 }
-                else if (!(employeeView.getJfxTextField23().getText().matches("\\d+")))
+                else if (!(employeeView.getJfxTextField23().getText().matches("\\d{1,7}")))
                 {
                     MessageController messageController = new MessageController("You can only use whole numbers for Price section");
                 }
-                else if (!(employeeView.getJfxTextField24().getText().matches("\\d+")))
+                else if ((employeeView.getJfxTextField23().getText().charAt(0) == '0')&&(employeeView.getJfxTextField23().getLength()>1))
                 {
-                    MessageController messageController = new MessageController("You can only use whole numbers for Penalty Of Cancellation section");
+                    MessageController messageController = new MessageController("You can only use whole numbers for Price section!");
                 }
+//                else if (!(employeeView.getJfxTextField24().getText().matches("\\d{1,7}")))
+//                {
+//                    MessageController messageController = new MessageController("You can only use whole numbers for Penalty Of Cancellation section");
+//                }
+//                else if ((employeeView.getJfxTextField24().getText().charAt(0) == '0')&&(employeeView.getJfxTextField24().getLength()>1))
+//                {
+//                    MessageController messageController = new MessageController("You can only use whole numbers for Penalty Of Cancellation section!");
+//                }
+
                 else
                 {
-                    TicketModel ticketModel = new TicketModel(Long.parseLong(employeeView.getJfxTextField23().getText()), Long.parseLong(employeeView.getJfxTextField24().getText()));
+                    long price = 0;
+                    long penaltyOfCancellation = 0;
+                    if (ManagerController.getCurrentPolicy() == 0)
+                    {
+                        price = Long.parseLong(employeeView.getJfxTextField23().getText());
+                        penaltyOfCancellation = ((price*20)/100);
+                    }
+                    else if (ManagerController.getCurrentPolicy() == 1)
+                    {
+                        price = ((Long.parseLong(employeeView.getJfxTextField23().getText())*120)/100);
+                        penaltyOfCancellation = ((price*20)/100);
+                    }
+                    else if (ManagerController.getCurrentPolicy() == 2)
+                    {
+                        price = ((Long.parseLong(employeeView.getJfxTextField23().getText())*90)/100);
+                        penaltyOfCancellation = ((price*20)/100);
+                    }
+                    TicketModel ticketModel = new TicketModel(price,penaltyOfCancellation );
                     TicketModel.getTickets().add(ticketModel);
                     TicketController.sort(0, TicketModel.getTickets().size() - 1);
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id added ticket with "+ticketModel.getId()+" as id at "+dtf.format(localDateTime));
                     employeeView.getStage().close();
                     employeeView.getJfxTextField23().clear();
-                    employeeView.getJfxTextField24().clear();
                     employeeView.getTableView3().getItems().clear();
                     for (int i=0 ; i<TicketModel.getTickets().size() ; i++)
                     {
@@ -547,6 +636,8 @@ public class EmployeeController implements Showable
                     }
                     employeeView.getStage().setScene(employeeView.getTicketScene());
                     employeeView.getStage().setTitle("Ticket Menu");
+                    employeeView.getStage().setMinWidth(750);
+                    employeeView.getStage().setMinHeight(580);
                     employeeView.getStage().show();
                     MessageController messageController = new MessageController("The ID is : ("+ticketModel.getId()+")");
                 }
@@ -565,7 +656,6 @@ public class EmployeeController implements Showable
             {
                 employeeView.getStage().close();
                 employeeView.getJfxTextField23().clear();
-                employeeView.getJfxTextField24().clear();
                 employeeView.getTableView3().getItems().clear();
                 for (int i=0; i< TicketModel.getTickets().size() ; i++)
                 {
@@ -573,6 +663,8 @@ public class EmployeeController implements Showable
                 }
                 employeeView.getStage().setScene(employeeView.getTicketScene());
                 employeeView.getStage().setTitle("Ticket Menu");
+                employeeView.getStage().setMinWidth(750);
+                employeeView.getStage().setMinHeight(580);
                 employeeView.getStage().show();
             }
         });
@@ -596,9 +688,10 @@ public class EmployeeController implements Showable
                     selectedRowIndex = TicketController.search((int) ticketModel.getId());
                     employeeView.getStage().close();
                     employeeView.getJfxTextField25().setText(Long.toString(TicketModel.getTickets().get(selectedRowIndex).getPrice()));
-                    employeeView.getJfxTextField26().setText(Long.toString(TicketModel.getTickets().get(selectedRowIndex).getPenaltyOfCancellation()));
                     employeeView.getStage().setScene(employeeView.getTicketEditScene());
                     employeeView.getStage().setTitle("Ticket edit Menu");
+                    employeeView.getStage().setMinWidth(750);
+                    employeeView.getStage().setMinHeight(580);
                     employeeView.getStage().show();
                 }
             }
@@ -613,27 +706,54 @@ public class EmployeeController implements Showable
             @Override
             public void handle(ActionEvent event)
             {
-                if (employeeView.getJfxTextField25().getText().isEmpty()||employeeView.getJfxTextField26().getText().isEmpty())
+                if (employeeView.getJfxTextField25().getText().isEmpty())
                 {
                     MessageController messageController = new MessageController("Please complete all parts!");
                 }
-                else if (!(employeeView.getJfxTextField25().getText().matches("\\d+")))
+                else if (!(employeeView.getJfxTextField25().getText().matches("\\d{1,7}")))
                 {
                     MessageController messageController = new MessageController("You can only use whole numbers for Price section");
                 }
-                else if (!(employeeView.getJfxTextField26().getText().matches("\\d+")))
+                else if ((employeeView.getJfxTextField25().getText().charAt(0) == '0')&&(employeeView.getJfxTextField25().getLength()>1))
                 {
-                    MessageController messageController = new MessageController("You can only use whole numbers for Penalty Of Cancellation section");
+                    MessageController messageController = new MessageController("You can only use whole numbers for Price section!");
                 }
+//                else if (!(employeeView.getJfxTextField26().getText().matches("\\d{1,7}")))
+//                {
+//                    MessageController messageController = new MessageController("You can only use whole numbers for Penalty Of Cancellation section");
+//                }
+//                else if ((employeeView.getJfxTextField26().getText().charAt(0) == '0')&&(employeeView.getJfxTextField26().getLength()>1))
+//                {
+//                    MessageController messageController = new MessageController("You can only use whole numbers for Penalty Of Cancellation section!");
+//                }
                 else
                 {
-                    TicketModel ticketModel = new TicketModel(Long.parseLong(employeeView.getJfxTextField25().getText()), Long.parseLong(employeeView.getJfxTextField26().getText()));
+                    long price = 0;
+                    long penaltyOfCancellation = 0;
+                    if (ManagerController.getCurrentPolicy() == 0)
+                    {
+                        price = Long.parseLong(employeeView.getJfxTextField25().getText());
+                        penaltyOfCancellation = ((price*20)/100);
+                    }
+                    else if (ManagerController.getCurrentPolicy() == 1)
+                    {
+                        price = ((Long.parseLong(employeeView.getJfxTextField25().getText())*120)/100);
+                        penaltyOfCancellation = ((price*20)/100);
+                    }
+                    else if (ManagerController.getCurrentPolicy() == 2)
+                    {
+                        price = ((Long.parseLong(employeeView.getJfxTextField25().getText())*90)/100);
+                        penaltyOfCancellation = ((price*20)/100);
+                    }
+                    TicketModel ticketModel = new TicketModel(price,penaltyOfCancellation );
                     ticketModel.setId(TicketModel.getTickets().get(selectedRowIndex).getId());
                     TicketModel.getTickets().set(selectedRowIndex,ticketModel);
                     TicketModel.setIdGenerator(TicketModel.getIdGenerator()-1);
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id edited ticket with "+ticketModel.getId()+" as id at "+dtf.format(localDateTime));
                     employeeView.getStage().close();
                     employeeView.getJfxTextField25().clear();
-                    employeeView.getJfxTextField26().clear();
                     employeeView.getTableView3().getItems().clear();
                     for ( int i=0; i<TicketModel.getTickets().size() ; i++)
                     {
@@ -641,6 +761,8 @@ public class EmployeeController implements Showable
                     }
                     employeeView.getStage().setScene(employeeView.getTicketScene());
                     employeeView.getStage().setTitle("Ticket Menu");
+                    employeeView.getStage().setMinWidth(750);
+                    employeeView.getStage().setMinHeight(580);
                     employeeView.getStage().show();
                 }
 
@@ -658,7 +780,6 @@ public class EmployeeController implements Showable
             {
                 employeeView.getStage().close();
                 employeeView.getJfxTextField25().clear();
-                employeeView.getJfxTextField26().clear();
                 employeeView.getTableView3().getItems().clear();
                 for (int i=0 ; i< TicketModel.getTickets().size() ; i++)
                 {
@@ -666,6 +787,8 @@ public class EmployeeController implements Showable
                 }
                 employeeView.getStage().setScene(employeeView.getTicketScene());
                 employeeView.getStage().setTitle("Ticket Menu");
+                employeeView.getStage().setMinWidth(750);
+                employeeView.getStage().setMinHeight(580);
                 employeeView.getStage().show();
             }
         });
@@ -703,7 +826,10 @@ public class EmployeeController implements Showable
                         }
                     }
                     TicketModel.getTickets().remove(TicketController.search((int) ticketModel.getId()));
-                    employeeView.getStage().close();
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id deleted ticket with "+ticketModel.getId()+" as id at "+dtf.format(localDateTime));
+           //         employeeView.getStage().close();
                     employeeView.getTableView3().getItems().clear();
                     for (int i=0 ; i < TicketModel.getTickets().size(); i++)
                     {
@@ -711,6 +837,8 @@ public class EmployeeController implements Showable
                     }
                     employeeView.getStage().setScene(employeeView.getTicketScene());
                     employeeView.getStage().setTitle("Ticket Menu");
+                    employeeView.getStage().setMinWidth(750);
+                    employeeView.getStage().setMinHeight(580);
                     employeeView.getStage().show();
                 }
             }
@@ -728,6 +856,8 @@ public class EmployeeController implements Showable
                 employeeView.getStage().close();
                 employeeView.getStage().setScene(employeeView.getMainMenuScene());
                 employeeView.getStage().setTitle("Employee Main Menu");
+                employeeView.getStage().setMinWidth(570);
+                employeeView.getStage().setMinHeight(270);
                 employeeView.getStage().show();
             }
         });
@@ -748,6 +878,7 @@ public class EmployeeController implements Showable
                 {
                     AirplaneModel airplaneModel = employeeView.getTableView6().getSelectionModel().getSelectedItem();
                     selectedRowIndex = AirplaneController.search((int) airplaneModel.getId());
+                    refreshFlightCondition ();
                     employeeView.getTableView8().getItems().clear();
                     for (int i = 0; i < AirplaneModel.getAirplanes().get(selectedRowIndex).getListOfFlights().size(); i++)
                     {
@@ -755,7 +886,9 @@ public class EmployeeController implements Showable
                     }
                     Stage stage2 = new Stage();
                     stage2.setScene(employeeView.getFlightsOfAirplaneScene());
-                    employeeView.getStage().setTitle("Flights Of Airplane");
+                    stage2.setTitle("Flights Of Airplane");
+                    employeeView.getStage().setMinWidth(600);
+                    employeeView.getStage().setMinHeight(400);
                     stage2.show();
                 }
             }
@@ -777,6 +910,7 @@ public class EmployeeController implements Showable
                 {
                     AirplaneModel airplaneModel = employeeView.getTableView9().getSelectionModel().getSelectedItem();
                     selectedRowIndex = AirplaneController.search((int) airplaneModel.getId());
+                    refreshFlightCondition ();
                     employeeView.getTableView8().getItems().clear();
                     for (int i = 0; i < AirplaneModel.getAirplanes().get(selectedRowIndex).getListOfFlights().size(); i++)
                     {
@@ -784,7 +918,9 @@ public class EmployeeController implements Showable
                     }
                     Stage stage2 = new Stage();
                     stage2.setScene(employeeView.getFlightsOfAirplaneScene());
-                    employeeView.getStage().setTitle("Flights of Airplane");
+                    stage2.setTitle("Flights of Airplane");
+                    employeeView.getStage().setMinWidth(600);
+                    employeeView.getStage().setMinHeight(400);
                     stage2.show();
                 }
             }
@@ -807,6 +943,7 @@ public class EmployeeController implements Showable
                     FlightModel flightModel = employeeView.getTableView5().getSelectionModel().getSelectedItem();
                     AirplaneModel airplaneModel = flightModel.getAirplane();
                     selectedRowIndex = AirplaneController.search((int) airplaneModel.getId());
+                    refreshFlightCondition ();
                     employeeView.getTableView8().getItems().clear();
                     for (int i = 0; i < AirplaneModel.getAirplanes().get(selectedRowIndex).getListOfFlights().size(); i++)
                     {
@@ -814,7 +951,9 @@ public class EmployeeController implements Showable
                     }
                     Stage stage2 = new Stage();
                     stage2.setScene(employeeView.getFlightsOfAirplaneScene());
-                    employeeView.getStage().setTitle("Flights Of Airplane");
+                    stage2.setTitle("Flights Of Airplane");
+                    employeeView.getStage().setMinWidth(600);
+                    employeeView.getStage().setMinHeight(400);
                     stage2.show();
                 }
             }
@@ -842,7 +981,9 @@ public class EmployeeController implements Showable
                     }
                     Stage stage2 = new Stage();
                     stage2.setScene(employeeView.getFlightsPassengersScene());
-                    employeeView.getStage().setTitle("Flights passengers");
+                    stage2.setTitle("Flights passengers");
+                    employeeView.getStage().setMinWidth(600);
+                    employeeView.getStage().setMinHeight(400);
                     stage2.show();
                 }
             }
@@ -876,13 +1017,28 @@ public class EmployeeController implements Showable
                     if (t == 1)
                         employeeView.getTableView7().getItems().add(TicketModel.getTickets().get(i));
                 }
+                refreshFlightCondition ();
+                int u = 1;
                 employeeView.getTableView6().getItems().clear();
                 for ( int k=0; k<AirplaneModel.getAirplanes().size() ; k++)
                 {
-                    employeeView.getTableView6().getItems().add(AirplaneModel.getAirplanes().get(k));
+                    u = 1;
+                    int n=0;
+                    for (; n<FlightModel.getFlights().size() ; n++)
+                    {
+                        if ((FlightModel.getFlights().get(n).getAirplane().getId() == AirplaneModel.getAirplanes().get(k).getId())&&((FlightModel.getFlights().get(n).getFlightCondition().equals(FlightModel.FlightCondition.INAIR))||(FlightModel.getFlights().get(n).getFlightCondition().equals(FlightModel.FlightCondition.SCHEDULED))))
+                        {
+                            u = 0;
+                            break;
+                        }
+                    }
+                    if (u == 1)
+                        employeeView.getTableView6().getItems().add(AirplaneModel.getAirplanes().get(k));
                 }
                 employeeView.getStage().setScene(employeeView.getFlightRegistrationScene());
                 employeeView.getStage().setTitle("Flight Registration Menu");
+                employeeView.getStage().setMinWidth(1000);
+                employeeView.getStage().setMinHeight(600);
                 employeeView.getStage().show();
             }
         });
@@ -956,11 +1112,11 @@ public class EmployeeController implements Showable
                 {
                     MessageController messageController = new MessageController("Please complete all parts!");
                 }
-                else if (!(employeeView.getJfxTextField29().getText().matches("\\w+")))
+                else if (!(employeeView.getJfxTextField29().getText().matches("\\w{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters,numbers and (_) for Origin section!");
                 }
-                else if (!(employeeView.getJfxTextField30().getText().matches("\\w+")))
+                else if (!(employeeView.getJfxTextField30().getText().matches("\\w{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters,numbers and (_) for Destination section!");
                 }
@@ -984,13 +1140,21 @@ public class EmployeeController implements Showable
                 {
                     MessageController messageController = new MessageController("Wrong time!");
                 }
-                else if (!(employeeView.getJfxTextField33().getText().matches("\\d+")))
+                else if (!(employeeView.getJfxTextField33().getText().matches("\\d{1,7}")))
                 {
                     MessageController messageController = new MessageController("You can only use whole numbers for Number Of Sold Tickets section!");
                 }
-                else if (!(employeeView.getJfxTextField34().getText().matches("\\d+\\.\\d+")))
+                else if ((employeeView.getJfxTextField33().getText().charAt(0) == '0')&&(employeeView.getJfxTextField33().getLength()>1))
+                {
+                    MessageController messageController = new MessageController("You can only use whole numbers for number of sold tickets section!");
+                }
+                else if (!(employeeView.getJfxTextField34().getText().matches("\\d{1,2}\\.\\d{1,2}")))
                 {
                     MessageController messageController = new MessageController("You can only use numbers for Flight Time section (double format number)!");
+                }
+                else if (employeeView.getJfxTextField34().getText().charAt(0) == '0')
+                {
+                    MessageController messageController = new MessageController("You can only use double numbers for flight time section (bigger than 0)!");
                 }
                 else if ((Double.parseDouble(employeeView.getJfxTextField34().getText())>23.59))
                 {
@@ -1007,6 +1171,9 @@ public class EmployeeController implements Showable
                     TicketModel.getUsedTickets().add(ticketModel);
                     AirplaneModel.getAirplanes().get(AirplaneController.search((int) airplaneModel.getId())).getListOfFlights().add(flightModel);
                     FlightController.sort(0, FlightModel.getFlights().size() - 1);
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id added flight with "+flightModel.getId()+" as id at "+dtf.format(localDateTime));
                     employeeView.getStage().close();
                     employeeView.getJfxTextField29().clear();
                     employeeView.getJfxTextField30().clear();
@@ -1015,12 +1182,16 @@ public class EmployeeController implements Showable
                     employeeView.getJfxTextField33().clear();
                     employeeView.getJfxTextField34().clear();
                     employeeView.getTableView5().getItems().clear();
+                    refreshFlightCondition ();
+                    employeeView.getTableView5().getItems().clear();
                     for (int i=0 ; i<FlightModel.getFlights().size() ; i++)
                     {
                         employeeView.getTableView5().getItems().add(FlightModel.getFlights().get(i));
                     }
                     employeeView.getStage().setScene(employeeView.getFlightScene());
                     employeeView.getStage().setTitle("Flight Menu");
+                    employeeView.getStage().setMinWidth(1000);
+                    employeeView.getStage().setMinHeight(580);
                     employeeView.getStage().show();
                     MessageController messageController = new MessageController("The ID is : ("+flightModel.getId()+")");
                 }
@@ -1038,6 +1209,12 @@ public class EmployeeController implements Showable
             public void handle(ActionEvent event)
             {
                 employeeView.getStage().close();
+                refreshFlightCondition ();
+                employeeView.getTableView5().getItems().clear();
+                for (int i=0 ; i<FlightModel.getFlights().size() ; i++)
+                {
+                    employeeView.getTableView5().getItems().add(FlightModel.getFlights().get(i));
+                }
                 employeeView.getJfxTextField29().clear();
                 employeeView.getJfxTextField30().clear();
                 employeeView.getJfxTextField31().clear();
@@ -1046,6 +1223,8 @@ public class EmployeeController implements Showable
                 employeeView.getJfxTextField34().clear();
                 employeeView.getStage().setScene(employeeView.getFlightScene());
                 employeeView.getStage().setTitle("Flight Menu");
+                employeeView.getStage().setMinWidth(1000);
+                employeeView.getStage().setMinHeight(580);
                 employeeView.getStage().show();
             }
         });
@@ -1093,12 +1272,26 @@ public class EmployeeController implements Showable
                     employeeView.getJfxTextField39().setText(Integer.toString(FlightModel.getFlights().get(selectedRowIndex).getNumberOfSoldTickets()));
                     employeeView.getJfxTextField40().setText(Double.toString(FlightModel.getFlights().get(selectedRowIndex).getFlightTime()));
                     employeeView.getTableView9().getItems().clear();
+                    int u = 1;
                     for ( int k=0; k<AirplaneModel.getAirplanes().size() ; k++)
                     {
-                        employeeView.getTableView9().getItems().add(AirplaneModel.getAirplanes().get(k));
+                        u = 1;
+                        int n=0;
+                        for (; n<FlightModel.getFlights().size() ; n++)
+                        {
+                            if ((FlightModel.getFlights().get(n).getAirplane().getId() == AirplaneModel.getAirplanes().get(k).getId())&&((FlightModel.getFlights().get(n).getFlightCondition().equals(FlightModel.FlightCondition.INAIR))||(FlightModel.getFlights().get(n).getFlightCondition().equals(FlightModel.FlightCondition.SCHEDULED))))
+                            {
+                                u = 0;
+                                break;
+                            }
+                        }
+                        if (u == 1)
+                            employeeView.getTableView9().getItems().add(AirplaneModel.getAirplanes().get(k));
                     }
                     employeeView.getStage().setScene(employeeView.getFlightEditScene());
                     employeeView.getStage().setTitle("Flight Edit Menu");
+                    employeeView.getStage().setMinWidth(1000);
+                    employeeView.getStage().setMinHeight(600);
                     employeeView.getStage().show();
                 }
             }
@@ -1174,11 +1367,11 @@ public class EmployeeController implements Showable
                 {
                     MessageController messageController = new MessageController("Please complete all parts!");
                 }
-                else if (!(employeeView.getJfxTextField35().getText().matches("\\w+")))
+                else if (!(employeeView.getJfxTextField35().getText().matches("\\w{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters,numbers and (_) for Origin section!");
                 }
-                else if (!(employeeView.getJfxTextField36().getText().matches("\\w+")))
+                else if (!(employeeView.getJfxTextField36().getText().matches("\\w{1,13}")))
                 {
                     MessageController messageController = new MessageController("You can only use letters,numbers and (_) for Destination section!");
                 }
@@ -1202,13 +1395,21 @@ public class EmployeeController implements Showable
                 {
                     MessageController messageController = new MessageController("Wrong time!");
                 }
-                else if (!(employeeView.getJfxTextField39().getText().matches("\\d+")))
+                else if (!(employeeView.getJfxTextField39().getText().matches("\\d{1,7}")))
                 {
                     MessageController messageController = new MessageController("You can only use whole numbers for Number Of Sold Tickets section!");
                 }
-                else if (!(employeeView.getJfxTextField40().getText().matches("\\d+\\.\\d+")))
+                else if ((employeeView.getJfxTextField39().getText().charAt(0) == '0')&&(employeeView.getJfxTextField39().getLength()>1))
+                {
+                    MessageController messageController = new MessageController("You can only use whole numbers for numbers of sold tickets section!");
+                }
+                else if (!(employeeView.getJfxTextField40().getText().matches("\\d{1,2}\\.\\d{1,2}")))
                 {
                     MessageController messageController = new MessageController("You can only use numbers for Flight Time section (double format number)!");
+                }
+                else if (employeeView.getJfxTextField40().getText().charAt(0) == '0')
+                {
+                    MessageController messageController = new MessageController("You can only use double numbers for flight time section (bigger than 0)!");
                 }
                 else if ((Double.parseDouble(employeeView.getJfxTextField40().getText())>23.59))
                 {
@@ -1245,6 +1446,9 @@ public class EmployeeController implements Showable
                     TicketModel.getUsedTickets().add(ticketModel);
                     AirplaneModel.getAirplanes().get(AirplaneController.search((int) airplaneModel.getId())).getListOfFlights().add(flightModel);
                     FlightController.sort(0, FlightModel.getFlights().size() - 1);
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id edited flight with "+flightModel.getId()+" as id at "+dtf.format(localDateTime));
                     employeeView.getStage().close();
                     employeeView.getJfxTextField35().clear();
                     employeeView.getJfxTextField36().clear();
@@ -1252,8 +1456,9 @@ public class EmployeeController implements Showable
                     employeeView.getJfxTextField38().clear();
                     employeeView.getJfxTextField39().clear();
                     employeeView.getJfxTextField40().clear();
+                    refreshFlightCondition ();
                     employeeView.getTableView5().getItems().clear();
-                    for (int i = 0; i < FlightModel.getFlights().size(); i++)
+                    for (int i=0 ; i<FlightModel.getFlights().size() ; i++)
                     {
                         employeeView.getTableView5().getItems().add(FlightModel.getFlights().get(i));
                     }
@@ -1264,6 +1469,8 @@ public class EmployeeController implements Showable
                     }
                     employeeView.getStage().setScene(employeeView.getFlightScene());
                     employeeView.getStage().setTitle("Flight Menu");
+                    employeeView.getStage().setMinWidth(1000);
+                    employeeView.getStage().setMinHeight(580);
                     employeeView.getStage().show();
 
                 }
@@ -1280,6 +1487,12 @@ public class EmployeeController implements Showable
             public void handle(ActionEvent event)
             {
                 employeeView.getStage().close();
+                refreshFlightCondition ();
+                employeeView.getTableView5().getItems().clear();
+                for (int i=0 ; i<FlightModel.getFlights().size() ; i++)
+                {
+                    employeeView.getTableView5().getItems().add(FlightModel.getFlights().get(i));
+                }
                 employeeView.getJfxTextField35().clear();
                 employeeView.getJfxTextField36().clear();
                 employeeView.getJfxTextField37().clear();
@@ -1288,6 +1501,8 @@ public class EmployeeController implements Showable
                 employeeView.getJfxTextField40().clear();
                 employeeView.getStage().setScene(employeeView.getFlightScene());
                 employeeView.getStage().setTitle("Flight Menu");
+                employeeView.getStage().setMinWidth(1000);
+                employeeView.getStage().setMinHeight(580);
                 employeeView.getStage().show();
             }
         });
@@ -1325,14 +1540,20 @@ public class EmployeeController implements Showable
                         }
                     }
                     FlightModel.getFlights().remove(FlightController.search((int) flightModel.getId()));
-                    employeeView.getStage().close();
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id deleted flight with "+flightModel.getId()+" as id at "+dtf.format(localDateTime));
+                    //           employeeView.getStage().close();
+                    refreshFlightCondition ();
                     employeeView.getTableView5().getItems().clear();
-                    for (int i = 0; i < FlightModel.getFlights().size(); i++)
+                    for (int i=0 ; i<FlightModel.getFlights().size() ; i++)
                     {
                         employeeView.getTableView5().getItems().add(FlightModel.getFlights().get(i));
                     }
                     employeeView.getStage().setScene(employeeView.getFlightScene());
                     employeeView.getStage().setTitle("Flight Menu");
+                    employeeView.getStage().setMinWidth(1000);
+                    employeeView.getStage().setMinHeight(580);
                     employeeView.getStage().show();
                 }
             }
@@ -1350,6 +1571,8 @@ public class EmployeeController implements Showable
                 employeeView.getStage().close();
                 employeeView.getStage().setScene(employeeView.getMainMenuScene());
                 employeeView.getStage().setTitle("Employee Main Menu");
+                employeeView.getStage().setMinWidth(570);
+                employeeView.getStage().setMinHeight(270);
                 employeeView.getStage().show();
             }
         });
@@ -1363,17 +1586,26 @@ public class EmployeeController implements Showable
             @Override
             public void handle(ActionEvent event)
             {
-                employeeView.getStage().close();
-                ManagerModel.getCriticsAndSuggestions().add(employeeView.getJfxTextArea300().getText());
-                employeeView.getJfxTextArea300().clear();
-                employeeView.getStage().setScene(employeeView.getMainMenuScene());
-                employeeView.getStage().setTitle("Employee Main Menu");
-                employeeView.getStage().show();
+                if (employeeView.getJfxTextArea300().getText().contains("$"))
+                {
+                    MessageController messageController = new MessageController("Sorry you cannot use ($)!");
+                }
+                else
+                {
+                    employeeView.getStage().close();
+                    ManagerModel.getCriticsAndSuggestions().add(employeeView.getJfxTextArea300().getText());
+                    employeeView.getJfxTextArea300().clear();
+                    employeeView.getStage().setScene(employeeView.getMainMenuScene());
+                    employeeView.getStage().setTitle("Employee Main Menu");
+                    employeeView.getStage().setMinWidth(570);
+                    employeeView.getStage().setMinHeight(270);
+                    employeeView.getStage().show();
+                }
             }
         });
     }
 
-    //exit critics and suggestions menu
+//exit critics and suggestions menu
     public void initJfxButton301()
     {
         employeeView.getJfxButton301().setOnAction(new EventHandler<ActionEvent>()
@@ -1385,9 +1617,129 @@ public class EmployeeController implements Showable
                 employeeView.getJfxTextArea300().clear();
                 employeeView.getStage().setScene(employeeView.getMainMenuScene());
                 employeeView.getStage().setTitle("Employee Main Menu");
+                employeeView.getStage().setMinWidth(570);
+                employeeView.getStage().setMinHeight(270);
                 employeeView.getStage().show();
             }
         });
+    }
+
+//exit forgot password menu
+    public void initJfxButton606()
+    {
+        employeeView.getJfxButton606().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                employeeView.getStage().close();
+                employeeView.getJfxTextField606().clear();
+                employeeView.getStage().setScene(employeeView.getMainMenuScene());
+                employeeView.getStage().setTitle("Employee Main Menu");
+                employeeView.getStage().setMinWidth(570);
+                employeeView.getStage().setMinHeight(270);
+                employeeView.getStage().show();
+            }
+        });
+    }
+
+//forgot password menu
+    public void initJfxButton605()
+    {
+        employeeView.getJfxButton605().setOnAction(new EventHandler<ActionEvent>()
+        {
+            @Override
+            public void handle(ActionEvent event)
+            {
+                if (!(employeeView.getJfxTextField606().getText().matches("[a-zA-z]{1,13}")))
+                {
+                    MessageController messageController = new MessageController("You can only use letters for this section!");
+                }
+                else if (!(employeeView.getJfxTextField606().getText().equals(EmployeeModel.getEmployees().get(index).getSecurityAnswer())))
+                {
+                    MessageController messageController = new MessageController("Answer is not true!");
+                }
+                else
+                {
+                    employeeView.getStage().close();
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    ManagerModel.getReports().add("Employee with "+EmployeeModel.getEmployees().get(index).getId()+" as id got his password back at "+dtf.format(localDateTime));
+                    employeeView.getJfxTextField606().clear();
+                    employeeView.getStage().setScene(employeeView.getMainMenuScene());
+                    employeeView.getStage().setTitle("Employee Main Menu");
+                    employeeView.getStage().setMinWidth(570);
+                    employeeView.getStage().setMinHeight(270);
+                    employeeView.getStage().show();
+                    MessageController messageController = new MessageController("youre password is : ("+EmployeeModel.getEmployees().get(index).getPassword()+") remember it this time!");
+                }
+            }
+        });
+    }
+
+    public void refreshFlightCondition ()
+    {
+        for (int o=0 ; o<FlightModel.getFlights().size() ; o++)
+        {
+            String [] strings = FlightModel.getFlights().get(o).getTime().split(":");
+            for (int i = 0; i < 2; i++)
+            {
+                if (strings[i].charAt(0) == '0')
+                    strings[i] = Character.toString(strings[i].charAt(1));
+            }
+            String string = strings[0]+"."+strings[1];
+            double startTime = Double.parseDouble(string);
+            double endTime = Double.parseDouble(string) + FlightModel.getFlights().get(o).getFlightTime();
+
+            Calendar cal = Calendar.getInstance();
+            Formatter fmt = new Formatter();
+            fmt.format("%tH:%tM", cal, cal);
+            String [] strings2 = fmt.toString().split(":");
+            for (int i = 0; i < 2; i++)
+            {
+                if (strings2[i].charAt(0) == '0')
+                    strings2[i] = Character.toString(strings2[i].charAt(1));
+            }
+            String string2 = strings2[0]+"."+strings2[1];
+            double time = Double.parseDouble(string2);
+
+            if ((FlightModel.getFlights().get(o).getDate().isEqual(LocalDate.now()))&&(endTime<24))
+            {
+                if (endTime < time)
+                    FlightModel.getFlights().get(o).setFlightCondition(FlightModel.FlightCondition.ARRIVED);
+                else if (startTime > time)
+                    FlightModel.getFlights().get(o).setFlightCondition(FlightModel.FlightCondition.SCHEDULED);
+                else if ((startTime < time)&&(endTime > time))
+                    FlightModel.getFlights().get(o).setFlightCondition(FlightModel.FlightCondition.INAIR);
+            }
+            else if ((FlightModel.getFlights().get(o).getDate().isEqual(LocalDate.now()))&&(endTime>23.59))
+            {
+                if (startTime > time)
+                    FlightModel.getFlights().get(o).setFlightCondition(FlightModel.FlightCondition.SCHEDULED);
+                else if (startTime < time)
+                    FlightModel.getFlights().get(o).setFlightCondition(FlightModel.FlightCondition.INAIR);
+            }
+            else if (FlightModel.getFlights().get(o).getDate().isAfter(LocalDate.now()))
+            {
+                FlightModel.getFlights().get(o).setFlightCondition(FlightModel.FlightCondition.SCHEDULED);
+            }
+            else if ((FlightModel.getFlights().get(o).getDate().getDayOfYear() == LocalDate.now().getDayOfYear()-1)&&(endTime<24))
+            {
+                FlightModel.getFlights().get(o).setFlightCondition(FlightModel.FlightCondition.ARRIVED);
+            }
+            else if ((FlightModel.getFlights().get(o).getDate().getDayOfYear() == LocalDate.now().getDayOfYear()-1)&&(endTime>23.59))
+            {
+                endTime -= 24.00;
+                if (endTime < time)
+                    FlightModel.getFlights().get(o).setFlightCondition(FlightModel.FlightCondition.ARRIVED);
+                else if (endTime > time)
+                    FlightModel.getFlights().get(o).setFlightCondition(FlightModel.FlightCondition.INAIR);
+            }
+            else if ((FlightModel.getFlights().get(o).getDate().getDayOfYear() != LocalDate.now().getDayOfYear()-1)&&(FlightModel.getFlights().get(o).getDate().isBefore(LocalDate.now())))
+            {
+                FlightModel.getFlights().get(o).setFlightCondition(FlightModel.FlightCondition.ARRIVED);
+            }
+        }
     }
 
 }
