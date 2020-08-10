@@ -2357,6 +2357,7 @@ public void initJfxButton43()
                         managerView.getJfxTextField45().clear();
                         managerView.getJfxTextField46().clear();
                         managerView.getJfxTextField47().clear();
+                        managerView.getJfxTextField605().clear();
                         managerView.getJfxPasswordField5().clear();
                         managerView.getJfxPasswordField6().clear();
                         managerView.getTableView12().getItems().clear();
@@ -2782,6 +2783,7 @@ public void initJfxButton43()
                         managerView.getJfxTextField5().clear();
                         managerView.getJfxTextField11().clear();
                         managerView.getJfxTextField311().clear();
+                        managerView.getJfxTextField707().clear();
                         managerView.getJfxPasswordField().clear();
                         managerView.getJfxPasswordField2().clear();
                         managerView.getTableView412().getItems().clear();
