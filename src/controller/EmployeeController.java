@@ -1273,6 +1273,7 @@ public class EmployeeController implements Showable
                     employeeView.getJfxTextField40().setText(Double.toString(FlightModel.getFlights().get(selectedRowIndex).getFlightTime()));
                     employeeView.getTableView9().getItems().clear();
                     int u = 1;
+                    employeeView.getTableView9().getItems().add(FlightModel.getFlights().get(selectedRowIndex).getAirplane());
                     for ( int k=0; k<AirplaneModel.getAirplanes().size() ; k++)
                     {
                         u = 1;

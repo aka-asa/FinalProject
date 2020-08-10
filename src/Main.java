@@ -139,7 +139,7 @@ public class Main extends Application
                             airplaneModel.setId(Long.parseLong(strings[l]));
                             AirplaneModel.getAirplanes().add(airplaneModel);
                             AirplaneModel.setIdGenerator(AirplaneModel.getIdGenerator()-1);
-                            l += (Integer.parseInt(strings[l+2]+3));
+                            l += (Integer.parseInt(strings[l+2])+3);
                         }
                     }
                     if (j == 9)
@@ -167,7 +167,7 @@ public class Main extends Application
                                 flightModel.setFlightCondition(FlightModel.FlightCondition.ARRIVED);
                             FlightModel.getFlights().add(flightModel);
                             FlightModel.setIdGenerator(FlightModel.getIdGenerator()-1);
-                            l += Integer.parseInt(strings[l+10]+11);
+                            l += (Integer.parseInt(strings[l+10])+11);
                         }
                     }
 

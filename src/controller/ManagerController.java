@@ -1845,6 +1845,7 @@ public class ManagerController implements Showable
                     managerView.getJfxTextField40().setText(Double.toString(FlightModel.getFlights().get(selectedRowIndex).getFlightTime()));
                     managerView.getTableView9().getItems().clear();
                     int u = 1;
+                    managerView.getTableView9().getItems().add(FlightModel.getFlights().get(selectedRowIndex).getAirplane());
                     for ( int k=0; k<AirplaneModel.getAirplanes().size() ; k++)
                     {
                         u = 1;
